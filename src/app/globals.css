@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* === Variáveis de design do G Hanks === */
+:root {
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --ghanks-blue: #4285F4;
+  --ghanks-green: #34A853;
+  --ghanks-yellow: #FBBC05;
+  --ghanks-red: #EA4335;
+  --ghanks-gray: #3C4043;
+  --ghanks-light: #F8F9FA;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ghanks-blue: var(--ghanks-blue);
+  --color-ghanks-green: var(--ghanks-green);
+  --color-ghanks-yellow: var(--ghanks-yellow);
+  --color-ghanks-red: var(--ghanks-red);
+  --color-ghanks-gray: var(--ghanks-gray);
+  --color-ghanks-light: var(--ghanks-light);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* === Scroll suave === */
+html {
+  scroll-behavior: smooth;
+}
+
+/* === Animação fade-in para seções === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
