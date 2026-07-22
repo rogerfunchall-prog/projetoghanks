@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GHanks - Página de Teste</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+
+    header h1 { font-size: 1.8rem; }
+    header p { margin-top: 0.4rem; opacity: 0.7; font-size: 0.95rem; }
+
+    main {
+      flex: 1;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-bottom: 1.5rem;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: #1a1a2e;
+    }
+
+    .card p { line-height: 1.6; color: #555; }
+
+    .status {
+      display: inline-block;
+      background: #d4edda;
+      color: #155724;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .info-item {
+      background: #f0f4ff;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .info-item strong { display: block; font-size: 1.5rem; color: #1a1a2e; }
+    .info-item span { font-size: 0.85rem; color: #666; }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #999;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GHanks</h1>
+    <p>Página de teste do projeto</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Bem-vindo ao GHanks!</h2>
+      <p>Esta é uma página de teste para verificar se o projeto está funcionando corretamente.</p>
+      <span class="status">Tudo funcionando</span>
+    </div>
+
+    <div class="card">
+      <h2>Informações do Projeto</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <strong>1.0</strong>
+          <span>Versão</span>
+        </div>
+        <div class="info-item">
+          <strong>HTML</strong>
+          <span>Tecnologia</span>
+        </div>
+        <div class="info-item">
+          <strong>Ativo</strong>
+          <span>Status</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 GHanks. Página de teste.
+  </footer>
+</body>
+</html>
