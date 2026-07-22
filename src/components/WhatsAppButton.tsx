@@ -1,6 +1,6 @@
 /* Botão flutuante de WhatsApp — fixo no canto inferior direito */
 
-const WHATSAPP_NUMBER = "5511999999999";
+const WHATSAPP_NUMBER = "5511950809873";
 
 export default function WhatsAppButton() {
   return (

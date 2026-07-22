@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 /* Fonte Inter — geométrica, clean, carregada via next/font para performance */
@@ -8,6 +9,9 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
+
+/* URL base do site — usa variável de ambiente para flexibilidade */
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
 
 /* Metadata global do site — SEO on-page */
 export const metadata: Metadata = {
@@ -47,7 +51,7 @@ export const metadata: Metadata = {
     description:
       "Growth hacking e SEO nativo para colocar sua empresa no topo do Google organicamente, sem gestor de tráfego pago.",
     type: "website",
-    url: "https://www.ghanks.com.br",
+    url: siteUrl,
     siteName: "G Hanks",
     locale: "pt_BR",
   },
@@ -58,9 +62,47 @@ export const metadata: Metadata = {
       "Growth hacking e SEO nativo para colocar sua empresa no topo do Google organicamente, sem gestor de tráfego pago.",
   },
   alternates: {
-    canonical: "https://www.ghanks.com.br",
+    canonical: siteUrl,
   },
-  metadataBase: new URL("https://www.ghanks.com.br"),
+  metadataBase: new URL(siteUrl),
+};
+
+/* JSON-LD Organization com as duas unidades (NAP) */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "G Hanks",
+  alternateName: "G Hanks — Growth Hacking e SEO Orgânico",
+  url: siteUrl,
+  logo: `${siteUrl}/logo-ghanks.png`,
+  description:
+    "Agência de growth hacking e SEO orgânico. Colocamos sua empresa na primeira página do Google sem anúncios pagos.",
+  telephone: "+5511950809873",
+  sameAs: ["https://www.instagram.com/ghanks.br"],
+  parentOrganization: {
+    "@type": "Organization",
+    name: "HAPP APPS Tecnologia",
+  },
+  location: [
+    {
+      "@type": "PostalAddress",
+      name: "G Hanks — São Paulo (Matriz)",
+      streetAddress: "Av. Brig. Faria Lima, 1811 - Conj. 1120 - Jardins",
+      addressLocality: "São Paulo",
+      addressRegion: "SP",
+      postalCode: "01452-001",
+      addressCountry: "BR",
+    },
+    {
+      "@type": "PostalAddress",
+      name: "G Hanks — Limeira",
+      streetAddress: "R. Sen. Vergueiro, 995 - Sl 51|B - Centro",
+      addressLocality: "Limeira",
+      addressRegion: "SP",
+      postalCode: "13480-001",
+      addressCountry: "BR",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -70,7 +112,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        {children}
+        <Script
+          id="json-ld-organization"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </body>
     </html>
   );
 }

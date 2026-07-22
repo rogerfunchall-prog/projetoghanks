@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const WHATSAPP_NUMBER = "5511999999999";
+const WHATSAPP_NUMBER = "5511950809873";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
 
 export const metadata: Metadata = {
   title: "Guia Completo de SEO Orgânico — Como Aparecer na Primeira Página do Google",
@@ -26,10 +27,10 @@ export const metadata: Metadata = {
     description:
       "Tudo o que você precisa saber sobre SEO orgânico para posicionar sua empresa no topo do Google, sem anúncios pagos.",
     type: "article",
-    url: "https://www.ghanks.com.br/seo-organico",
+    url: `${siteUrl}/seo-organico`,
   },
   alternates: {
-    canonical: "https://www.ghanks.com.br/seo-organico",
+    canonical: `${siteUrl}/seo-organico`,
   },
 };
 
@@ -248,7 +249,7 @@ export default function GuiaSeoOrganico() {
             </p>
             <p className="text-gray-600 leading-relaxed">
               Esse modelo protege o seu investimento e maximiza o resultado.
-              A vaga é limitada — e quem chegar primeiro, garante. Se o seu
+              A vaga é limitada — e quem chegar primeiro, conquista a posição. Se o seu
               concorrente já estiver conosco, você não poderá contratar a
               mesma keyword naquela cidade.
             </p>

@@ -1,11 +1,11 @@
 /* Seção Hero — acima da dobra, com H1 contendo keyword principal */
-const WHATSAPP_NUMBER = "5511999999999";
+const WHATSAPP_NUMBER = "5511950809873";
 
 /* Números de prova social */
 const STATS = [
   { value: "1.200+", label: "Palavras-chave posicionadas" },
   { value: "350+", label: "Cidades atendidas" },
-  { value: "100%", label: "Exclusividade garantida" },
+  { value: "Exclusividade", label: "Por cidade e palavra-chave" },
   { value: "~90 dias", label: "Tempo médio de resultado" },
 ];
 

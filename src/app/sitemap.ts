@@ -3,7 +3,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.ghanks.com.br";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
 
   return [
     {

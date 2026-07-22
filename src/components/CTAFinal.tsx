@@ -1,6 +1,6 @@
 /* Seção CTA Final — chamada para diagnóstico gratuito */
 
-const WHATSAPP_NUMBER = "5511999999999";
+const WHATSAPP_NUMBER = "5511950809873";
 
 export default function CTAFinal() {
   return (

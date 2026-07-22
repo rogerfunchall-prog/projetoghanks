@@ -1,6 +1,6 @@
 /* Seção Planos e Exclusividade — explica o modelo de negócio */
 
-const WHATSAPP_NUMBER = "5511999999999";
+const WHATSAPP_NUMBER = "5511950809873";
 
 export default function Planos() {
   return (

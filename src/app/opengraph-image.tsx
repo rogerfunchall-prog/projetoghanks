@@ -113,7 +113,7 @@ export default async function Image() {
           }}
         >
           <span style={{ fontSize: 16, color: "#9CA3AF" }}>
-            ghanks.com.br
+            projetoghanks.vercel.app
           </span>
         </div>
       </div>
