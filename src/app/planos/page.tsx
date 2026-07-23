@@ -8,11 +8,11 @@ const WHATSAPP_NUMBER = "5511950809873";
 export const metadata: Metadata = {
   title: "Planos de SEO Orgânico e Exclusividade por Cidade",
   description:
-    "Conheça os planos de SEO orgânico da G Hanks: setup único de posicionamento + mensalidade acessível, com exclusividade de palavra-chave por cidade. Sem Google Ads.",
+    "Conheça os planos de SEO orgânico da G Hanks: Open, Master e Authority. Posicionamento na primeira página do Google com exclusividade por cidade. Sem Google Ads.",
   openGraph: {
     title: "Planos de SEO Orgânico — G Hanks",
     description:
-      "Quanto custa aparecer no Google organicamente? Conheça o modelo de setup + mensalidade com exclusividade por cidade.",
+      "Quanto custa aparecer no Google organicamente? Conheça nossos planos Open, Master e Authority com exclusividade por cidade.",
     type: "website",
     url: `${siteUrl}/planos`,
   },
@@ -21,97 +21,229 @@ export const metadata: Metadata = {
   },
 };
 
+/* Dados dos 3 planos */
+const plans = [
+  {
+    name: "Open",
+    slug: "open",
+    badge: null,
+    highlight: false,
+    tagline: "Para quem quer começar a aparecer no Google",
+    keywords: 1,
+    originalPrice: "1.460,00",
+    price: "730,00",
+    hasDiscount: true,
+    extras: [] as string[],
+    features: [
+      "1 palavra-chave com foco em primeira página do Google",
+      "Site institucional completo com os dados do cliente",
+      "Botão/integração conectado ao WhatsApp da empresa",
+      "Seção de Produtos ou Serviços",
+      "Seção Empresa (Missão e Visão)",
+      "Seção de Clientes/Testemunhos",
+      "Seção de Contato e Localização",
+      "Configuração em servidores de alta performance",
+    ],
+  },
+  {
+    name: "Master",
+    slug: "master",
+    badge: "Mais Popular",
+    highlight: true,
+    tagline: "Para quem quer dominar mais de um termo de busca",
+    keywords: 3,
+    originalPrice: null,
+    price: "1.390,00",
+    hasDiscount: false,
+    extras: [] as string[],
+    features: [
+      "3 palavras-chave com foco em primeira página do Google",
+      "Site institucional completo com os dados do cliente",
+      "Botão/integração conectado ao WhatsApp da empresa",
+      "Seção de Produtos ou Serviços",
+      "Seção Empresa (Missão e Visão)",
+      "Seção de Clientes/Testemunhos",
+      "Seção de Contato e Localização",
+      "Configuração em servidores de alta performance",
+    ],
+  },
+  {
+    name: "Authority",
+    slug: "authority",
+    badge: "Mais Completo",
+    highlight: false,
+    tagline: "Presença completa: SEO + atendimento automatizado + conteúdo",
+    keywords: 5,
+    originalPrice: null,
+    price: "2.390,00",
+    hasDiscount: false,
+    extras: ["IA de atendimento (assistente conversacional no site)", "Blog de notícias"],
+    features: [
+      "5 palavras-chave com foco em primeira página do Google",
+      "Site institucional completo com os dados do cliente",
+      "Botão/integração conectado ao WhatsApp da empresa",
+      "Seção de Produtos ou Serviços",
+      "Seção Empresa (Missão e Visão)",
+      "Seção de Clientes/Testemunhos",
+      "Seção de Contato e Localização",
+      "Configuração em servidores de alta performance",
+      "IA de atendimento (assistente conversacional no site)",
+      "Blog de notícias",
+    ],
+  },
+];
+
+/* JSON-LD OfferCatalog */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  name: "Planos de SEO Orgânico — G Hanks",
+  description:
+    "Planos de posicionamento orgânico na primeira página do Google com exclusividade por cidade e palavra-chave.",
+  url: `${siteUrl}/planos`,
+  itemListElement: plans.map((p, i) => ({
+    "@type": "Offer",
+    position: i + 1,
+    name: `Plano ${p.name}`,
+    description: p.tagline,
+    price: p.price.replace(".", "").replace(",", "."),
+    priceCurrency: "BRL",
+    url: `${siteUrl}/planos`,
+    seller: {
+      "@type": "Organization",
+      name: "G Hanks",
+    },
+  })),
+};
+
 export default function PlanosPage() {
   return (
     <PageShell>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Planos" }]} />
 
-        <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6">
-          Planos de <span className="text-ghanks-blue">SEO orgânico</span> e exclusividade por cidade
-        </h1>
+        <div className="text-center mb-12">
+          <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6">
+            Planos de <span className="text-ghanks-blue">SEO orgânico</span> e exclusividade por cidade
+          </h1>
+          <p className="text-lg text-gray-500 leading-relaxed max-w-3xl mx-auto">
+            Posicionamento na primeira página do Google sem anúncios pagos, sem gestor de tráfego
+            e sem custo por clique. Escolha o plano ideal para o momento do seu negócio.
+          </p>
+        </div>
 
-        <p className="text-lg text-gray-500 leading-relaxed mb-12">
-          Posicionamento no Google sem anúncios pagos, sem gestor de tráfego e sem custo por clique.
-          O modelo da G Hanks é simples: um setup único para construir a base, mais uma mensalidade
-          acessível para manter e escalar o resultado — com exclusividade de palavra-chave na sua cidade.
-        </p>
-
-        {/* Cards de planos */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {/* Card Setup */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-            <div className="inline-flex items-center gap-2 bg-blue-50 text-ghanks-blue px-3 py-1 rounded-full text-sm font-semibold mb-4">
-              Setup Inicial
-            </div>
-            <h2 className="text-xl font-bold text-ghanks-gray mb-3">
-              Setup único de posicionamento
-            </h2>
-            <p className="text-gray-500 leading-relaxed mb-6">
-              Investimento único para configurar toda a estrutura de SEO do seu
-              negócio: otimização técnica, conteúdo estratégico, Google Meu
-              Negócio e autoridade de domínio. Tudo pronto para competir na
-              primeira página.
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Auditoria completa do site e concorrência",
-                "Otimização on-page e técnica",
-                "Conteúdo estratégico para a keyword principal",
-                "Configuração do Google Meu Negócio",
-                "Relatório inicial de posicionamento",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
-                  <svg className="w-5 h-5 text-ghanks-green shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Card Mensalidade */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm border-2 border-ghanks-blue relative">
-            <div className="absolute -top-3 right-6 bg-ghanks-blue text-white px-3 py-1 rounded-full text-xs font-semibold">
-              Mais popular
-            </div>
-            <div className="inline-flex items-center gap-2 bg-green-50 text-ghanks-green px-3 py-1 rounded-full text-sm font-semibold mb-4">
-              Manutenção Mensal
-            </div>
-            <h2 className="text-xl font-bold text-ghanks-gray mb-3">
-              Manutenção de ranking acessível
-            </h2>
-            <p className="text-gray-500 leading-relaxed mb-6">
-              Mensalidade para manter e escalar a posição orgânica — muito mais
-              acessível do que qualquer investimento em Google Ads. Sem
-              surpresas, sem taxa de clique.
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Monitoramento contínuo do ranking",
-                "Ajustes técnicos e de conteúdo mensais",
-                "Relatório mensal de evolução",
-                "Suporte via WhatsApp",
-                "Exclusividade mantida na sua cidade",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
-                  <svg className="w-5 h-5 text-ghanks-green shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Quero saber mais sobre os planos de SEO orgânico.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 block w-full text-center bg-ghanks-blue text-white py-3 rounded-full font-semibold hover:bg-blue-600 transition-colors"
+        {/* Grid de 3 planos */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-16 items-stretch">
+          {plans.map((plan) => (
+            <div
+              key={plan.slug}
+              className={`relative bg-white rounded-2xl p-8 flex flex-col ${
+                plan.highlight
+                  ? "border-2 border-ghanks-blue shadow-lg scale-[1.02] md:scale-105 z-10"
+                  : "border border-gray-100 shadow-sm"
+              }`}
             >
-              Falar com Especialista
-            </a>
-          </div>
+              {/* Badge */}
+              {plan.badge && (
+                <div
+                  className={`absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold whitespace-nowrap ${
+                    plan.highlight
+                      ? "bg-ghanks-blue text-white"
+                      : "bg-ghanks-green text-white"
+                  }`}
+                >
+                  {plan.badge}
+                </div>
+              )}
+
+              {/* Nome do plano */}
+              <h2 className="text-xl font-bold text-ghanks-gray mt-2 mb-1">
+                Plano {plan.name}
+              </h2>
+
+              {/* Tagline */}
+              <p className="text-sm text-gray-400 mb-6">{plan.tagline}</p>
+
+              {/* Preço */}
+              <div className="mb-6">
+                {plan.hasDiscount && plan.originalPrice && (
+                  <p className="text-sm text-gray-400 line-through mb-0.5">
+                    R$ {plan.originalPrice}
+                  </p>
+                )}
+                <div className="flex items-baseline gap-1">
+                  <span className="text-sm text-gray-500 font-medium">R$</span>
+                  <span
+                    className={`text-4xl font-extrabold ${
+                      plan.highlight ? "text-ghanks-blue" : "text-ghanks-gray"
+                    }`}
+                  >
+                    {plan.price.split(",")[0]}
+                  </span>
+                  <span className="text-lg font-bold text-gray-400">
+                    ,{plan.price.split(",")[1]}
+                  </span>
+                </div>
+                {plan.hasDiscount && (
+                  <span className="inline-block mt-2 bg-ghanks-red/10 text-ghanks-red text-xs font-bold px-2.5 py-1 rounded-full">
+                    50% OFF
+                  </span>
+                )}
+              </div>
+
+              {/* Lista de recursos */}
+              <ul className="space-y-3 flex-1">
+                {plan.features.map((feat) => {
+                  const isExtra = plan.extras.includes(feat);
+                  return (
+                    <li key={feat} className="flex items-start gap-2 text-sm text-gray-600">
+                      <svg
+                        className={`w-5 h-5 shrink-0 mt-0.5 ${
+                          isExtra ? "text-ghanks-blue" : "text-ghanks-green"
+                        }`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className={isExtra ? "font-semibold text-ghanks-gray" : ""}>
+                        {feat}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              {/* CTA */}
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                  `Olá! Tenho interesse no plano ${plan.name} da G Hanks.`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`mt-8 block w-full text-center py-3.5 rounded-full font-bold transition-colors ${
+                  plan.highlight
+                    ? "bg-ghanks-blue text-white hover:bg-blue-600"
+                    : "bg-ghanks-light text-ghanks-gray hover:bg-gray-200"
+                }`}
+              >
+                Quero este plano
+              </a>
+            </div>
+          ))}
         </div>
 
         {/* Bloco exclusividade */}
@@ -229,11 +361,13 @@ export default function PlanosPage() {
             Pronto para investir em resultado orgânico?
           </h2>
           <p className="text-blue-100 mb-6 max-w-xl mx-auto">
-            Solicite um diagnóstico gratuito e descubra quanto custa posicionar
-            sua empresa na primeira página do Google.
+            Solicite um diagnóstico gratuito e descubra qual plano é ideal
+            para posicionar sua empresa na primeira página do Google.
           </p>
           <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de saber mais sobre os planos de SEO orgânico da G Hanks.`}
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+              "Olá! Gostaria de saber mais sobre os planos de SEO orgânico da G Hanks."
+            )}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white text-ghanks-blue px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition-colors"
