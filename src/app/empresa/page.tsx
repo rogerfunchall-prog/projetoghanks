@@ -106,18 +106,37 @@ const aboutJsonLd = {
 export default function EmpresaPage() {
   return (
     <PageShell>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Empresa" }]} />
+      {/* Hero com banner de fundo */}
+      <section className="relative min-h-[420px] md:min-h-[480px] lg:min-h-[520px] overflow-hidden -mt-24">
+        <Image
+          src="/banner-empresa.png"
+          alt="Figuras representando equipe e crescimento colaborativo, com gráfico ascendente e aperto de mãos, em um escritório moderno"
+          fill
+          priority
+          className="object-cover object-[70%_center] md:object-[right_center]"
+          sizes="100vw"
+          quality={85}
+        />
 
-        {/* Hero */}
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 bg-ghanks-light border border-gray-200 rounded-full px-4 py-1.5 mb-4">
+        {/* Overlay branco sutil no lado esquerdo para reforço de contraste */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-white/50 via-white/20 to-transparent"
+          aria-hidden="true"
+        />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 md:pt-44 md:pb-20 flex flex-col items-start">
+          <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Empresa" }]} />
+
+          <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-1.5 mb-4">
             <span className="text-sm font-medium text-ghanks-gray">Quem Somos</span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6">
+          <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6 max-w-2xl">
             A G Hanks nasceu para tirar empresas do <span className="text-ghanks-blue">anonimato no Google</span>
           </h1>
         </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
 
         {/* Nossa história */}
         <section className="mb-16">
