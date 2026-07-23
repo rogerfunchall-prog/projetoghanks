@@ -147,6 +147,18 @@ export default function EmpresaPage() {
           <p className="text-gray-600 leading-relaxed mb-4">
             O Método H.A.N.K.S. foi criado para resolver esse problema com uma abordagem diferente: growth hacking aplicado ao SEO orgânico, com exclusividade real por cidade e palavra-chave. Em vez de competir no modelo de agência tradicional, criamos um modelo onde cada cliente é o único no seu nicho e região.
           </p>
+
+          {/* Números de operação */}
+          <div className="grid grid-cols-2 gap-4 my-8 max-w-md">
+            <div className="bg-ghanks-light rounded-xl p-4 text-center border border-gray-100">
+              <p className="text-2xl font-bold text-ghanks-blue">1.200+</p>
+              <p className="text-xs text-gray-400 mt-1">Palavras-chave posicionadas</p>
+            </div>
+            <div className="bg-ghanks-light rounded-xl p-4 text-center border border-gray-100">
+              <p className="text-2xl font-bold text-ghanks-green">350+</p>
+              <p className="text-xs text-gray-400 mt-1">Cidades atendidas</p>
+            </div>
+          </div>
           <p className="text-gray-600 leading-relaxed">
             Hoje atendemos empresas de diversos nichos em todo o Brasil, com escritórios em São Paulo e Limeira, e uma equipe que combina décadas de experiência em tecnologia, IA e marketing digital. Para entender nosso método em detalhes, visite a página do <a href="/metodo" className="text-ghanks-blue font-semibold hover:underline">Método H.A.N.K.S.</a>
           </p>

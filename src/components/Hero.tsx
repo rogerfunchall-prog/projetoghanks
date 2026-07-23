@@ -3,17 +3,9 @@ import Image from "next/image";
 
 const WHATSAPP_NUMBER = "5511950809873";
 
-/* Números de prova social */
-const STATS = [
-  { value: "1.200+", label: "Palavras-chave posicionadas" },
-  { value: "350+", label: "Cidades atendidas" },
-  { value: "Exclusividade", label: "Por cidade e palavra-chave" },
-  { value: "21–45 dias", label: "Tempo médio de resultado" },
-];
-
 export default function Hero() {
   return (
-    <section className="relative min-h-[520px] md:min-h-[600px] lg:min-h-[650px] overflow-hidden">
+    <section className="relative min-h-[480px] md:min-h-[560px] lg:min-h-[600px] overflow-hidden">
       {/* Imagem de fundo — LCP, priority obrigatório */}
       <Image
         src="/banner-home.png"
@@ -31,8 +23,8 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {/* Conteúdo — posicionado no terço esquerdo */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 md:pt-40 md:pb-24 flex flex-col items-start">
+      {/* Conteúdo — posicionado no terço esquerdo, centralizado verticalmente */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-[inherit] flex flex-col justify-center items-start py-28 md:py-32">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
           <span className="w-2 h-2 rounded-full bg-ghanks-green" aria-hidden="true" />
@@ -78,16 +70,6 @@ export default function Hero() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </a>
-        </div>
-
-        {/* Prova social */}
-        <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl">
-          {STATS.map((stat) => (
-            <div key={stat.label}>
-              <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
-              <p className="mt-1 text-sm text-white/60">{stat.label}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
