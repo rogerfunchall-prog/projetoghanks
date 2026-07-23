@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageShell from "@/components/PageShell";
 import Breadcrumb from "@/components/Breadcrumb";
 
@@ -82,18 +83,33 @@ const PILARES = [
 export default function MetodoPage() {
   return (
     <PageShell>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Método H.A.N.K.S." }]} />
+      {/* Hero com banner de fundo */}
+      <section className="relative min-h-[420px] md:min-h-[480px] lg:min-h-[520px] overflow-hidden -mt-24">
+        <Image
+          src="/banner-metodo.png"
+          alt="Cinco blocos de vidro iluminados com ícones representando busca, segurança, localização, palavra-chave e crescimento, conectados por uma linha luminosa"
+          fill
+          priority
+          className="object-cover object-[75%_center] md:object-[right_center]"
+          sizes="100vw"
+          quality={85}
+        />
 
-        <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6">
-          Método <span className="text-ghanks-blue">H.A.N.K.S.</span> — growth hacking aplicado ao SEO orgânico
-        </h1>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 md:pt-44 md:pb-20 flex flex-col items-start">
+          <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Método H.A.N.K.S." }]} />
 
-        <p className="text-lg text-gray-500 leading-relaxed mb-4">
-          O Método H.A.N.K.S. é a base do trabalho da G Hanks. Cinco pilares de
-          growth hacking e SEO orgânico que, juntos, colocam empresas de todo o
-          Brasil na primeira página do Google — sem depender de anúncios pagos.
-        </p>
+          <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6 max-w-2xl">
+            Método <span className="text-ghanks-blue">H.A.N.K.S.</span> — growth hacking aplicado ao SEO orgânico
+          </h1>
+
+          <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
+            Cinco pilares de growth hacking e SEO orgânico que colocam empresas
+            na primeira página do Google — sem depender de anúncios pagos.
+          </p>
+        </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         <p className="text-lg text-gray-500 leading-relaxed mb-12">
           Cada letra do acróstico representa uma etapa essencial do processo.
           Entenda como funciona na prática e por que o método tem entregado
