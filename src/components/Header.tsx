@@ -1,15 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Logo from "./Logo";
 
-/* Links de navegação do menu principal */
+/* Links de navegação do menu principal — agora multi-página */
 const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Método", href: "#metodo" },
-  { label: "Planos", href: "#planos" },
-  { label: "Depoimentos", href: "#depoimentos" },
-  { label: "Contato", href: "#contato" },
+  { label: "Início", href: "/" },
+  { label: "Método", href: "/metodo" },
+  { label: "Planos", href: "/planos" },
+  { label: "Portfólio", href: "/portfolio" },
+  { label: "Empresa", href: "/empresa" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contato", href: "/contato" },
 ];
 
 const WHATSAPP_NUMBER = "5511950809873";
@@ -20,25 +23,25 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-18 md:h-22">
           {/* Logo */}
           <Logo />
 
           {/* Navegação desktop */}
-          <nav className="hidden md:flex items-center gap-8" aria-label="Menu principal">
+          <nav className="hidden lg:flex items-center gap-6" aria-label="Menu principal">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium text-gray-600 hover:text-ghanks-blue transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Redes sociais + CTA desktop */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <a
               href="https://www.instagram.com/ghanks.br"
               target="_blank"
@@ -63,7 +66,7 @@ export default function Header() {
           {/* Botão hamburger mobile */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 text-gray-600"
+            className="lg:hidden p-2 text-gray-600"
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={menuOpen}
           >
@@ -80,17 +83,17 @@ export default function Header() {
 
       {/* Menu mobile */}
       {menuOpen && (
-        <nav className="md:hidden border-t border-gray-100 bg-white" aria-label="Menu mobile">
+        <nav className="lg:hidden border-t border-gray-100 bg-white" aria-label="Menu mobile">
           <div className="px-4 py-4 space-y-3">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className="block text-base font-medium text-gray-700 hover:text-ghanks-blue"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito de SEO.`}

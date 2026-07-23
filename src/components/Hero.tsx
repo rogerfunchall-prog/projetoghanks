@@ -12,12 +12,10 @@ const STATS = [
 export default function Hero() {
   return (
     <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-white overflow-hidden">
-      {/* Detalhe decorativo sutil */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-ghanks-blue/5 rounded-full -translate-y-1/2 translate-x-1/2" aria-hidden="true" />
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-ghanks-green/5 rounded-full translate-y-1/2 -translate-x-1/2" aria-hidden="true" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Badge superior */}
         <div className="inline-flex items-center gap-2 bg-ghanks-light border border-gray-200 rounded-full px-4 py-1.5 mb-6">
           <span className="w-2 h-2 rounded-full bg-ghanks-green" aria-hidden="true" />
           <span className="text-sm font-medium text-ghanks-gray">
@@ -25,21 +23,18 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* H1 com keyword principal */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-ghanks-gray leading-tight max-w-4xl mx-auto">
           Coloque sua empresa na{" "}
           <span className="text-ghanks-blue">primeira página do Google</span>
           , sem pagar por anúncio
         </h1>
 
-        {/* Subtítulo com modelo de exclusividade */}
         <p className="mt-6 text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
           SEO orgânico com exclusividade por cidade e palavra-chave.
           Trabalhamos para posicionar o seu negócio no topo do Google de forma
           sustentável — sem Google Ads, sem gestor de tráfego pago.
         </p>
 
-        {/* CTAs */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito de SEO.`}
@@ -54,17 +49,16 @@ export default function Hero() {
             Solicitar Diagnóstico Gratuito
           </a>
           <a
-            href="#metodo"
+            href="/metodo"
             className="inline-flex items-center gap-2 bg-white text-ghanks-gray border-2 border-gray-200 px-8 py-4 rounded-full text-base font-semibold hover:border-ghanks-blue hover:text-ghanks-blue transition-colors"
           >
             Ver Como Funciona
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </a>
         </div>
 
-        {/* Prova social em números */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
           {STATS.map((stat) => (
             <div key={stat.label} className="text-center">

@@ -1,9 +1,9 @@
 /* Página "Guia Completo de SEO Orgânico" — conteúdo denso para ranquear keyword-mãe */
 
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import Script from "next/script";
+import PageShell from "@/components/PageShell";
+import Breadcrumb from "@/components/Breadcrumb";
 
 const WHATSAPP_NUMBER = "5511950809873";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
@@ -34,18 +34,34 @@ export const metadata: Metadata = {
   },
 };
 
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Guia Completo de SEO Orgânico: como colocar sua empresa na primeira página do Google",
+  author: {
+    "@type": "Person",
+    name: "Roger Funchal",
+    jobTitle: "CEO e Founder da G Hanks",
+    url: `${siteUrl}/empresa`,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "G Hanks",
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteUrl}/logo-ghanks.png`,
+    },
+  },
+  url: `${siteUrl}/seo-organico`,
+  datePublished: "2024-01-01",
+  dateModified: new Date().toISOString().split("T")[0],
+};
+
 export default function GuiaSeoOrganico() {
   return (
-    <>
-      <Header />
-      <main className="pt-24 pb-16">
+    <PageShell>
         <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <nav className="text-sm text-gray-400 mb-8" aria-label="Breadcrumb">
-            <a href="/" className="hover:text-ghanks-blue">Home</a>
-            <span className="mx-2">/</span>
-            <span className="text-ghanks-gray">Guia de SEO Orgânico</span>
-          </nav>
+          <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Guia de SEO Orgânico" }]} />
 
           {/* H1 com keyword principal */}
           <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6">
@@ -334,9 +350,12 @@ export default function GuiaSeoOrganico() {
             </a>
           </div>
         </article>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-    </>
+
+        <Script
+          id="json-ld-article"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
+    </PageShell>
   );
 }

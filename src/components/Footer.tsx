@@ -1,5 +1,6 @@
-/* Footer — logo, navegação, segmentos, endereços, Instagram e assinatura HAPP APPS */
+/* Footer — logo, navegação multi-página, segmentos, endereços, Instagram e assinatura HAPP APPS */
 
+import Link from "next/link";
 import Logo from "./Logo";
 
 const WHATSAPP_NUMBER = "5511950809873";
@@ -15,12 +16,14 @@ const SEGMENTOS = [
 ];
 
 const NAV_FOOTER = [
-  { label: "Home", href: "/" },
-  { label: "Método", href: "#metodo" },
-  { label: "Planos", href: "#planos" },
-  { label: "Depoimentos", href: "#depoimentos" },
+  { label: "Início", href: "/" },
+  { label: "Método H.A.N.K.S.", href: "/metodo" },
+  { label: "Planos", href: "/planos" },
+  { label: "Portfólio", href: "/portfolio" },
+  { label: "Empresa", href: "/empresa" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contato", href: "/contato" },
   { label: "Guia de SEO Orgânico", href: "/seo-organico" },
-  { label: "Contato", href: "#contato" },
 ];
 
 const ESCRITORIOS = [
@@ -83,12 +86,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {NAV_FOOTER.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-gray-400 hover:text-white transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
