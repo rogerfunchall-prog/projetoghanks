@@ -1,4 +1,6 @@
-/* Seção Hero — acima da dobra, com H1 contendo keyword principal */
+/* Seção Hero — banner de fundo com texto no terço esquerdo */
+import Image from "next/image";
+
 const WHATSAPP_NUMBER = "5511950809873";
 
 /* Números de prova social */
@@ -11,31 +13,50 @@ const STATS = [
 
 export default function Hero() {
   return (
-    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-white overflow-hidden">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-ghanks-blue/5 rounded-full -translate-y-1/2 translate-x-1/2" aria-hidden="true" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-ghanks-green/5 rounded-full translate-y-1/2 -translate-x-1/2" aria-hidden="true" />
+    <section className="relative min-h-[520px] md:min-h-[600px] lg:min-h-[650px] overflow-hidden">
+      {/* Imagem de fundo — LCP, priority obrigatório */}
+      <Image
+        src="/banner-home.png"
+        alt="Ilustração representando um resultado de busca em primeiro lugar no Google, com mapa do Brasil e gráfico de crescimento orgânico ascendente"
+        fill
+        priority
+        className="object-cover object-[65%_center] md:object-[right_center]"
+        sizes="100vw"
+        quality={85}
+      />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center gap-2 bg-ghanks-light border border-gray-200 rounded-full px-4 py-1.5 mb-6">
+      {/* Overlay gradiente — reforço de contraste no lado esquerdo */}
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"
+        aria-hidden="true"
+      />
+
+      {/* Conteúdo — posicionado no terço esquerdo */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 md:pt-40 md:pb-24 flex flex-col items-start">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
           <span className="w-2 h-2 rounded-full bg-ghanks-green" aria-hidden="true" />
-          <span className="text-sm font-medium text-ghanks-gray">
+          <span className="text-sm font-medium text-white/90">
             Growth Hacking • SEO Orgânico • Resultado Real
           </span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-ghanks-gray leading-tight max-w-4xl mx-auto">
+        {/* H1 */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-2xl">
           Coloque sua empresa na{" "}
           <span className="text-ghanks-blue">primeira página do Google</span>
           , sem pagar por anúncio
         </h1>
 
-        <p className="mt-6 text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+        {/* Subtítulo */}
+        <p className="mt-6 text-lg md:text-xl text-white/80 max-w-xl leading-relaxed">
           SEO orgânico com exclusividade por cidade e palavra-chave.
           Trabalhamos para posicionar o seu negócio no topo do Google de forma
           sustentável — sem Google Ads, sem gestor de tráfego pago.
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        {/* CTAs */}
+        <div className="mt-10 flex flex-col sm:flex-row items-start gap-4">
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito de SEO.`}
             target="_blank"
@@ -50,7 +71,7 @@ export default function Hero() {
           </a>
           <a
             href="/metodo"
-            className="inline-flex items-center gap-2 bg-white text-ghanks-gray border-2 border-gray-200 px-8 py-4 rounded-full text-base font-semibold hover:border-ghanks-blue hover:text-ghanks-blue transition-colors"
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-full text-base font-semibold hover:bg-white/20 hover:border-white/50 transition-colors"
           >
             Ver Como Funciona
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -59,11 +80,12 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+        {/* Prova social */}
+        <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl">
           {STATS.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-2xl md:text-3xl font-bold text-ghanks-gray">{stat.value}</p>
-              <p className="mt-1 text-sm text-gray-400">{stat.label}</p>
+            <div key={stat.label}>
+              <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+              <p className="mt-1 text-sm text-white/60">{stat.label}</p>
             </div>
           ))}
         </div>
