@@ -28,14 +28,14 @@ const FUNDADORES = [
     cargo: "CEO e Founder",
     foto: "/roger-funchal.jpg",
     headline: "O cara que ajudou o Google a colocar o Brasil no mapa",
-    bio: "Enquanto a maioria das agências de marketing ainda está aprendendo a usar IA, Roger Funchal já foi contratado pelo próprio Google para o lançamento do Street View no Brasil. Com mais de 25 anos de tecnologia e especialização em Inteligência Artificial, ele decidiu virar essa bagagem contra o próprio jogo: tirar empresas invisíveis do Google e colocá-las na frente de quem já está procurando por elas. Também é CEO da AgroBusca e carrega uma obsessão que vai além do resultado comercial — ensinar e transformar quem cruza o caminho dele.",
+    bio: "Enquanto a maioria das agências de marketing ainda está aprendendo a usar IA, Roger Funchal já foi contratado pelo próprio Google para o lançamento do Street View no Brasil. Com mais de 25 anos de tecnologia e especialização em Inteligência Artificial, ele decidiu virar essa bagagem contra o próprio jogo: tirar empresas invisíveis do Google e colocá-las na frente de quem já está procurando por elas. Também é CEO da AgroBusca e carrega uma obsessão que vai além do simples resultado comercial: ensinar de verdade e transformar quem cruza o seu caminho hoje.",
   },
   {
     nome: "Matheus Rangel",
     cargo: "Head de Desenvolvimento e Founder",
     foto: "/matheus-rangel.jpg",
     headline: "Quem transforma promessa em código que funciona",
-    bio: "Matheus Rangel é quem faz com que cada resultado prometido pela G Hanks vire estrutura técnica sólida por trás da tela. Especialista em Inteligência Artificial e em liderança de times de desenvolvimento, ele já comandou squads inteiros antes de cofundar a G Hanks — hoje aplica IA não como modismo, mas como motor de posicionamento orgânico real para os clientes.",
+    bio: "Matheus Rangel é quem garante que cada resultado prometido pela G Hanks vire estrutura técnica sólida por trás da tela. Especialista em Inteligência Artificial e em liderança de times de desenvolvimento, ele comandou squads inteiros antes de cofundar a G Hanks ao lado de Roger Funchal. Hoje aplica Inteligência Artificial não como modismo passageiro, mas como o motor real de posicionamento orgânico para os clientes da empresa. Enquanto Roger enxerga a estratégia, Matheus constrói o código que sustenta cada resultado no ar, todos os dias, sem nunca falhar.",
   },
 ];
 
@@ -202,7 +202,7 @@ export default function EmpresaPage() {
           <h2 className="text-2xl font-bold text-ghanks-gray mb-8 text-center">Fundadores</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {FUNDADORES.map((f) => (
-              <div key={f.nome} className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+              <div key={f.nome} className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 flex flex-col h-full">
                 <div className="flex items-start gap-5 mb-4">
                   <Image
                     src={f.foto}
