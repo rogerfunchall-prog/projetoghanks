@@ -277,10 +277,9 @@ export default function GuiaSeoOrganico() {
               7. Quanto tempo leva para aparecer na primeira página do Google
             </h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              O tempo médio para alcançar a primeira página do Google com
-              SEO orgânico é de 60 a 120 dias. Esse prazo depende de
-              fatores como a concorrência da palavra-chave, o estado atual
-              do site e o tamanho da cidade.
+              O prazo médio de posicionamento fica entre 21 e 45 dias. Esse
+              tempo depende de fatores como a concorrência da palavra-chave,
+              o estado atual do site e o tamanho da cidade.
             </p>
             <p className="text-gray-600 leading-relaxed">
               Em nichos menos disputados e cidades menores, o resultado pode

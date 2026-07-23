@@ -8,7 +8,7 @@ const STATS = [
   { value: "1.200+", label: "Palavras-chave posicionadas" },
   { value: "350+", label: "Cidades atendidas" },
   { value: "Exclusividade", label: "Por cidade e palavra-chave" },
-  { value: "~90 dias", label: "Tempo médio de resultado" },
+  { value: "21–45 dias", label: "Tempo médio de resultado" },
 ];
 
 export default function Hero() {

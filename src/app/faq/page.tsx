@@ -40,7 +40,7 @@ const FAQ_ITEMS = [
   {
     pergunta: "Quanto tempo leva para aparecer na primeira página do Google?",
     resposta:
-      "O tempo médio é de 60 a 120 dias, dependendo da concorrência da palavra-chave e do estado atual do seu site. Em cidades menores e nichos menos disputados, o resultado costuma aparecer mais rápido. Enviamos relatórios mensais para que você acompanhe a evolução.",
+      "Em média, entre 21 e 45 dias, dependendo da concorrência da palavra-chave e do estado atual do seu site. Em cidades menores e nichos menos disputados, o resultado costuma aparecer ainda mais rápido. Enviamos relatórios para que você acompanhe a evolução desde o primeiro dia.",
   },
   {
     pergunta: "Vocês atendem minha cidade e meu nicho?",

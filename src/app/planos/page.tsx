@@ -152,7 +152,7 @@ export default function PlanosPage() {
                   ["Dependência de investimento contínuo", "Baixa — resultado acumula", "Total — sem verba, sem resultado"],
                   ["Propriedade do resultado", "O posicionamento é do seu site", "O espaço é alugado do Google"],
                   ["Confiança do consumidor", "Alta — resultado orgânico transmite credibilidade", "Moderada — muitos usuários ignoram anúncios"],
-                  ["Velocidade do resultado", "60 a 120 dias (médio prazo)", "Imediato, mas temporário"],
+                  ["Velocidade do resultado", "Em média, 21 a 45 dias", "Imediato, mas temporário"],
                   ["Necessidade de gestor de tráfego", "Não", "Sim"],
                 ].map(([criterio, seo, ads]) => (
                   <tr key={criterio} className="border-t border-gray-100">

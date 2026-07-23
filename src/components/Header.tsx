@@ -4,21 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 
-/* Links de navegação do menu principal — agora multi-página */
-const NAV_LINKS = [
-  { label: "Início", href: "/" },
-  { label: "Método", href: "/metodo" },
-  { label: "Planos", href: "/planos" },
-  { label: "Portfólio", href: "/portfolio" },
-  { label: "Empresa", href: "/empresa" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Contato", href: "/contato" },
-];
-
 const WHATSAPP_NUMBER = "5511950809873";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [metodoOpen, setMetodoOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
@@ -29,15 +19,49 @@ export default function Header() {
 
           {/* Navegação desktop */}
           <nav className="hidden lg:flex items-center gap-6" aria-label="Menu principal">
-            {NAV_LINKS.map((link) => (
+            <Link href="/" className="text-sm font-medium text-gray-600 hover:text-ghanks-blue transition-colors">
+              Início
+            </Link>
+            <Link href="/empresa" className="text-sm font-medium text-gray-600 hover:text-ghanks-blue transition-colors">
+              Empresa
+            </Link>
+
+            {/* Dropdown Método */}
+            <div className="relative group">
               <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-gray-600 hover:text-ghanks-blue transition-colors"
+                href="/metodo"
+                className="inline-flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-ghanks-blue transition-colors"
               >
-                {link.label}
+                Método
+                <svg className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </Link>
-            ))}
+              {/* Submenu desktop — aparece no hover */}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="bg-white rounded-xl shadow-lg border border-gray-100 py-2 min-w-[160px]">
+                  <Link
+                    href="/planos"
+                    className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
+                  >
+                    Planos
+                  </Link>
+                  <Link
+                    href="/faq"
+                    className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
+                  >
+                    FAQ
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <Link href="/portfolio" className="text-sm font-medium text-gray-600 hover:text-ghanks-blue transition-colors">
+              Portfólio
+            </Link>
+            <Link href="/contato" className="text-sm font-medium text-gray-600 hover:text-ghanks-blue transition-colors">
+              Contato
+            </Link>
           </nav>
 
           {/* Redes sociais + CTA desktop */}
@@ -84,22 +108,58 @@ export default function Header() {
       {/* Menu mobile */}
       {menuOpen && (
         <nav className="lg:hidden border-t border-gray-100 bg-white" aria-label="Menu mobile">
-          <div className="px-4 py-4 space-y-3">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="block text-base font-medium text-gray-700 hover:text-ghanks-blue"
+          <div className="px-4 py-4 space-y-1">
+            <Link href="/" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+              Início
+            </Link>
+            <Link href="/empresa" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+              Empresa
+            </Link>
+
+            {/* Accordion Método — mobile */}
+            <div>
+              <button
+                onClick={() => setMetodoOpen(!metodoOpen)}
+                className="flex items-center justify-between w-full py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue"
+                aria-expanded={metodoOpen}
               >
-                {link.label}
-              </Link>
-            ))}
+                <Link href="/metodo" onClick={(e) => { e.stopPropagation(); setMenuOpen(false); }}>
+                  Método
+                </Link>
+                <svg
+                  className={`w-4 h-4 transition-transform ${metodoOpen ? "rotate-180" : ""}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {metodoOpen && (
+                <div className="pl-4 space-y-1 pb-1">
+                  <Link href="/planos" onClick={() => setMenuOpen(false)} className="block py-2 text-sm text-gray-500 hover:text-ghanks-blue">
+                    Planos
+                  </Link>
+                  <Link href="/faq" onClick={() => setMenuOpen(false)} className="block py-2 text-sm text-gray-500 hover:text-ghanks-blue">
+                    FAQ
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <Link href="/portfolio" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+              Portfólio
+            </Link>
+            <Link href="/contato" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+              Contato
+            </Link>
+
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito de SEO.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full text-center bg-ghanks-blue text-white px-5 py-3 rounded-full text-sm font-semibold mt-2"
+              className="block w-full text-center bg-ghanks-blue text-white px-5 py-3 rounded-full text-sm font-semibold mt-3"
             >
               Solicitar Diagnóstico Gratuito
             </a>
