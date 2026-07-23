@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -239,62 +240,63 @@ export default function FranquiasPage() {
 
       <div className={montserrat.variable} style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
         {/* ══════════════════════════════════════════════════════
-            HERO — fundo claro, tipografia Montserrat, accents G Hanks
+            HERO — banner de fundo com texto no terço esquerdo
         ══════════════════════════════════════════════════════ */}
-        <section className="relative bg-ghanks-light -mt-24 pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-          {/* Textura decorativa — linhas diagonais sutis com azul */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(135deg, #4285F4 0px, #4285F4 1px, transparent 1px, transparent 40px)",
-            }}
-            aria-hidden="true"
+        <section className="relative -mt-24 min-h-[480px] md:min-h-[560px] lg:min-h-[600px] overflow-hidden flex items-center">
+          {/* Imagem de fundo */}
+          <Image
+            src="/banner-franquias.png"
+            alt="Mapa estilizado do Brasil com pontos de localização coloridos conectados por uma rede, com um ponto em destaque marcado por um selo de exclusividade"
+            fill
+            priority
+            quality={85}
+            className="object-cover object-[70%_center] md:object-[right_center]"
+            sizes="100vw"
           />
-          {/* Gradiente de brilho sutil atrás do texto */}
-          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-ghanks-blue/5 rounded-full blur-[120px]" aria-hidden="true" />
 
-          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <Breadcrumb
-              items={[{ label: "Início", href: "/" }, { label: "Franquias" }]}
-            />
+          <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-32 pb-16 w-full">
+            <div className="max-w-2xl">
+              <Breadcrumb
+                items={[{ label: "Início", href: "/" }, { label: "Franquias" }]}
+              />
 
-            {/* Badge */}
-            <span className="inline-flex items-center gap-2 border border-ghanks-blue/30 text-ghanks-blue bg-white px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-8">
-              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              Franquia Exclusiva por Cidade — Vagas Limitadas
-            </span>
+              {/* Badge */}
+              <span className="inline-flex items-center gap-2 border border-ghanks-blue/30 text-ghanks-blue bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-6">
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                Franquia Exclusiva por Cidade — Vagas Limitadas
+              </span>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-ghanks-gray leading-[1.1] mb-6">
-              Seja o Franqueado{" "}
-              <span className="text-ghanks-blue">Exclusivo</span> da G Hanks na
-              Sua Cidade
-            </h1>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-ghanks-gray leading-[1.1] mb-6">
+                Seja o Franqueado{" "}
+                <span className="text-ghanks-blue">Exclusivo</span> da G Hanks
+                na Sua Cidade
+              </h1>
 
-            <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed mb-10">
-              Uma franquia de growth hacking e SEO orgânico liderada por quem já
-              foi contratado pelo próprio Google e soma mais de 25 anos de
-              tecnologia. Território exclusivo, método comprovado, suporte
-              completo do primeiro dia.
-            </p>
+              <p className="text-base md:text-lg text-gray-500 max-w-xl leading-relaxed mb-8">
+                Uma franquia de growth hacking e SEO orgânico liderada por quem já
+                foi contratado pelo próprio Google e soma mais de 25 anos de
+                tecnologia. Território exclusivo, método comprovado, suporte
+                completo do primeiro dia.
+              </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href={WA_FRANQUIA}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-8 py-4 rounded-full font-bold text-base hover:bg-blue-600 transition-colors shadow-lg shadow-ghanks-blue/20"
-              >
-                Quero Ser Franqueado
-              </a>
-              <a
-                href="#exclusividade"
-                className="inline-flex items-center gap-2 border border-gray-300 text-ghanks-gray px-8 py-4 rounded-full font-semibold text-base hover:border-ghanks-blue hover:text-ghanks-blue transition-colors"
-              >
-                Ver Cidades Disponíveis
-              </a>
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <a
+                  href={WA_FRANQUIA}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-8 py-4 rounded-full font-bold text-base hover:bg-blue-600 transition-colors shadow-lg shadow-ghanks-blue/20"
+                >
+                  Quero Ser Franqueado
+                </a>
+                <a
+                  href="#exclusividade"
+                  className="inline-flex items-center gap-2 border border-gray-300 bg-white/70 backdrop-blur-sm text-ghanks-gray px-8 py-4 rounded-full font-semibold text-base hover:border-ghanks-blue hover:text-ghanks-blue transition-colors"
+                >
+                  Ver Cidades Disponíveis
+                </a>
+              </div>
             </div>
           </div>
         </section>
