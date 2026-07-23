@@ -30,9 +30,9 @@ const plans = [
     highlight: false,
     tagline: "Para quem quer começar a aparecer no Google",
     keywords: 1,
-    originalPrice: "1.460,00",
+    originalPrice: null,
     price: "730,00",
-    hasDiscount: true,
+    hasDiscount: false,
     extras: [] as string[],
     features: [
       "1 palavra-chave com foco em primeira página do Google",

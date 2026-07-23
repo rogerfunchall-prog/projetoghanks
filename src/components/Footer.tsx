@@ -1,7 +1,7 @@
 /* Footer — logo, navegação multi-página, segmentos, endereços, Instagram e assinatura HAPP APPS */
 
 import Link from "next/link";
-import Logo from "./Logo";
+import Image from "next/image";
 
 const WHATSAPP_NUMBER = "5511950809873";
 
@@ -46,7 +46,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Coluna 1 — Logo e descrição */}
           <div className="lg:col-span-2">
-            <Logo />
+            <Image
+              src="/logo-footer.png"
+              alt="G Hanks"
+              width={180}
+              height={48}
+              className="h-10 w-auto"
+            />
             <p className="mt-4 text-sm text-gray-400 leading-relaxed">
               Growth hacking e SEO orgânico para colocar sua empresa na
               primeira página do Google, sem anúncios pagos.
