@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -14,12 +14,12 @@ const WA_CIDADE = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   "Olá! Gostaria de verificar se minha cidade ainda está disponível para franquia da G Hanks."
 )}`;
 
-/* Fonte serifada editorial — uso exclusivo da página de franquias */
-const playfair = Playfair_Display({
+/* Montserrat — fonte única da página de franquias */
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["400", "500", "700", "800", "900"],
   display: "swap",
-  variable: "--font-playfair",
+  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
@@ -74,31 +74,55 @@ const BENEFICIOS = [
     titulo: "Exclusividade territorial",
     desc: "Um único franqueado por cidade — nenhum concorrente da rede disputa o seu mercado.",
     icone: "shield",
+    cor: "text-ghanks-blue",
+    bg: "bg-blue-50",
+    bgHover: "group-hover:bg-blue-100",
+    border: "border-ghanks-blue/15 hover:border-ghanks-blue/40",
   },
   {
     titulo: "Treinamento completo",
     desc: "Onboarding estruturado no método H.A.N.K.S., do primeiro diagnóstico ao fechamento de contrato.",
     icone: "academic",
+    cor: "text-ghanks-green",
+    bg: "bg-green-50",
+    bgHover: "group-hover:bg-green-100",
+    border: "border-ghanks-green/15 hover:border-ghanks-green/40",
   },
   {
     titulo: "Suporte contínuo",
     desc: "Acompanhamento direto da equipe da matriz, sem deixar você sozinho na operação.",
     icone: "support",
+    cor: "text-ghanks-red",
+    bg: "bg-red-50",
+    bgHover: "group-hover:bg-red-100",
+    border: "border-ghanks-red/15 hover:border-ghanks-red/40",
   },
   {
     titulo: "Materiais de divulgação prontos",
     desc: "Identidade visual, peças para redes sociais, argumentos de venda e scripts de abordagem.",
     icone: "document",
+    cor: "text-ghanks-yellow",
+    bg: "bg-yellow-50",
+    bgHover: "group-hover:bg-yellow-100",
+    border: "border-ghanks-yellow/15 hover:border-ghanks-yellow/40",
   },
   {
     titulo: "Tecnologia e método proprietário",
     desc: "Acesso ao processo H.A.N.K.S. já testado, sem precisar reinventar a operação.",
     icone: "cog",
+    cor: "text-ghanks-blue",
+    bg: "bg-blue-50",
+    bgHover: "group-hover:bg-blue-100",
+    border: "border-ghanks-blue/15 hover:border-ghanks-blue/40",
   },
   {
     titulo: "Backoffice e relatórios",
     desc: "Ferramentas para acompanhar clientes, ranking e resultado de cada operação sob sua franquia.",
     icone: "chart",
+    cor: "text-ghanks-green",
+    bg: "bg-green-50",
+    bgHover: "group-hover:bg-green-100",
+    border: "border-ghanks-green/15 hover:border-ghanks-green/40",
   },
 ];
 
@@ -108,21 +132,25 @@ const PASSOS = [
     num: "01",
     titulo: "Aplicação",
     desc: "Você preenche o formulário de interesse e conta um pouco do seu perfil.",
+    cor: "text-ghanks-blue",
   },
   {
     num: "02",
     titulo: "Análise de território",
     desc: "Confirmamos a disponibilidade da sua cidade e alinhamos o modelo de investimento.",
+    cor: "text-ghanks-green",
   },
   {
     num: "03",
     titulo: "Treinamento",
     desc: "Onboarding completo no método H.A.N.K.S. e nas ferramentas da franquia.",
+    cor: "text-ghanks-yellow",
   },
   {
     num: "04",
     titulo: "Lançamento",
     desc: "Sua operação vai ao ar com suporte direto da matriz nos primeiros meses.",
+    cor: "text-ghanks-red",
   },
 ];
 
@@ -209,22 +237,22 @@ export default function FranquiasPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className={playfair.variable}>
+      <div className={montserrat.variable} style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
         {/* ══════════════════════════════════════════════════════
-            HERO — fundo escuro, tipografia serifada, accent dourado
+            HERO — fundo claro, tipografia Montserrat, accents G Hanks
         ══════════════════════════════════════════════════════ */}
-        <section className="relative bg-[#0f1117] -mt-24 pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-          {/* Textura decorativa — linhas diagonais sutis */}
+        <section className="relative bg-ghanks-light -mt-24 pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+          {/* Textura decorativa — linhas diagonais sutis com azul */}
           <div
-            className="absolute inset-0 opacity-[0.04]"
+            className="absolute inset-0 opacity-[0.03]"
             style={{
               backgroundImage:
-                "repeating-linear-gradient(135deg, #C9A96E 0px, #C9A96E 1px, transparent 1px, transparent 40px)",
+                "repeating-linear-gradient(135deg, #4285F4 0px, #4285F4 1px, transparent 1px, transparent 40px)",
             }}
             aria-hidden="true"
           />
           {/* Gradiente de brilho sutil atrás do texto */}
-          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-[#C9A96E]/5 rounded-full blur-[120px]" aria-hidden="true" />
+          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-ghanks-blue/5 rounded-full blur-[120px]" aria-hidden="true" />
 
           <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Breadcrumb
@@ -232,23 +260,20 @@ export default function FranquiasPage() {
             />
 
             {/* Badge */}
-            <span className="inline-flex items-center gap-2 border border-[#C9A96E]/40 text-[#C9A96E] px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-8">
+            <span className="inline-flex items-center gap-2 border border-ghanks-blue/30 text-ghanks-blue bg-white px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-8">
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               Franquia Exclusiva por Cidade — Vagas Limitadas
             </span>
 
-            <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-ghanks-gray leading-[1.1] mb-6">
               Seja o Franqueado{" "}
-              <span className="text-[#C9A96E]">Exclusivo</span> da G Hanks na
+              <span className="text-ghanks-blue">Exclusivo</span> da G Hanks na
               Sua Cidade
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-10">
+            <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed mb-10">
               Uma franquia de growth hacking e SEO orgânico liderada por quem já
               foi contratado pelo próprio Google e soma mais de 25 anos de
               tecnologia. Território exclusivo, método comprovado, suporte
@@ -260,13 +285,13 @@ export default function FranquiasPage() {
                 href={WA_FRANQUIA}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#C9A96E] text-[#0f1117] px-8 py-4 rounded-full font-bold text-base hover:bg-[#d4b97e] transition-colors"
+                className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-8 py-4 rounded-full font-bold text-base hover:bg-blue-600 transition-colors shadow-lg shadow-ghanks-blue/20"
               >
                 Quero Ser Franqueado
               </a>
               <a
                 href="#exclusividade"
-                className="inline-flex items-center gap-2 border border-gray-600 text-gray-300 px-8 py-4 rounded-full font-semibold text-base hover:border-[#C9A96E] hover:text-[#C9A96E] transition-colors"
+                className="inline-flex items-center gap-2 border border-gray-300 text-ghanks-gray px-8 py-4 rounded-full font-semibold text-base hover:border-ghanks-blue hover:text-ghanks-blue transition-colors"
               >
                 Ver Cidades Disponíveis
               </a>
@@ -277,17 +302,14 @@ export default function FranquiasPage() {
         {/* ══════════════════════════════════════════════════════
             POR QUE A G HANKS
         ══════════════════════════════════════════════════════ */}
-        <section className="bg-[#13151b] py-20 md:py-28">
+        <section className="bg-white py-20 md:py-28">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              className="text-3xl md:text-4xl font-black text-white mb-6 text-center"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl font-black text-ghanks-gray mb-6 text-center">
               Uma franquia construída sobre{" "}
-              <span className="text-[#C9A96E]">experiência real</span>, não
+              <span className="text-ghanks-green">experiência real</span>, não
               promessa
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed text-center max-w-3xl mx-auto">
+            <p className="text-gray-500 text-lg leading-relaxed text-center max-w-3xl mx-auto">
               A G Hanks nasce da trajetória de Roger Funchal — mais de 25 anos
               dedicados à tecnologia, especialista em Inteligência Artificial e
               um dos profissionais contratados pelo próprio Google para o
@@ -299,7 +321,7 @@ export default function FranquiasPage() {
             <div className="mt-8 flex justify-center">
               <Link
                 href="/empresa"
-                className="text-[#C9A96E] font-semibold text-sm hover:underline inline-flex items-center gap-1"
+                className="text-ghanks-blue font-semibold text-sm hover:underline inline-flex items-center gap-1"
               >
                 Conheça os fundadores da G Hanks
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -313,12 +335,9 @@ export default function FranquiasPage() {
         {/* ══════════════════════════════════════════════════════
             O QUE VOCÊ RECEBE COMO FRANQUEADO
         ══════════════════════════════════════════════════════ */}
-        <section className="bg-[#0f1117] py-20 md:py-28">
+        <section className="bg-ghanks-light py-20 md:py-28">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              className="text-3xl md:text-4xl font-black text-white mb-4 text-center"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl font-black text-ghanks-gray mb-4 text-center">
               O que você recebe como franqueado
             </h2>
             <p className="text-gray-500 text-center mb-12 max-w-2xl mx-auto">
@@ -330,15 +349,15 @@ export default function FranquiasPage() {
               {BENEFICIOS.map((b) => (
                 <div
                   key={b.titulo}
-                  className="bg-[#1a1c24] rounded-2xl p-6 border border-[#C9A96E]/15 hover:border-[#C9A96E]/40 transition-colors group"
+                  className={`bg-white rounded-2xl p-6 border ${b.border} transition-colors group shadow-sm`}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#C9A96E]/10 text-[#C9A96E] flex items-center justify-center mb-4 group-hover:bg-[#C9A96E]/20 transition-colors">
+                  <div className={`w-12 h-12 rounded-xl ${b.bg} ${b.cor} flex items-center justify-center mb-4 ${b.bgHover} transition-colors`}>
                     <BeneficioIcon tipo={b.icone} />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">
+                  <h3 className="text-lg font-bold text-ghanks-gray mb-2">
                     {b.titulo}
                   </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-sm text-gray-500 leading-relaxed">
                     {b.desc}
                   </p>
                 </div>
@@ -350,19 +369,16 @@ export default function FranquiasPage() {
         {/* ══════════════════════════════════════════════════════
             O MOMENTO DO MERCADO
         ══════════════════════════════════════════════════════ */}
-        <section className="bg-[#13151b] py-20 md:py-28">
+        <section className="bg-white py-20 md:py-28">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="inline-block text-[#C9A96E] text-xs font-semibold tracking-wider uppercase mb-4">
+            <span className="inline-block text-ghanks-green text-xs font-semibold tracking-wider uppercase mb-4">
               Cenário de mercado
             </span>
-            <h2
-              className="text-3xl md:text-4xl font-black text-white mb-6"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl font-black text-ghanks-gray mb-6">
               Growth hacking e SEO orgânico: a virada que as empresas
               brasileiras estão buscando
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto">
+            <p className="text-gray-500 text-lg leading-relaxed max-w-3xl mx-auto">
               Cada vez mais negócios em todo o Brasil estão cansados de depender
               de Google Ads para aparecer — e procurando alternativas de
               posicionamento orgânico sustentável. A G Hanks nasceu para atender
@@ -376,22 +392,19 @@ export default function FranquiasPage() {
         {/* ══════════════════════════════════════════════════════
             EXCLUSIVIDADE TERRITORIAL
         ══════════════════════════════════════════════════════ */}
-        <section id="exclusividade" className="bg-[#0f1117] py-20 md:py-28 scroll-mt-24">
+        <section id="exclusividade" className="bg-ghanks-light py-20 md:py-28 scroll-mt-24">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#C9A96E]/10 mb-6">
-              <svg className="w-8 h-8 text-[#C9A96E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 mb-6">
+              <svg className="w-8 h-8 text-ghanks-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
-            <h2
-              className="text-3xl md:text-4xl font-black text-white mb-6"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl font-black text-ghanks-gray mb-6">
               Sua cidade pode já ter{" "}
-              <span className="text-[#C9A96E]">dono</span>
+              <span className="text-ghanks-blue">dono</span>
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+            <p className="text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
               Trabalhamos com um franqueado por cidade, seguindo a mesma lógica
               de exclusividade do nosso método de posicionamento: uma vaga, um
               território, sem concorrência interna. Verifique agora se a sua
@@ -401,7 +414,7 @@ export default function FranquiasPage() {
               href={WA_CIDADE}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#C9A96E] text-[#0f1117] px-8 py-4 rounded-full font-bold text-base hover:bg-[#d4b97e] transition-colors"
+              className="inline-flex items-center gap-2 bg-ghanks-green text-white px-8 py-4 rounded-full font-bold text-base hover:bg-green-600 transition-colors shadow-lg shadow-ghanks-green/20"
             >
               Verificar Disponibilidade da Minha Cidade
             </a>
@@ -411,12 +424,9 @@ export default function FranquiasPage() {
         {/* ══════════════════════════════════════════════════════
             COMO FUNCIONA O PROCESSO
         ══════════════════════════════════════════════════════ */}
-        <section className="bg-[#13151b] py-20 md:py-28">
+        <section className="bg-white py-20 md:py-28">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              className="text-3xl md:text-4xl font-black text-white mb-12 text-center"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl font-black text-ghanks-gray mb-12 text-center">
               Como funciona o processo
             </h2>
 
@@ -425,16 +435,16 @@ export default function FranquiasPage() {
                 <div key={p.num} className="relative">
                   {/* Linha conectora (só entre cards) */}
                   {i < PASSOS.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-[calc(100%+0.25rem)] w-[calc(100%-2rem)] h-px bg-[#C9A96E]/20" aria-hidden="true" />
+                    <div className="hidden lg:block absolute top-8 left-[calc(100%+0.25rem)] w-[calc(100%-2rem)] h-px bg-gray-200" aria-hidden="true" />
                   )}
-                  <div className="bg-[#1a1c24] rounded-2xl p-6 border border-[#C9A96E]/10 h-full">
-                    <span className="text-3xl font-black text-[#C9A96E]/30 block mb-3">
+                  <div className="bg-ghanks-light rounded-2xl p-6 border border-gray-100 h-full shadow-sm">
+                    <span className={`text-3xl font-black ${p.cor} opacity-30 block mb-3`}>
                       {p.num}
                     </span>
-                    <h3 className="text-lg font-bold text-white mb-2">
+                    <h3 className="text-lg font-bold text-ghanks-gray mb-2">
                       {p.titulo}
                     </h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">
+                    <p className="text-sm text-gray-500 leading-relaxed">
                       {p.desc}
                     </p>
                   </div>
@@ -447,12 +457,9 @@ export default function FranquiasPage() {
         {/* ══════════════════════════════════════════════════════
             FAQ DA FRANQUIA
         ══════════════════════════════════════════════════════ */}
-        <section className="bg-[#0f1117] py-20 md:py-28">
+        <section className="bg-ghanks-light py-20 md:py-28">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              className="text-3xl md:text-4xl font-black text-white mb-12 text-center"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl font-black text-ghanks-gray mb-12 text-center">
               Perguntas frequentes
             </h2>
 
@@ -460,12 +467,12 @@ export default function FranquiasPage() {
               {FAQ.map((item) => (
                 <details
                   key={item.q}
-                  className="group bg-[#1a1c24] rounded-xl border border-[#C9A96E]/10 overflow-hidden"
+                  className="group bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm"
                 >
-                  <summary className="flex items-center justify-between cursor-pointer p-5 text-white font-semibold text-sm md:text-base list-none [&::-webkit-details-marker]:hidden">
+                  <summary className="flex items-center justify-between cursor-pointer p-5 text-ghanks-gray font-semibold text-sm md:text-base list-none [&::-webkit-details-marker]:hidden">
                     {item.q}
                     <svg
-                      className="w-5 h-5 text-[#C9A96E] shrink-0 ml-4 transition-transform group-open:rotate-45"
+                      className="w-5 h-5 text-ghanks-blue shrink-0 ml-4 transition-transform group-open:rotate-45"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -474,7 +481,7 @@ export default function FranquiasPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                     </svg>
                   </summary>
-                  <div className="px-5 pb-5 text-sm text-gray-400 leading-relaxed">
+                  <div className="px-5 pb-5 text-sm text-gray-500 leading-relaxed">
                     {item.a}
                   </div>
                 </details>
@@ -486,26 +493,23 @@ export default function FranquiasPage() {
         {/* ══════════════════════════════════════════════════════
             CTA FINAL
         ══════════════════════════════════════════════════════ */}
-        <section className="bg-gradient-to-b from-[#13151b] to-[#0f1117] py-20 md:py-28">
+        <section className="bg-gradient-to-br from-ghanks-blue to-blue-600 py-20 md:py-28">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {/* Selo decorativo */}
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-[#C9A96E]/30 mb-8">
-              <svg className="w-10 h-10 text-[#C9A96E]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-white/30 mb-8">
+              <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
             </div>
 
-            <h2
-              className="text-3xl md:text-5xl font-black text-white leading-tight mb-6"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
+            <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-6">
               Vagas de território limitadas —{" "}
-              <span className="text-[#C9A96E]">
+              <span className="text-blue-100">
                 e diminuindo a cada cidade fechada
               </span>
             </h2>
 
-            <p className="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+            <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
               Você pode entrar para o time que ajuda empresas a saírem do
               anonimato no Google todos os dias — com uma marca séria por trás,
               método comprovado e a cidade só sua. Fale agora com nossa equipe de
@@ -516,7 +520,7 @@ export default function FranquiasPage() {
               href={WA_FRANQUIA}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-[#C9A96E] text-[#0f1117] px-10 py-5 rounded-full font-bold text-lg hover:bg-[#d4b97e] transition-colors shadow-lg shadow-[#C9A96E]/20"
+              className="inline-flex items-center gap-3 bg-white text-ghanks-blue px-10 py-5 rounded-full font-bold text-lg hover:bg-blue-50 transition-colors shadow-lg"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
