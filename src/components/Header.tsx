@@ -62,6 +62,12 @@ export default function Header() {
             <Link href="/contato" className="text-sm font-medium text-gray-600 hover:text-ghanks-blue transition-colors">
               Contato
             </Link>
+            <Link
+              href="/franquias"
+              className="text-sm font-bold text-[#C9A96E] border border-[#C9A96E] px-4 py-2 rounded-full hover:bg-[#C9A96E] hover:text-white transition-colors"
+            >
+              Seja Franqueado
+            </Link>
           </nav>
 
           {/* Redes sociais + CTA desktop */}
@@ -153,6 +159,13 @@ export default function Header() {
             </Link>
             <Link href="/contato" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
               Contato
+            </Link>
+            <Link
+              href="/franquias"
+              onClick={() => setMenuOpen(false)}
+              className="block py-2 text-base font-bold text-[#C9A96E]"
+            >
+              Seja Franqueado
             </Link>
 
             <a
