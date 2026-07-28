@@ -1,34 +1,34 @@
-/* Seção Depoimentos — prova social com 3 clientes fictícios */
+/* Seção Depoimentos — prova social com depoimentos reais aprovados pelos clientes */
 
 const DEPOIMENTOS = [
   {
-    nome: "Camila Rodrigues",
-    cargo: "Proprietária",
-    negocio: "Boutique Elegance",
-    cidade: "Ribeirão Preto, SP",
+    nome: "Vittoria Vitt",
+    cargo: "",
+    negocio: "Vittoria Vitt Store",
+    cidade: "",
     texto:
-      "Em menos de 3 meses, minha loja de roupas apareceu na primeira página do Google para 'loja de roupas femininas Ribeirão Preto'. As vendas orgânicas cresceram mais de 40%. Sem gastar nada com Ads.",
-    iniciais: "CR",
+      "Quando decidi ter minha própria loja virtual, eu queria algo que realmente conversasse com minhas clientes, não só uma vitrine bonita. A tecnologia que a G Hanks usou no meu site fez toda diferença nisso — a navegação é rápida, intuitiva, e minhas clientes sempre comentam como é fácil encontrar o que procuram. Isso gerou uma conexão muito mais próxima e rápida com elas, e o resultado apareceu direto nas vendas. Recomendo de olhos fechados! E agora estamos fazendo um novo projeto com eles também.",
+    iniciais: "VV",
     cor: "bg-ghanks-blue",
   },
   {
-    nome: "Dr. Fernando Lima",
-    cargo: "Diretor Clínico",
-    negocio: "Clínica Odonto Vida",
-    cidade: "Joinville, SC",
+    nome: "Luiz Felipe",
+    cargo: "CEO",
+    negocio: "Reluz Galvânica",
+    cidade: "Limeira, SP",
     texto:
-      "A G Hanks transformou a presença digital da nossa clínica. Hoje recebemos pacientes que nos encontram diretamente no Google, sem depender de anúncios pagos. O retorno sobre o investimento é incomparável.",
-    iniciais: "FL",
+      "Já trabalhamos com a G Hanks há mais de dois anos, e o resultado fala por si só: sempre nos posicionando nas primeiras posições da primeira página do Google, em todo o Brasil. É um trabalho sério, consistente, e que entrega o que promete. Indico fortemente o trabalho deles para qualquer empresa que queira crescer de verdade no digital.",
+    iniciais: "LF",
     cor: "bg-ghanks-green",
   },
   {
-    nome: "Ricardo Souza",
-    cargo: "Fundador",
-    negocio: "RS Reformas e Construções",
-    cidade: "Uberlândia, MG",
+    nome: "Charles Noronha",
+    cargo: "Diretor Comercial",
+    negocio: "Top Sacolas",
+    cidade: "Taubaté, SP",
     texto:
-      "Eu não entendia nada de marketing digital. A equipe da G Hanks cuidou de tudo e hoje minha empresa aparece no topo do Google na minha cidade. O melhor é a exclusividade — meu concorrente não consegue o mesmo.",
-    iniciais: "RS",
+      "Depois que desenvolvemos o site com a G Hanks, os meus produtos passaram a aparecer em todo o Brasil, e até fora dele — já alcançamos clientes na América do Sul. Foi um divisor de águas para o alcance da Top Sacolas. Trabalho que recomendo sem hesitar.",
+    iniciais: "CN",
     cor: "bg-ghanks-red",
   },
 ];
@@ -51,7 +51,7 @@ export default function Depoimentos() {
           {DEPOIMENTOS.map((dep) => (
             <div
               key={dep.nome}
-              className="bg-ghanks-light rounded-2xl p-6 border border-gray-100"
+              className="bg-ghanks-light rounded-2xl p-6 border border-gray-100 flex flex-col"
             >
               {/* Estrelas */}
               <div className="flex gap-1 mb-4" aria-label="5 estrelas">
@@ -63,7 +63,7 @@ export default function Depoimentos() {
               </div>
 
               {/* Texto */}
-              <p className="text-gray-600 leading-relaxed mb-6 text-sm">
+              <p className="text-gray-600 leading-relaxed mb-6 text-sm flex-1">
                 &ldquo;{dep.texto}&rdquo;
               </p>
 
@@ -79,7 +79,9 @@ export default function Depoimentos() {
                     {dep.nome}
                   </p>
                   <p className="text-xs text-gray-400">
-                    {dep.cargo}, {dep.negocio} — {dep.cidade}
+                    {[[dep.cargo, dep.negocio].filter(Boolean).join(", "), dep.cidade]
+                      .filter(Boolean)
+                      .join(" — ")}
                   </p>
                 </div>
               </div>
