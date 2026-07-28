@@ -8,8 +8,8 @@ export default function Logo({ className = "" }: { className?: string }) {
       <Image
         src="/logo-ghanks.png"
         alt="G Hanks"
-        width={240}
-        height={96}
+        width={349}
+        height={100}
         className="h-12 md:h-14 w-auto"
         priority
       />

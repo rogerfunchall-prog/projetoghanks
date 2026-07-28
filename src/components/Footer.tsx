@@ -49,8 +49,8 @@ export default function Footer() {
             <Image
               src="/logo-footer.png"
               alt="G Hanks"
-              width={180}
-              height={48}
+              width={349}
+              height={100}
               className="h-10 w-auto"
             />
             <p className="mt-4 text-sm text-gray-400 leading-relaxed">
