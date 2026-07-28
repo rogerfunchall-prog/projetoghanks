@@ -1,5 +1,7 @@
 /* Seção Depoimentos — prova social com depoimentos reais aprovados pelos clientes */
 
+import Image from "next/image";
+
 const DEPOIMENTOS = [
   {
     nome: "Vittoria Vitt",
@@ -8,8 +10,7 @@ const DEPOIMENTOS = [
     cidade: "",
     texto:
       "Quando decidi ter minha própria loja virtual, eu queria algo que realmente conversasse com minhas clientes, não só uma vitrine bonita. A tecnologia que a G Hanks usou no meu site fez toda diferença nisso — a navegação é rápida, intuitiva, e minhas clientes sempre comentam como é fácil encontrar o que procuram. Isso gerou uma conexão muito mais próxima e rápida com elas, e o resultado apareceu direto nas vendas. Recomendo de olhos fechados! E agora estamos fazendo um novo projeto com eles também.",
-    iniciais: "VV",
-    cor: "bg-ghanks-blue",
+    logo: "/clientes/vittoria-vitt.png",
   },
   {
     nome: "Luiz Felipe",
@@ -18,8 +19,7 @@ const DEPOIMENTOS = [
     cidade: "Limeira, SP",
     texto:
       "Já trabalhamos com a G Hanks há mais de dois anos, e o resultado fala por si só: sempre nos posicionando nas primeiras posições da primeira página do Google, em todo o Brasil. É um trabalho sério, consistente, e que entrega o que promete. Indico fortemente o trabalho deles para qualquer empresa que queira crescer de verdade no digital.",
-    iniciais: "LF",
-    cor: "bg-ghanks-green",
+    logo: "/clientes/reluz.png",
   },
   {
     nome: "Charles Noronha",
@@ -28,8 +28,7 @@ const DEPOIMENTOS = [
     cidade: "Taubaté, SP",
     texto:
       "Depois que desenvolvemos o site com a G Hanks, os meus produtos passaram a aparecer em todo o Brasil, e até fora dele — já alcançamos clientes na América do Sul. Foi um divisor de águas para o alcance da Top Sacolas. Trabalho que recomendo sem hesitar.",
-    iniciais: "CN",
-    cor: "bg-ghanks-red",
+    logo: "/clientes/top-sacolas.png",
   },
 ];
 
@@ -69,11 +68,13 @@ export default function Depoimentos() {
 
               {/* Autor */}
               <div className="flex items-center gap-3">
-                <div
-                  className={`w-10 h-10 rounded-full ${dep.cor} text-white flex items-center justify-center text-sm font-bold`}
-                >
-                  {dep.iniciais}
-                </div>
+                <Image
+                  src={dep.logo}
+                  alt={`Logo ${dep.negocio}`}
+                  width={160}
+                  height={160}
+                  className="w-14 h-14 rounded-xl object-contain bg-white border border-gray-200 shrink-0"
+                />
                 <div>
                   <p className="text-sm font-semibold text-ghanks-gray">
                     {dep.nome}
