@@ -21,6 +21,16 @@ export const metadata: Metadata = {
   },
 };
 
+/* Valor da manutenção mensal por palavra-chave posicionada (BRL) */
+const MANUTENCAO_POR_PALAVRA_CHAVE = 270;
+
+/* Formata um valor numérico no padrão brasileiro: 1350 -> "1.350,00" */
+const formatBRL = (valor: number) =>
+  valor.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+/* Mensalidade de manutenção de um plano = valor unitário x qtd. de palavras-chave */
+const manutencaoMensal = (keywords: number) => keywords * MANUTENCAO_POR_PALAVRA_CHAVE;
+
 /* Dados dos 3 planos */
 const plans = [
   {
@@ -190,11 +200,25 @@ export default function PlanosPage() {
                     ,{plan.price.split(",")[1]}
                   </span>
                 </div>
+                <p className="text-xs text-gray-400 mt-1">setup único</p>
+
                 {plan.hasDiscount && (
                   <span className="inline-block mt-2 bg-ghanks-red/10 text-ghanks-red text-xs font-bold px-2.5 py-1 rounded-full">
                     50% OFF
                   </span>
                 )}
+
+                {/* Mensalidade de manutenção */}
+                <div className="mt-3 pt-3 border-t border-gray-100">
+                  <p className="text-base font-bold text-ghanks-gray">
+                    + R$ {formatBRL(manutencaoMensal(plan.keywords))}
+                    <span className="text-sm font-semibold text-gray-500">/mês</span>
+                  </p>
+                  <p className="text-xs text-gray-400 mt-0.5">
+                    manutenção — {plan.keywords} palavra{plan.keywords > 1 ? "s" : ""}-chave
+                    {" "}(R$ {formatBRL(MANUTENCAO_POR_PALAVRA_CHAVE)} cada)
+                  </p>
+                </div>
               </div>
 
               {/* Lista de recursos */}
@@ -279,7 +303,7 @@ export default function PlanosPage() {
               </thead>
               <tbody className="text-sm text-gray-600">
                 {[
-                  ["Custo recorrente", "Mensalidade fixa acessível", "Paga por cada clique (CPC)"],
+                  ["Custo recorrente", `A partir de R$ ${formatBRL(MANUTENCAO_POR_PALAVRA_CHAVE)}/mês por palavra-chave`, "Paga por cada clique (CPC)"],
                   ["Permanência do resultado", "Tende a se manter com manutenção", "Desaparece ao pausar o investimento"],
                   ["Dependência de investimento contínuo", "Baixa — resultado acumula", "Total — sem verba, sem resultado"],
                   ["Propriedade do resultado", "O posicionamento é do seu site", "O espaço é alugado do Google"],
@@ -322,6 +346,24 @@ export default function PlanosPage() {
               O Google atualiza seu algoritmo constantemente, e novos concorrentes podem surgir. Por isso,
               a manutenção mensal é importante: trabalhamos continuamente para consolidar e melhorar a posição
               conquistada. O objetivo é que o resultado seja sustentável no longo prazo.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 border border-gray-100">
+            <h3 className="text-lg font-semibold text-ghanks-gray mb-2">Quanto custa a manutenção mensal?</h3>
+            <p className="text-gray-600 leading-relaxed">
+              A manutenção mensal é de R$ {formatBRL(MANUTENCAO_POR_PALAVRA_CHAVE)} por palavra-chave
+              posicionada. Isso equivale a:{" "}
+              {plans
+                .map(
+                  (p) =>
+                    `plano ${p.name} (${p.keywords} palavra${
+                      p.keywords > 1 ? "s" : ""
+                    }-chave), R$ ${formatBRL(manutencaoMensal(p.keywords))}/mês`
+                )
+                .join("; ")}
+              . Esse valor cobre o trabalho contínuo de consolidação de posição, ajustes de
+              algoritmo e defesa contra concorrentes.
             </p>
           </div>
 
