@@ -130,7 +130,7 @@ export default function EmpresaPage() {
           <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-1.5 mb-4">
             <span className="text-sm font-medium text-ghanks-gray">Quem Somos</span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6 max-w-2xl">
+          <h1 className="page-title text-ghanks-gray mb-6 max-w-xl">
             A G Hanks nasceu para tirar empresas do <span className="text-ghanks-blue">anonimato no Google</span>
           </h1>
         </div>

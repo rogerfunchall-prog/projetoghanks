@@ -100,7 +100,7 @@ export default function PortfolioPage() {
         <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Portfólio" }]} />
 
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6">
+          <h1 className="page-title text-ghanks-gray mb-6">
             Marcas que já estão na{" "}
             <span className="text-ghanks-blue">primeira página do Google</span>
           </h1>
@@ -188,7 +188,7 @@ export default function PortfolioPage() {
 
         {/* CTA */}
         <div className="mt-8 bg-gradient-to-br from-ghanks-blue to-blue-600 rounded-2xl p-8 md:p-12 text-center text-white">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          <h2 className="block-title mb-4">
             Quero um resultado como esses
           </h2>
           <p className="text-blue-100 mb-6 max-w-xl mx-auto">

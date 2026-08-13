@@ -64,7 +64,7 @@ export default function GuiaSeoOrganico() {
           <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Guia de SEO Orgânico" }]} />
 
           {/* H1 com keyword principal */}
-          <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6">
+          <h1 className="page-title text-ghanks-gray mb-6">
             Guia Completo de SEO Orgânico: como colocar sua empresa na primeira página do Google
           </h1>
 
@@ -332,7 +332,7 @@ export default function GuiaSeoOrganico() {
 
           {/* CTA final do guia */}
           <div className="bg-gradient-to-br from-ghanks-blue to-blue-600 rounded-2xl p-8 md:p-12 text-center text-white">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            <h2 className="block-title mb-4">
               Quer saber se a sua cidade e palavra-chave estão disponíveis?
             </h2>
             <p className="text-blue-100 mb-6 max-w-xl mx-auto">

@@ -98,7 +98,7 @@ export default function MetodoPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 md:pt-44 md:pb-20 flex flex-col items-start">
           <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Método H.A.N.K.S." }]} />
 
-          <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6 max-w-2xl">
+          <h1 className="page-title text-ghanks-gray mb-6 max-w-xl">
             Método <span className="text-ghanks-blue">H.A.N.K.S.</span> — growth hacking aplicado ao SEO orgânico
           </h1>
 
@@ -127,7 +127,7 @@ export default function MetodoPage() {
                 {pilar.letra}
               </div>
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-ghanks-gray">
+                <h2 className="block-title text-ghanks-gray">
                   {pilar.titulo}
                 </h2>
                 <p className="text-gray-400 text-sm mt-1">{pilar.resumo}</p>
@@ -162,7 +162,7 @@ export default function MetodoPage() {
 
         {/* CTA */}
         <div className="bg-gradient-to-br from-ghanks-blue to-blue-600 rounded-2xl p-8 md:p-12 text-center text-white">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          <h2 className="block-title mb-4">
             Quer aplicar o Método H.A.N.K.S. no seu negócio?
           </h2>
           <p className="text-blue-100 mb-6 max-w-xl mx-auto">

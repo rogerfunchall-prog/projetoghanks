@@ -268,7 +268,7 @@ export default function FranquiasPage() {
                 Franquia Exclusiva por Cidade — Vagas Limitadas
               </span>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-ghanks-gray leading-[1.1] mb-6">
+              <h1 className="page-title text-ghanks-gray mb-6">
                 Seja o Franqueado{" "}
                 <span className="text-ghanks-blue">Exclusivo</span> da G Hanks
                 na Sua Cidade

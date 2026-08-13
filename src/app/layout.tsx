@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Funnel_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-/* Fonte Inter — geométrica, clean, carregada via next/font para performance */
+/* Fonte Inter — corpo de texto, carregada via next/font para performance */
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+});
+
+/* Funnel Display — títulos, números e headlines; geométrica de peso alto */
+const funnelDisplay = Funnel_Display({
+  variable: "--font-display",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700", "800"],
 });
 
 /* URL base do site — usa variável de ambiente para flexibilidade */
@@ -111,7 +119,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} h-full antialiased`}>
+    <html lang="pt-BR" className={`${inter.variable} ${funnelDisplay.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
         {children}
         <Script

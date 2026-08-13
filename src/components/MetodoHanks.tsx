@@ -45,7 +45,7 @@ export default function MetodoHanks() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título da seção */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-ghanks-gray">
+          <h2 className="section-title text-ghanks-gray">
             O Método <span className="text-ghanks-blue">H.A.N.K.S.</span>
           </h2>
           <p className="mt-4 text-gray-500 text-lg">

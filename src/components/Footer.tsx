@@ -41,8 +41,13 @@ const ESCRITORIOS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-ghanks-gray text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="relative bg-ghanks-ink text-white overflow-hidden">
+      {/* Brilho sutil no topo, alinhado ao restante das faixas escuras */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[46rem] h-[26rem] rounded-full bg-ghanks-blue/10 blur-[130px]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Coluna 1 — Logo e descrição */}
           <div className="lg:col-span-2">
@@ -86,7 +91,7 @@ export default function Footer() {
 
           {/* Coluna 2 — Navegação */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
+            <h3 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-white mb-5">
               Navegação
             </h3>
             <ul className="space-y-2">
@@ -94,7 +99,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-400 hover:text-white transition-colors"
+                    className="inline-block text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-200"
                   >
                     {link.label}
                   </Link>
@@ -105,7 +110,7 @@ export default function Footer() {
 
           {/* Coluna 3 — Segmentos */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
+            <h3 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-white mb-5">
               Segmentos
             </h3>
             <ul className="space-y-2">
@@ -119,7 +124,7 @@ export default function Footer() {
 
           {/* Coluna 4 — Escritórios */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
+            <h3 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-white mb-5">
               Escritórios
             </h3>
             {ESCRITORIOS.map((esc) => (
@@ -133,7 +138,7 @@ export default function Footer() {
         </div>
 
         {/* Divider e assinatura */}
-        <div className="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-500">
             &copy; {new Date().getFullYear()} G Hanks. Todos os direitos reservados.
           </p>

@@ -10,6 +10,9 @@
   --ghanks-red: #EA4335;
   --ghanks-gray: #3C4043;
   --ghanks-light: #F8F9FA;
+  /* Tons escuros usados no hero e nos blocos de destaque */
+  --ghanks-ink: #111214;
+  --ghanks-ink-soft: #1B1D21;
 }
 
 @theme inline {
@@ -21,7 +24,10 @@
   --color-ghanks-red: var(--ghanks-red);
   --color-ghanks-gray: var(--ghanks-gray);
   --color-ghanks-light: var(--ghanks-light);
+  --color-ghanks-ink: var(--ghanks-ink);
+  --color-ghanks-ink-soft: var(--ghanks-ink-soft);
   --font-sans: var(--font-inter);
+  --font-display: var(--font-display);
 }
 
 body {
@@ -35,7 +41,75 @@ html {
   scroll-behavior: smooth;
 }
 
-/* === Animação fade-in para seções === */
+/* ==========================================================================
+   Escala tipográfica fluida — títulos display
+   ========================================================================== */
+
+.font-display {
+  font-family: var(--font-display), var(--font-inter), sans-serif;
+}
+
+/* Headline gigante do hero (estilo editorial, caixa alta) */
+.display-title {
+  font-family: var(--font-display), var(--font-inter), sans-serif;
+  font-size: clamp(2.5rem, 1.2rem + 5.8vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* Título de página interna — menor que o hero da home, mesma família */
+.page-title {
+  font-family: var(--font-display), var(--font-inter), sans-serif;
+  font-size: clamp(1.875rem, 1.25rem + 2.6vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+/* Título de seção */
+.section-title {
+  font-family: var(--font-display), var(--font-inter), sans-serif;
+  font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* Título de bloco interno */
+.block-title {
+  font-family: var(--font-display), var(--font-inter), sans-serif;
+  font-size: clamp(1.375rem, 1rem + 1.2vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  font-weight: 700;
+}
+
+/* Texto de apoio da headline */
+.lead {
+  font-size: clamp(1rem, 0.94rem + 0.3vw, 1.25rem);
+  line-height: 1.7;
+}
+
+/* Gradiente das 4 cores da marca aplicado ao texto */
+.text-gradient-brand {
+  background-image: linear-gradient(
+    92deg,
+    var(--ghanks-blue) 0%,
+    var(--ghanks-green) 38%,
+    var(--ghanks-yellow) 68%,
+    var(--ghanks-red) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ==========================================================================
+   Animações
+   ========================================================================== */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -49,4 +123,87 @@ html {
 
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Reveal ao entrar na viewport — controlado pelo componente <Reveal>.
+   O estado inicial escondido só é aplicado quando há JS disponível para
+   revelar o conteúdo depois; sem JS, tudo aparece normalmente. */
+@media (scripting: enabled) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Flutuação suave do card do hero */
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.animate-float-soft {
+  animation: floatSoft 6s ease-in-out infinite;
+}
+
+/* Marquee horizontal das palavras-chave */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee 46s linear infinite reverse;
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+/* Pausa animações contínuas para quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-soft,
+  .animate-marquee,
+  .animate-marquee-reverse {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

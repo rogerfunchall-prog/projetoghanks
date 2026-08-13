@@ -1,12 +1,22 @@
-/* Logo G Hanks — usa a imagem oficial da logo com largura dobrada */
+/* Logo G Hanks — usa a imagem oficial da logo.
+   variant "light" carrega a versão de wordmark branco, para fundos escuros. */
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Logo({ className = "" }: { className?: string }) {
+interface LogoProps {
+  className?: string;
+  variant?: "dark" | "light";
+}
+
+export default function Logo({ className = "", variant = "dark" }: LogoProps) {
   return (
-    <Link href="/" className={`flex items-center ${className}`} aria-label="G Hanks — Página inicial">
+    <Link
+      href="/"
+      className={`flex items-center ${className}`}
+      aria-label="G Hanks — Página inicial"
+    >
       <Image
-        src="/logo-ghanks.png"
+        src={variant === "light" ? "/logo-footer.png" : "/logo-ghanks.png"}
         alt="G Hanks"
         width={349}
         height={100}

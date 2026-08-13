@@ -119,7 +119,7 @@ export default function FAQPage() {
         <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "FAQ" }]} />
 
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6">
+          <h1 className="page-title text-ghanks-gray mb-6">
             Perguntas frequentes sobre{" "}
             <span className="text-ghanks-yellow">SEO orgânico</span>
           </h1>

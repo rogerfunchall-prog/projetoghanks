@@ -139,7 +139,7 @@ export default function PlanosPage() {
         <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Planos" }]} />
 
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6">
+          <h1 className="page-title text-ghanks-gray mb-6">
             Planos de <span className="text-ghanks-blue">SEO orgânico</span> e exclusividade por cidade
           </h1>
           <p className="text-lg text-gray-500 leading-relaxed max-w-3xl mx-auto">
@@ -399,7 +399,7 @@ export default function PlanosPage() {
 
         {/* CTA */}
         <div className="bg-gradient-to-br from-ghanks-blue to-blue-600 rounded-2xl p-8 md:p-12 text-center text-white">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          <h2 className="block-title mb-4">
             Pronto para investir em resultado orgânico?
           </h2>
           <p className="text-blue-100 mb-6 max-w-xl mx-auto">

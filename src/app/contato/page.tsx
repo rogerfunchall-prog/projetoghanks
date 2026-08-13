@@ -41,7 +41,7 @@ export default function ContatoPage() {
         <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Contato" }]} />
 
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-5xl font-bold text-ghanks-gray leading-tight mb-6">
+          <h1 className="page-title text-ghanks-gray mb-6">
             Fale com a <span className="text-ghanks-blue">G Hanks</span>
           </h1>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
