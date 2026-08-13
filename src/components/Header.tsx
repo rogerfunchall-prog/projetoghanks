@@ -13,11 +13,11 @@ const DARK_HERO_ROUTES = ["/", "/empresa"];
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [solucoesOpen, setSolucoesOpen] = useState(false);
   const [metodoOpen, setMetodoOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const overDarkHero = DARK_HERO_ROUTES.includes(pathname);
-  /* Transparente apenas no topo de uma página de hero escuro e com o menu fechado */
   const transparent = overDarkHero && !scrolled && !menuOpen;
 
   useEffect(() => {
@@ -45,50 +45,74 @@ export default function Header() {
             scrolled ? "h-16 md:h-20" : "h-18 md:h-24"
           }`}
         >
-          {/* Logo — versão branca enquanto o header está sobre o hero escuro */}
+          {/* Logo */}
           <Logo variant={transparent ? "light" : "dark"} />
 
           {/* Navegação desktop */}
-          <nav className="hidden lg:flex items-center gap-6" aria-label="Menu principal">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-6" aria-label="Menu principal">
             <Link href="/" className={`text-sm font-medium transition-colors ${linkClass}`}>
               Início
             </Link>
-            <Link href="/empresa" className={`text-sm font-medium transition-colors ${linkClass}`}>
-              Empresa
-            </Link>
 
-            {/* Dropdown Método */}
+            {/* Dropdown Soluções */}
             <div className="relative group">
               <Link
-                href="/metodo"
+                href="/servicos"
                 className={`inline-flex items-center gap-1 text-sm font-medium transition-colors ${linkClass}`}
               >
-                Método
+                Soluções
                 <svg className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </Link>
-              {/* Submenu desktop — aparece no hover */}
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="bg-white rounded-2xl shadow-xl border border-gray-100 py-2 min-w-[170px]">
+                <div className="bg-white rounded-2xl shadow-xl border border-gray-100 py-3 min-w-[220px]">
                   <Link
-                    href="/planos"
+                    href="/servicos"
+                    className="block px-4 py-2 text-xs font-semibold uppercase tracking-wider text-ghanks-blue hover:bg-ghanks-light transition-colors"
+                  >
+                    Visão Geral (Hub)
+                  </Link>
+                  <div className="my-1 border-t border-gray-100" />
+                  <Link
+                    href="/seo-organico"
                     className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
                   >
-                    Planos
+                    1. SEO Orgânico
                   </Link>
                   <Link
-                    href="/faq"
+                    href="/trafego-pago"
                     className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
                   >
-                    FAQ
+                    2. Tráfego Pago
+                  </Link>
+                  <Link
+                    href="/gestao-redes-sociais"
+                    className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
+                  >
+                    3. Gestão de Redes Sociais
+                  </Link>
+                  <Link
+                    href="/treinamentos-presenciais"
+                    className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
+                  >
+                    4. Treinamentos Presenciais
                   </Link>
                 </div>
               </div>
             </div>
 
+            <Link href="/metodo" className={`text-sm font-medium transition-colors ${linkClass}`}>
+              Método H.A.N.K.S.
+            </Link>
             <Link href="/portfolio" className={`text-sm font-medium transition-colors ${linkClass}`}>
               Portfólio
+            </Link>
+            <Link href="/empresa" className={`text-sm font-medium transition-colors ${linkClass}`}>
+              Empresa
+            </Link>
+            <Link href="/treinamentos-presenciais" className={`text-sm font-medium transition-colors ${linkClass}`}>
+              Treinamentos
             </Link>
             <Link href="/contato" className={`text-sm font-medium transition-colors ${linkClass}`}>
               Contato
@@ -105,21 +129,8 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Redes sociais + CTA desktop */}
+          {/* CTA desktop */}
           <div className="hidden lg:flex items-center gap-4">
-            <a
-              href="https://www.instagram.com/ghanks.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram @ghanks.br"
-              className={`transition-colors ${
-                transparent ? "text-white/70 hover:text-white" : "text-gray-400 hover:text-ghanks-red"
-              }`}
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-              </svg>
-            </a>
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito de SEO.`}
               target="_blank"
@@ -156,27 +167,24 @@ export default function Header() {
 
       {/* Menu mobile */}
       {menuOpen && (
-        <nav className="lg:hidden border-t border-gray-100 bg-white" aria-label="Menu mobile">
+        <nav className="lg:hidden border-t border-gray-100 bg-white max-h-[85vh] overflow-y-auto" aria-label="Menu mobile">
           <div className="px-4 py-4 space-y-1">
             <Link href="/" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
               Início
             </Link>
-            <Link href="/empresa" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
-              Empresa
-            </Link>
 
-            {/* Accordion Método — mobile */}
+            {/* Soluções accordion mobile */}
             <div>
               <button
-                onClick={() => setMetodoOpen(!metodoOpen)}
+                onClick={() => setSolucoesOpen(!solucoesOpen)}
                 className="flex items-center justify-between w-full py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue"
-                aria-expanded={metodoOpen}
+                aria-expanded={solucoesOpen}
               >
-                <Link href="/metodo" onClick={(e) => { e.stopPropagation(); setMenuOpen(false); }}>
-                  Método
+                <Link href="/servicos" onClick={(e) => { e.stopPropagation(); setMenuOpen(false); }}>
+                  Soluções
                 </Link>
                 <svg
-                  className={`w-4 h-4 transition-transform ${metodoOpen ? "rotate-180" : ""}`}
+                  className={`w-4 h-4 transition-transform ${solucoesOpen ? "rotate-180" : ""}`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -185,20 +193,38 @@ export default function Header() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {metodoOpen && (
-                <div className="pl-4 space-y-1 pb-1">
-                  <Link href="/planos" onClick={() => setMenuOpen(false)} className="block py-2 text-sm text-gray-500 hover:text-ghanks-blue">
-                    Planos
+              {solucoesOpen && (
+                <div className="pl-4 space-y-1 pb-2 border-l-2 border-ghanks-blue ml-2 my-1">
+                  <Link href="/servicos" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm font-semibold text-ghanks-blue">
+                    Visão Geral (Hub)
                   </Link>
-                  <Link href="/faq" onClick={() => setMenuOpen(false)} className="block py-2 text-sm text-gray-500 hover:text-ghanks-blue">
-                    FAQ
+                  <Link href="/seo-organico" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-gray-600 hover:text-ghanks-blue">
+                    1. SEO Orgânico
+                  </Link>
+                  <Link href="/trafego-pago" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-gray-600 hover:text-ghanks-blue">
+                    2. Tráfego Pago
+                  </Link>
+                  <Link href="/gestao-redes-sociais" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-gray-600 hover:text-ghanks-blue">
+                    3. Gestão de Redes Sociais
+                  </Link>
+                  <Link href="/treinamentos-presenciais" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-gray-600 hover:text-ghanks-blue">
+                    4. Treinamentos Presenciais
                   </Link>
                 </div>
               )}
             </div>
 
+            <Link href="/metodo" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+              Método H.A.N.K.S.
+            </Link>
             <Link href="/portfolio" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
               Portfólio
+            </Link>
+            <Link href="/empresa" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+              Empresa
+            </Link>
+            <Link href="/treinamentos-presenciais" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+              Treinamentos
             </Link>
             <Link href="/contato" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
               Contato

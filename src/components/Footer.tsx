@@ -5,7 +5,6 @@ import Image from "next/image";
 
 const WHATSAPP_NUMBER = "5511950809873";
 
-/* Segmentos atendidos para SEO de cauda longa */
 const SEGMENTOS = [
   "SEO para Lojas",
   "SEO para Clínicas",
@@ -17,13 +16,18 @@ const SEGMENTOS = [
 
 const NAV_FOOTER = [
   { label: "Início", href: "/" },
+  { label: "Soluções (Hub)", href: "/servicos" },
+  { label: "SEO Orgânico", href: "/seo-organico" },
+  { label: "Tráfego Pago", href: "/trafego-pago" },
+  { label: "Gestão de Redes Sociais", href: "/gestao-redes-sociais" },
+  { label: "Treinamentos Presenciais", href: "/treinamentos-presenciais" },
   { label: "Método H.A.N.K.S.", href: "/metodo" },
   { label: "Planos", href: "/planos" },
   { label: "Portfólio", href: "/portfolio" },
   { label: "Empresa", href: "/empresa" },
   { label: "FAQ", href: "/faq" },
+  { label: "Seja Franqueado", href: "/franquias" },
   { label: "Contato", href: "/contato" },
-  { label: "Guia de SEO Orgânico", href: "/seo-organico" },
 ];
 
 const ESCRITORIOS = [
@@ -42,7 +46,7 @@ const ESCRITORIOS = [
 export default function Footer() {
   return (
     <footer className="relative bg-ghanks-ink text-white overflow-hidden">
-      {/* Brilho sutil no topo, alinhado ao restante das faixas escuras */}
+      {/* Brilho sutil no topo */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[46rem] h-[26rem] rounded-full bg-ghanks-blue/10 blur-[130px]" />
       </div>
@@ -59,8 +63,7 @@ export default function Footer() {
               className="h-10 w-auto"
             />
             <p className="mt-4 text-sm text-gray-400 leading-relaxed">
-              Growth hacking e SEO orgânico para colocar sua empresa na
-              primeira página do Google, sem anúncios pagos.
+              Plataforma de soluções de crescimento digital: SEO orgânico, tráfego pago, gestão de redes sociais e treinamentos presenciais sob demanda.
             </p>
             {/* Redes sociais e WhatsApp */}
             <div className="mt-4 flex items-center gap-4">
@@ -90,16 +93,16 @@ export default function Footer() {
           </div>
 
           {/* Coluna 2 — Navegação */}
-          <div>
+          <div className="lg:col-span-2">
             <h3 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-white mb-5">
               Navegação
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 columns-2">
               {NAV_FOOTER.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="inline-block text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-200"
+                    className="inline-block text-sm text-gray-400 hover:text-white transition-colors py-0.5"
                   >
                     {link.label}
                   </Link>
@@ -143,7 +146,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} G Hanks. Todos os direitos reservados.
           </p>
           <p className="text-sm text-gray-500">
-            SEO • IA • Automação por{" "}
+            SEO • Tráfego • Redes Sociais • Treinamentos por{" "}
             <span className="font-semibold text-gray-400">HAPP APPS</span>
           </p>
         </div>
