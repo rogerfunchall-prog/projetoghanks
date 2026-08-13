@@ -8,7 +8,7 @@ import Logo from "./Logo";
 const WHATSAPP_NUMBER = "5511950809873";
 
 /* Páginas com hero escuro — o header começa transparente sobre elas */
-const DARK_HERO_ROUTES = ["/"];
+const DARK_HERO_ROUTES = ["/", "/empresa"];
 
 export default function Header() {
   const pathname = usePathname();

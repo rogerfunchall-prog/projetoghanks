@@ -8,9 +8,11 @@ interface BreadcrumbItem {
 
 interface BreadcrumbProps {
   items: BreadcrumbItem[];
+  /* dark: cores claras, para uso sobre fundo escuro */
+  tone?: "light" | "dark";
 }
 
-export default function Breadcrumb({ items }: BreadcrumbProps) {
+export default function Breadcrumb({ items, tone = "light" }: BreadcrumbProps) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
 
   const jsonLd = {
@@ -26,16 +28,26 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
 
   return (
     <>
-      <nav className="text-sm text-gray-400 mb-8" aria-label="Breadcrumb">
+      <nav
+        className={`text-sm mb-8 ${tone === "dark" ? "text-white/50" : "text-gray-400"}`}
+        aria-label="Breadcrumb"
+      >
         {items.map((item, i) => (
           <span key={i}>
             {i > 0 && <span className="mx-2">/</span>}
             {item.href ? (
-              <a href={item.href} className="hover:text-ghanks-blue transition-colors">
+              <a
+                href={item.href}
+                className={`transition-colors ${
+                  tone === "dark" ? "hover:text-white" : "hover:text-ghanks-blue"
+                }`}
+              >
                 {item.label}
               </a>
             ) : (
-              <span className="text-ghanks-gray">{item.label}</span>
+              <span className={tone === "dark" ? "text-white/80" : "text-ghanks-gray"}>
+                {item.label}
+              </span>
             )}
           </span>
         ))}
