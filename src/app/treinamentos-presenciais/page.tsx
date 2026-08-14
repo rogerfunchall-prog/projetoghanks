@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -97,10 +97,19 @@ export default function TreinamentosPresenciaisPage() {
 
   return (
     <PageShell>
-      {/* Hero */}
+      {/* Hero com background image (ghanks-treinamento-hero.png) */}
       <section className="relative bg-ghanks-ink overflow-hidden -mt-24 pt-32 md:pt-40 pb-20 md:pb-28">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute -top-32 right-1/4 w-[36rem] h-[36rem] rounded-full bg-ghanks-red/15 blur-[150px]" />
+        <div className="absolute inset-0 z-0" aria-hidden="true">
+          <Image
+            src="/ghanks-treinamento-hero.png"
+            alt="Equipe participando de treinamento corporativo prático sobre estratégia, crescimento, SEO e inteligência artificial."
+            fill
+            priority
+            quality={85}
+            className="object-cover object-[center_right]"
+          />
+          {/* Gradiente escuro para garantir legibilidade à esquerda */}
+          <div className="absolute inset-0 bg-gradient-to-r from-ghanks-ink via-ghanks-ink/90 to-ghanks-ink/40 md:to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -111,14 +120,14 @@ export default function TreinamentosPresenciaisPage() {
 
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <Reveal className="lg:col-span-8">
-              <span className="inline-flex items-center gap-2 bg-white/5 border border-white/15 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-white/80 mb-6">
+              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-white/90 mb-6">
                 <span className="w-2 h-2 rounded-full bg-ghanks-red" aria-hidden="true" />
                 Capacitação Sob Demanda
               </span>
               <h1 className="display-title text-white">
                 Treinamentos presenciais <span className="text-gradient-brand">sob demanda</span> para empresas
               </h1>
-              <p className="mt-6 lead text-white/70 max-w-2xl">
+              <p className="mt-6 lead text-white/80 max-w-2xl">
                 Conteúdo adaptado ao seu momento, ao seu time e aos desafios reais do seu negócio, ministrado na base da G Hanks ou na sua empresa.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
@@ -130,7 +139,7 @@ export default function TreinamentosPresenciaisPage() {
                 </a>
                 <a
                   href="#temas"
-                  className="inline-flex items-center gap-2 bg-white/10 text-white px-7 py-4 rounded-full font-semibold hover:bg-white/20 transition-all border border-white/20"
+                  className="inline-flex items-center gap-2 bg-white/10 text-white px-7 py-4 rounded-full font-semibold hover:bg-white/20 transition-all border border-white/20 backdrop-blur-sm"
                 >
                   Conhecer os temas
                 </a>
@@ -138,9 +147,9 @@ export default function TreinamentosPresenciaisPage() {
             </Reveal>
 
             <Reveal delay={150} className="lg:col-span-4">
-              <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 text-white">
+              <div className="bg-ghanks-ink/80 backdrop-blur-md rounded-3xl p-8 border border-white/15 text-white shadow-xl">
                 <h3 className="text-lg font-bold mb-3">Flexibilidade Total</h3>
-                <p className="text-sm text-white/70 leading-relaxed">
+                <p className="text-sm text-white/80 leading-relaxed">
                   Você escolhe o tema, a profundidade, a carga horária e o local. Nós levamos o conhecimento prático direto para o seu time.
                 </p>
               </div>
@@ -204,8 +213,8 @@ export default function TreinamentosPresenciaisPage() {
               </p>
               <div className="mt-8 space-y-4">
                 {FORMATOS.map((fmt, i) => (
-                  <div key={i} className="bg-white rounded-2xl p-5 border border-gray-200 shadow-xs flex items-center gap-4">
-                    <span className="w-8 h-8 rounded-xl bg-red-50 text-ghanks-red font-bold text-sm flex items-center justify-center shrink-0">
+                  <div key={i} className="bg-ghanks-light rounded-2xl p-5 border border-gray-200 shadow-xs flex items-center gap-4">
+                    <span className="w-8 h-8 rounded-xl bg-blue-50 text-ghanks-blue font-bold text-sm flex items-center justify-center shrink-0">
                       0{i + 1}
                     </span>
                     <span className="font-semibold text-ghanks-gray">{fmt}</span>
@@ -217,8 +226,45 @@ export default function TreinamentosPresenciaisPage() {
         </div>
       </section>
 
+      {/* Seção Complementar com ghanks-treinamento-workshop.png */}
+      <section className="py-20 md:py-28 bg-ghanks-light border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <Reveal className="lg:col-span-6">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200 aspect-[16/10]">
+                <Image
+                  src="/ghanks-treinamento-workshop.png"
+                  alt="Profissionais colaborando em um workshop presencial com cartões coloridos, planejamento e orientação prática."
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center"
+                  loading="lazy"
+                />
+              </div>
+            </Reveal>
+
+            <Reveal delay={150} className="lg:col-span-6 space-y-6">
+              <span className="inline-flex items-center gap-2 bg-blue-50 text-ghanks-blue rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+                Experiência Prática
+              </span>
+              <h2 className="section-title text-ghanks-gray">
+                Conhecimento que vira execução
+              </h2>
+              <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+                Cada treinamento é construído para transformar conhecimento em ação. A equipe participa, testa, debate cenários reais e sai com ferramentas práticas para aplicar no dia a dia.
+              </p>
+              <div className="pt-2">
+                <span className="inline-block bg-white text-ghanks-gray border border-gray-200 rounded-2xl px-5 py-3 text-xs md:text-sm font-bold shadow-xs">
+                  Workshops práticos • Conteúdo sob medida • Aplicação imediata
+                </span>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* Temas Possíveis */}
-      <section id="temas" className="py-20 md:py-28 bg-ghanks-light">
+      <section id="temas" className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-ghanks-blue">
@@ -232,7 +278,7 @@ export default function TreinamentosPresenciaisPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {TEMAS.map((tema, i) => (
               <Reveal key={tema} delay={i * 60}>
-                <div className="bg-white rounded-2xl p-7 border border-gray-100 h-full shadow-sm flex flex-col justify-between">
+                <div className="bg-ghanks-light rounded-2xl p-7 border border-gray-100 h-full shadow-sm flex flex-col justify-between">
                   <div>
                     <div className="w-10 h-10 rounded-xl bg-red-50 text-ghanks-red flex items-center justify-center font-bold text-sm mb-4">
                       {i + 1}
@@ -250,7 +296,7 @@ export default function TreinamentosPresenciaisPage() {
       </section>
 
       {/* Processo (4 etapas) */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-ghanks-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-ghanks-gray">
@@ -264,7 +310,7 @@ export default function TreinamentosPresenciaisPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {PROCESSO.map((proc, i) => (
               <Reveal key={proc.passo} delay={i * 100}>
-                <div className="bg-ghanks-light rounded-2xl p-7 border border-gray-100 h-full flex flex-col justify-between">
+                <div className="bg-white rounded-2xl p-7 border border-gray-100 h-full flex flex-col justify-between shadow-sm">
                   <div>
                     <span className="font-display text-4xl font-extrabold text-ghanks-red/40 block mb-4">
                       {proc.passo}
@@ -280,7 +326,7 @@ export default function TreinamentosPresenciaisPage() {
       </section>
 
       {/* Formulário de Solicitação de Treinamento */}
-      <section id="formulario" className="py-20 md:py-28 bg-ghanks-light border-t border-gray-200">
+      <section id="formulario" className="py-20 md:py-28 bg-white border-t border-gray-200">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-12">
             <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-ghanks-blue">
@@ -308,7 +354,7 @@ export default function TreinamentosPresenciaisPage() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-sm space-y-6">
+            <form onSubmit={handleSubmit} className="bg-ghanks-light rounded-3xl p-8 md:p-12 border border-gray-200 shadow-sm space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Seu Nome *</label>
@@ -317,7 +363,7 @@ export default function TreinamentosPresenciaisPage() {
                     required
                     value={formData.nome}
                     onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
                     placeholder="Ex: Carlos Silva"
                   />
                 </div>
@@ -328,7 +374,7 @@ export default function TreinamentosPresenciaisPage() {
                     required
                     value={formData.empresa}
                     onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
-                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
                     placeholder="Ex: Empresa Ltda"
                   />
                 </div>
@@ -342,7 +388,7 @@ export default function TreinamentosPresenciaisPage() {
                     required
                     value={formData.whatsapp}
                     onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
                     placeholder="(11) 99999-9999"
                   />
                 </div>
@@ -353,7 +399,7 @@ export default function TreinamentosPresenciaisPage() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
                     placeholder="voce@empresa.com.br"
                   />
                 </div>
@@ -393,7 +439,7 @@ export default function TreinamentosPresenciaisPage() {
                     type="text"
                     value={formData.publico}
                     onChange={(e) => setFormData({ ...formData, publico: e.target.value })}
-                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
                     placeholder="Ex: Equipe de vendas"
                   />
                 </div>
@@ -403,7 +449,7 @@ export default function TreinamentosPresenciaisPage() {
                     type="text"
                     value={formData.participantes}
                     onChange={(e) => setFormData({ ...formData, participantes: e.target.value })}
-                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
                     placeholder="Ex: 15 pessoas"
                   />
                 </div>
@@ -413,7 +459,7 @@ export default function TreinamentosPresenciaisPage() {
                     type="text"
                     value={formData.cidade}
                     onChange={(e) => setFormData({ ...formData, cidade: e.target.value })}
-                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
                     placeholder="Ex: Campinas - SP"
                   />
                 </div>
@@ -437,7 +483,7 @@ export default function TreinamentosPresenciaisPage() {
                     type="text"
                     value={formData.dataAprox}
                     onChange={(e) => setFormData({ ...formData, dataAprox: e.target.value })}
-                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
                     placeholder="Ex: Próximo mês"
                   />
                 </div>
@@ -449,7 +495,7 @@ export default function TreinamentosPresenciaisPage() {
                   rows={3}
                   value={formData.objetivo}
                   onChange={(e) => setFormData({ ...formData, objetivo: e.target.value })}
-                  className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
+                  className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-ghanks-blue"
                   placeholder="Descreva o que espera alcançar com esta capacitação..."
                 />
               </div>
@@ -466,7 +512,7 @@ export default function TreinamentosPresenciaisPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-ghanks-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-16">
             <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-ghanks-blue">
@@ -480,7 +526,7 @@ export default function TreinamentosPresenciaisPage() {
           <div className="space-y-6">
             {FAQ_ITENS.map((faq, i) => (
               <Reveal key={i} delay={i * 80}>
-                <div className="bg-ghanks-light rounded-2xl p-7 border border-gray-100 shadow-sm">
+                <div className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm">
                   <h3 className="block-title text-ghanks-gray mb-3">{faq.pergunta}</h3>
                   <p className="text-gray-600 leading-relaxed text-sm md:text-base">{faq.resposta}</p>
                 </div>
