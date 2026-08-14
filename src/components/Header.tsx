@@ -14,7 +14,6 @@ export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [solucoesOpen, setSolucoesOpen] = useState(false);
-  const [metodoOpen, setMetodoOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const overDarkHero = DARK_HERO_ROUTES.includes(pathname);
@@ -51,10 +50,14 @@ export default function Header() {
           {/* Navegação desktop */}
           <nav className="hidden lg:flex items-center gap-5 xl:gap-6" aria-label="Menu principal">
             <Link href="/" className={`text-sm font-medium transition-colors ${linkClass}`}>
-              Início
+              Home
             </Link>
 
-            {/* Dropdown Soluções */}
+            <Link href="/empresa" className={`text-sm font-medium transition-colors ${linkClass}`}>
+              Empresa
+            </Link>
+
+            {/* Dropdown Soluções (com Método H.A.N.K.S. dentro) */}
             <div className="relative group">
               <Link
                 href="/servicos"
@@ -66,7 +69,7 @@ export default function Header() {
                 </svg>
               </Link>
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="bg-white rounded-2xl shadow-xl border border-gray-100 py-3 min-w-[220px]">
+                <div className="bg-white rounded-2xl shadow-xl border border-gray-100 py-3 min-w-[240px]">
                   <Link
                     href="/servicos"
                     className="block px-4 py-2 text-xs font-semibold uppercase tracking-wider text-ghanks-blue hover:bg-ghanks-light transition-colors"
@@ -98,18 +101,19 @@ export default function Header() {
                   >
                     4. Treinamentos Presenciais
                   </Link>
+                  <div className="my-1 border-t border-gray-100" />
+                  <Link
+                    href="/metodo"
+                    className="block px-4 py-2.5 text-sm font-semibold text-ghanks-gray hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
+                  >
+                    Método H.A.N.K.S.
+                  </Link>
                 </div>
               </div>
             </div>
 
-            <Link href="/metodo" className={`text-sm font-medium transition-colors ${linkClass}`}>
-              Método H.A.N.K.S.
-            </Link>
             <Link href="/portfolio" className={`text-sm font-medium transition-colors ${linkClass}`}>
               Portfólio
-            </Link>
-            <Link href="/empresa" className={`text-sm font-medium transition-colors ${linkClass}`}>
-              Empresa
             </Link>
             <Link href="/treinamentos-presenciais" className={`text-sm font-medium transition-colors ${linkClass}`}>
               Treinamentos
@@ -125,7 +129,7 @@ export default function Header() {
                   : "text-ghanks-gray border-gray-200 hover:border-ghanks-yellow hover:bg-ghanks-yellow hover:text-ghanks-gray"
               }`}
             >
-              Seja Franqueado
+              Seja um Franqueado
             </Link>
           </nav>
 
@@ -170,10 +174,13 @@ export default function Header() {
         <nav className="lg:hidden border-t border-gray-100 bg-white max-h-[85vh] overflow-y-auto" aria-label="Menu mobile">
           <div className="px-4 py-4 space-y-1">
             <Link href="/" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
-              Início
+              Home
+            </Link>
+            <Link href="/empresa" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+              Empresa
             </Link>
 
-            {/* Soluções accordion mobile */}
+            {/* Soluções accordion mobile (com Método H.A.N.K.S. dentro) */}
             <div>
               <button
                 onClick={() => setSolucoesOpen(!solucoesOpen)}
@@ -210,18 +217,15 @@ export default function Header() {
                   <Link href="/treinamentos-presenciais" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-gray-600 hover:text-ghanks-blue">
                     4. Treinamentos Presenciais
                   </Link>
+                  <Link href="/metodo" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm font-semibold text-gray-800 hover:text-ghanks-blue">
+                    Método H.A.N.K.S.
+                  </Link>
                 </div>
               )}
             </div>
 
-            <Link href="/metodo" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
-              Método H.A.N.K.S.
-            </Link>
             <Link href="/portfolio" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
               Portfólio
-            </Link>
-            <Link href="/empresa" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
-              Empresa
             </Link>
             <Link href="/treinamentos-presenciais" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
               Treinamentos
@@ -234,7 +238,7 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
               className="block py-2 text-base font-bold text-ghanks-gray"
             >
-              Seja Franqueado
+              Seja um Franqueado
             </Link>
 
             <a
