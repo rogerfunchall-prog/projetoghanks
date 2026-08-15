@@ -27,16 +27,15 @@ export const metadata: Metadata = {
   },
 };
 
-/* Faixa em movimento — mesmos termos trabalhados no restante do site */
+/* Faixa em movimento na base do hero */
 const KEYWORDS = [
-  "Growth Hacking",
-  "SEO Orgânico",
-  "Método H.A.N.K.S.",
-  "Exclusividade por Cidade",
-  "Primeira Página do Google",
-  "Autoridade de Domínio",
-  "SEO Local",
-  "Busca Orgânica",
+  "GROWTH HACKING",
+  "SEO ORGÂNICO",
+  "MÉTODO H.A.N.K.S.",
+  "EXCLUSIVIDADE POR CIDADE",
+  "PRIMEIRA PÁGINA DO GOOGLE",
+  "AUTORIDADE DE DOMÍNIO",
+  "SEO LOCAL",
 ];
 
 const NUMEROS = [
@@ -157,7 +156,7 @@ export default function EmpresaPage() {
   return (
     <PageShell>
       {/* ==================================================================
-          Hero com background image (ghanks-empresa-banner-sem-pessoas.png)
+          Hero com o mesmo padrão estrutural da página Treinamentos Presenciais
           ================================================================== */}
       <section className="relative bg-ghanks-ink overflow-hidden -mt-24 pt-32 md:pt-40 pb-20 md:pb-28">
         <div className="absolute inset-0 z-0" aria-hidden="true">
@@ -169,51 +168,56 @@ export default function EmpresaPage() {
             quality={85}
             className="object-cover object-center"
           />
-          {/* Gradiente escuro lateral para garantir legibilidade à esquerda */}
-          <div className="absolute inset-0 bg-gradient-to-r from-ghanks-ink via-ghanks-ink/90 to-ghanks-ink/50" />
+          {/* Gradiente escuro para garantir legibilidade à esquerda */}
+          <div className="absolute inset-0 bg-gradient-to-r from-ghanks-ink via-ghanks-ink/90 to-ghanks-ink/40 md:to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Empresa" }]} tone="dark" />
 
-          <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-            <Reveal className="lg:col-span-4 lg:pt-3">
-              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-white/90">
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
+            <Reveal className="lg:col-span-8">
+              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-white/90 mb-6">
                 <span className="w-2 h-2 rounded-full bg-ghanks-green" aria-hidden="true" />
-                Quem Somos
+                QUEM SOMOS
               </span>
-            </Reveal>
-
-            <Reveal delay={100} className="lg:col-span-8">
               <h1 className="page-title text-white">
-                A G Hanks nasceu para tirar empresas do{" "}
-                <span className="text-gradient-brand">anonimato no Google</span>
+                A G Hanks nasceu para tirar empresas do <span className="text-ghanks-blue">anonimato</span> no <span className="text-ghanks-yellow">Google</span>
               </h1>
-            </Reveal>
-          </div>
-
-          <div className="mt-10 grid lg:grid-cols-12 gap-8 lg:gap-10">
-            <div className="lg:col-span-4" />
-            <Reveal delay={150} className="lg:col-span-8">
-              <p className="lead text-white/80 max-w-2xl">
+              <p className="mt-6 lead text-white/80 max-w-2xl">
                 A G Hanks é uma marca da HAPP APPS Tecnologia, nascida da percepção de que a maioria das pequenas e médias empresas brasileiras vive na invisibilidade digital. Elas dependem de anúncios pagos porque não sabem — ou não têm acesso a quem saiba — como aparecer organicamente no Google.
               </p>
-              <div className="mt-8">
+              <div className="mt-8 flex flex-wrap gap-4">
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito de SEO.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-7 py-4 rounded-full text-base font-semibold hover:bg-blue-600 hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-blue-500/25"
+                  className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-7 py-4 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25"
                 >
                   Solicitar Diagnóstico Gratuito
                   <ArrowIcon className="w-4 h-4" />
                 </a>
+                <a
+                  href="/metodo"
+                  className="inline-flex items-center gap-2 bg-white/10 text-white px-7 py-4 rounded-full font-semibold hover:bg-white/20 transition-all border border-white/20 backdrop-blur-sm"
+                >
+                  Conhecer o Método H.A.N.K.S.
+                </a>
+              </div>
+            </Reveal>
+
+            <Reveal delay={150} className="lg:col-span-4 hidden lg:block">
+              <div className="bg-ghanks-ink/80 backdrop-blur-md rounded-3xl p-8 border border-white/15 text-white shadow-xl">
+                <h3 className="text-lg font-bold mb-3">Tecnologia aplicada ao crescimento</h3>
+                <p className="text-sm text-white/80 leading-relaxed">
+                  Estratégia, IA e SEO orgânico combinados para transformar visibilidade em oportunidades reais de negócio.
+                </p>
               </div>
             </Reveal>
           </div>
         </div>
 
-        {/* Faixa de palavras-chave em movimento */}
+        {/* Faixa de palavras-chave em movimento na base do hero */}
         <div className="relative z-10 mt-16 md:mt-24 border-t border-white/10 py-5">
           <Marquee items={KEYWORDS} tone="dark" />
         </div>
