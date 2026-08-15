@@ -157,21 +157,28 @@ export default function EmpresaPage() {
   return (
     <PageShell>
       {/* ==================================================================
-          Hero — etiqueta à esquerda, headline grande à direita, texto e CTA
-          logo abaixo e o banner apresentado como card de destaque
+          Hero com background image (ghanks-empresa-banner-sem-pessoas.png)
           ================================================================== */}
-      <section className="relative bg-ghanks-ink overflow-hidden -mt-24">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute -top-40 -left-24 w-[34rem] h-[34rem] rounded-full bg-ghanks-blue/20 blur-[140px]" />
-          <div className="absolute top-1/2 -right-32 w-[30rem] h-[30rem] rounded-full bg-ghanks-yellow/10 blur-[150px]" />
+      <section className="relative bg-ghanks-ink overflow-hidden -mt-24 pt-32 md:pt-40 pb-20 md:pb-28">
+        <div className="absolute inset-0 z-0" aria-hidden="true">
+          <Image
+            src="/ghanks-empresa-banner-sem-pessoas.png"
+            alt="Ambiente real do escritório da G Hanks, sem pessoas, com logo da marca, estações de trabalho e iluminação colorida."
+            fill
+            priority
+            quality={85}
+            className="object-cover object-center"
+          />
+          {/* Gradiente escuro lateral para garantir legibilidade à esquerda */}
+          <div className="absolute inset-0 bg-gradient-to-r from-ghanks-ink via-ghanks-ink/90 to-ghanks-ink/50" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-14 md:pb-16">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Empresa" }]} tone="dark" />
 
           <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
             <Reveal className="lg:col-span-4 lg:pt-3">
-              <span className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-white/80">
+              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-white/90">
                 <span className="w-2 h-2 rounded-full bg-ghanks-green" aria-hidden="true" />
                 Quem Somos
               </span>
@@ -188,7 +195,7 @@ export default function EmpresaPage() {
           <div className="mt-10 grid lg:grid-cols-12 gap-8 lg:gap-10">
             <div className="lg:col-span-4" />
             <Reveal delay={150} className="lg:col-span-8">
-              <p className="lead text-white/70 max-w-2xl">
+              <p className="lead text-white/80 max-w-2xl">
                 A G Hanks é uma marca da HAPP APPS Tecnologia, nascida da percepção de que a maioria das pequenas e médias empresas brasileiras vive na invisibilidade digital. Elas dependem de anúncios pagos porque não sabem — ou não têm acesso a quem saiba — como aparecer organicamente no Google.
               </p>
               <div className="mt-8">
@@ -204,26 +211,10 @@ export default function EmpresaPage() {
               </div>
             </Reveal>
           </div>
-
-          {/* Banner da página como card de destaque */}
-          <Reveal delay={200} className="mt-12 md:mt-16">
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50">
-              <Image
-                src="/banner-empresa.png"
-                alt="Figuras representando equipe e crescimento colaborativo, com gráfico ascendente e aperto de mãos, em um escritório moderno"
-                width={1920}
-                height={600}
-                priority
-                quality={85}
-                sizes="100vw"
-                className="w-full h-auto object-cover object-[70%_center] md:object-center"
-              />
-            </div>
-          </Reveal>
         </div>
 
         {/* Faixa de palavras-chave em movimento */}
-        <div className="relative z-10 border-t border-white/10 py-5">
+        <div className="relative z-10 mt-16 md:mt-24 border-t border-white/10 py-5">
           <Marquee items={KEYWORDS} tone="dark" />
         </div>
       </section>
