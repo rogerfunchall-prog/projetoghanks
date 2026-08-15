@@ -1,5 +1,4 @@
-/* Seção Hero da home — bloco escuro com headline display, CTAs e o banner
-   de resultado no Google apresentado como card flutuante. */
+/* Seção Hero da home — bloco escuro com headline display, CTAs e imagem de destaque à direita. */
 import Image from "next/image";
 import Marquee from "./Marquee";
 
@@ -17,13 +16,6 @@ const KEYWORDS = [
   "Busca Orgânica",
 ];
 
-/* Logos de clientes exibidas na prova social sobre o banner */
-const CLIENTES = [
-  { src: "/clientes/reluz.png", alt: "Reluz Galvânica" },
-  { src: "/clientes/top-sacolas.png", alt: "Top Sacolas" },
-  { src: "/clientes/vittoria-vitt.png", alt: "Vittoria Vitt" },
-];
-
 export default function Hero() {
   return (
     <section className="relative bg-ghanks-ink overflow-hidden">
@@ -33,8 +25,8 @@ export default function Hero() {
         <div className="absolute top-1/3 -right-40 w-[32rem] h-[32rem] rounded-full bg-ghanks-green/15 blur-[150px]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-14 md:pb-16">
-        {/* Etiqueta */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-16 md:pb-20">
+        {/* Etiqueta / Selo */}
         <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 animate-fade-in-up">
           <span className="w-2 h-2 rounded-full bg-ghanks-green" aria-hidden="true" />
           <span className="text-xs sm:text-sm font-medium text-white/80 tracking-wide">
@@ -42,23 +34,22 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Headline principal */}
-        <h1 className="mt-7 max-w-5xl">
-          <span className="block font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-white/90 tracking-tight">
-            Coloque sua empresa na
-          </span>
-          <span className="display-title block text-gradient-brand mt-1">
-            Primeira página do Google
-          </span>
-          <span className="block font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-white/90 tracking-tight mt-2">
-            sem pagar por anúncio
-          </span>
-        </h1>
+        {/* Coluna de texto à esquerda, banner à direita (Padrão das páginas internas) */}
+        <div className="mt-8 md:mt-12 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="lg:col-span-6">
+            <h1 className="max-w-2xl">
+              <span className="block font-display text-xl sm:text-2xl md:text-3xl font-semibold text-white/90 tracking-tight">
+                Coloque sua empresa na
+              </span>
+              <span className="display-title block text-gradient-brand mt-1">
+                Primeira página do Google
+              </span>
+              <span className="block font-display text-xl sm:text-2xl md:text-3xl font-semibold text-white/90 tracking-tight mt-2">
+                sem pagar por anúncio
+              </span>
+            </h1>
 
-        {/* Coluna de texto + CTAs à esquerda, banner à direita */}
-        <div className="mt-10 md:mt-14 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          <div className="lg:col-span-5">
-            <p className="lead text-white/70 max-w-xl">
+            <p className="mt-6 lead text-white/70 max-w-xl">
               SEO orgânico com exclusividade por cidade e palavra-chave.
               Trabalhamos para posicionar o seu negócio no topo do Google de
               forma sustentável — sem Google Ads, sem gestor de tráfego pago.
@@ -89,42 +80,18 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Banner de resultado no Google, em card flutuante com nova imagem */}
-          <div className="lg:col-span-7 relative">
-            <div className="animate-float-soft">
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-ghanks-ink-soft">
-                <Image
-                  src="/ghanks-home-hero.png"
-                  alt="Ilustração abstrata de SEO orgânico com resultados de busca, trajetória de crescimento e conexões digitais."
-                  width={1920}
-                  height={1080}
-                  priority
-                  quality={85}
-                  sizes="(max-width: 1024px) 100vw, 58vw"
-                  className="w-full h-auto object-cover object-right"
-                />
-              </div>
-            </div>
-
-            {/* Prova social sobreposta ao card */}
-            <div className="absolute -bottom-6 left-4 sm:left-6 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3">
-              <div className="flex -space-x-2">
-                {CLIENTES.map((cliente) => (
-                  <Image
-                    key={cliente.src}
-                    src={cliente.src}
-                    alt={cliente.alt}
-                    width={80}
-                    height={80}
-                    className="w-9 h-9 rounded-full object-contain bg-white ring-2 ring-white"
-                  />
-                ))}
-              </div>
-              <span className="text-xs sm:text-sm font-semibold text-ghanks-gray leading-tight">
-                Marcas que já estão
-                <br />
-                na primeira página
-              </span>
+          {/* Banner de resultado no Google à direita, sem card flutuante poluindo */}
+          <div className="lg:col-span-6 relative">
+            <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-ghanks-ink-soft aspect-[16/10]">
+              <Image
+                src="/ghanks-home-hero.png"
+                alt="Ilustração abstrata de SEO orgânico com resultados de busca, trajetória de crescimento e conexões digitais."
+                fill
+                priority
+                quality={85}
+                sizes="(max-width: 1024px) 100vw, 52vw"
+                className="object-cover object-right"
+              />
             </div>
           </div>
         </div>
