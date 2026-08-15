@@ -97,12 +97,12 @@ export default function TreinamentosPresenciaisPage() {
 
   return (
     <PageShell>
-      {/* Hero com background image (ghanks-treinamento-hero.png) */}
+      {/* Hero com background image (ghanks-presencial-hero-v2.png) */}
       <section className="relative bg-ghanks-ink overflow-hidden -mt-24 pt-32 md:pt-40 pb-20 md:pb-28">
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <Image
-            src="/ghanks-treinamento-hero.png"
-            alt="Equipe participando de treinamento corporativo prático sobre estratégia, crescimento, SEO e inteligência artificial."
+            src="/ghanks-presencial-hero-v2.png"
+            alt="Equipe participando de treinamento corporativo presencial com facilitador, quadro estratégico e dinâmica colaborativa."
             fill
             priority
             quality={85}
@@ -226,15 +226,15 @@ export default function TreinamentosPresenciaisPage() {
         </div>
       </section>
 
-      {/* Seção Complementar com ghanks-treinamento-workshop.png */}
+      {/* Seção Complementar com ghanks-presencial-interna-v2.png */}
       <section className="py-20 md:py-28 bg-ghanks-light border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <Reveal className="lg:col-span-6">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200 aspect-[16/10]">
                 <Image
-                  src="/ghanks-treinamento-workshop.png"
-                  alt="Profissionais colaborando em um workshop presencial com cartões coloridos, planejamento e orientação prática."
+                  src="/ghanks-presencial-interna-v2.png"
+                  alt="Profissionais colaborando em workshop presencial com cartões coloridos, planejamento e orientação prática."
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-center"
@@ -257,6 +257,14 @@ export default function TreinamentosPresenciaisPage() {
                 <span className="inline-block bg-white text-ghanks-gray border border-gray-200 rounded-2xl px-5 py-3 text-xs md:text-sm font-bold shadow-xs">
                   Workshops práticos • Conteúdo sob medida • Aplicação imediata
                 </span>
+              </div>
+              <div className="pt-4">
+                <a
+                  href="#formulario"
+                  className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-7 py-3.5 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-md shadow-blue-500/20 text-sm"
+                >
+                  Montar meu treinamento
+                </a>
               </div>
             </Reveal>
           </div>
