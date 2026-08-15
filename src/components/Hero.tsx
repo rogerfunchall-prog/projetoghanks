@@ -89,19 +89,19 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Banner de resultado no Google, em card flutuante */}
+          {/* Banner de resultado no Google, em card flutuante com nova imagem */}
           <div className="lg:col-span-7 relative">
             <div className="animate-float-soft">
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50">
+              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-ghanks-ink-soft">
                 <Image
-                  src="/banner-home.png"
-                  alt="Ilustração representando um resultado de busca em primeiro lugar no Google, com mapa do Brasil e gráfico de crescimento orgânico ascendente"
+                  src="/ghanks-home-hero.png"
+                  alt="Ilustração abstrata de SEO orgânico com resultados de busca, trajetória de crescimento e conexões digitais."
                   width={1920}
-                  height={600}
+                  height={1080}
                   priority
                   quality={85}
                   sizes="(max-width: 1024px) 100vw, 58vw"
-                  className="w-full h-auto"
+                  className="w-full h-auto object-cover object-right"
                 />
               </div>
             </div>
