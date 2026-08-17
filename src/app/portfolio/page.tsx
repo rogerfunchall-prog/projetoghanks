@@ -401,14 +401,12 @@ export default function PortfolioPage() {
               Fale com um especialista da G Hanks e descubra quais oportunidades de posicionamento existem para o seu negócio, nicho e região.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito para minha empresa.`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/diagnostico-gratuito"
                 className="inline-flex items-center gap-2 bg-white text-ghanks-blue px-9 py-4 rounded-full font-bold hover:bg-blue-50 transition-all shadow-xl text-base"
               >
                 Solicitar diagnóstico gratuito
-              </a>
+              </Link>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de falar com um especialista da G Hanks sobre SEO orgânico.`}
                 target="_blank"

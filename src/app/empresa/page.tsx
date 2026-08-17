@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Script from "next/script";
 import PageShell from "@/components/PageShell";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -188,15 +189,13 @@ export default function EmpresaPage() {
                 A G Hanks é uma marca da HAPP APPS Tecnologia, nascida da percepção de que a maioria das pequenas e médias empresas brasileiras vive na invisibilidade digital. Elas dependem de anúncios pagos porque não sabem — ou não têm acesso a quem saiba — como aparecer organicamente no Google.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito de SEO.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/diagnostico-gratuito"
                   className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-7 py-4 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25"
                 >
                   Solicitar Diagnóstico Gratuito
                   <ArrowIcon className="w-4 h-4" />
-                </a>
+                </Link>
                 <a
                   href="/metodo"
                   className="inline-flex items-center gap-2 bg-white/10 text-white px-7 py-4 rounded-full font-semibold hover:bg-white/20 transition-all border border-white/20 backdrop-blur-sm"

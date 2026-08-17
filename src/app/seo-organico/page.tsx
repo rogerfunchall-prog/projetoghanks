@@ -121,14 +121,12 @@ export default function GuiaSeoOrganico() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito de SEO orgânico.`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/diagnostico-gratuito"
                 className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-7 py-4 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25 text-base"
               >
                 Solicitar Diagnóstico Gratuito
-              </a>
+              </Link>
               <a
                 href="#indice"
                 className="inline-flex items-center gap-2 bg-white/10 text-white px-7 py-4 rounded-full font-semibold hover:bg-white/20 transition-all border border-white/20 backdrop-blur-sm text-base"
@@ -559,14 +557,12 @@ export default function GuiaSeoOrganico() {
             <p className="text-white/70 max-w-2xl mx-auto mb-8 leading-relaxed text-base md:text-lg">
               Solicite um diagnóstico gratuito e entenda quais oportunidades existem para o seu nicho, sua cidade e suas palavras-chave.
             </p>
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Li o guia de SEO orgânico e gostaria de solicitar o diagnóstico gratuito.`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/diagnostico-gratuito"
               className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-9 py-4 rounded-full font-bold hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/25 text-base"
             >
               Solicitar Diagnóstico Gratuito
-            </a>
+            </Link>
           </Reveal>
         </div>
       </section>

@@ -149,14 +149,12 @@ export default function MetodoPage() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico estratégico do Método H.A.N.K.S.`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/diagnostico-gratuito"
                 className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-7 py-4 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25 text-base"
               >
                 Solicitar diagnóstico estratégico
-              </a>
+              </Link>
               <a
                 href="#pilares"
                 className="inline-flex items-center gap-2 bg-white/10 text-white px-7 py-4 rounded-full font-semibold hover:bg-white/20 transition-all border border-white/20 backdrop-blur-sm text-base"
@@ -268,14 +266,12 @@ export default function MetodoPage() {
                 </span>
               </div>
               <div className="pt-4">
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar meu diagnóstico estratégico do Método H.A.N.K.S.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/diagnostico-gratuito"
                   className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-7 py-3.5 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-md shadow-blue-500/20 text-sm"
                 >
                   Solicitar meu diagnóstico
-                </a>
+                </Link>
               </div>
             </Reveal>
           </div>
@@ -468,14 +464,12 @@ export default function MetodoPage() {
             <p className="text-white/70 max-w-2xl mx-auto mb-8 leading-relaxed text-base md:text-lg">
               Descubra quais oportunidades existem para o seu negócio, sua cidade e seu mercado antes de investir em mais uma ação isolada de marketing.
             </p>
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico estratégico para minha empresa.`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/diagnostico-gratuito"
               className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-9 py-4 rounded-full font-bold hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/25 text-base"
             >
               Solicitar diagnóstico estratégico
-            </a>
+            </Link>
             <p className="mt-4 text-xs text-white/50 tracking-wide">
               Conversa inicial, análise de contexto e próximos passos claros.
             </p>

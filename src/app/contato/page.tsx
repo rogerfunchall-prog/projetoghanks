@@ -105,14 +105,12 @@ export default function ContatoPage() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito para minha empresa.`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/diagnostico-gratuito"
                 className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-7 py-4 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25 text-base"
               >
                 Solicitar diagnóstico gratuito
-              </a>
+              </Link>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de falar diretamente com a equipe da G Hanks.`}
                 target="_blank"
@@ -419,14 +417,12 @@ export default function ContatoPage() {
             <p className="text-white/70 max-w-2xl mx-auto mb-8 leading-relaxed text-base md:text-lg">
               Solicite um diagnóstico gratuito e descubra quais oportunidades de posicionamento orgânico existem para o seu negócio.
             </p>
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito para minha empresa.`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/diagnostico-gratuito"
               className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-9 py-4 rounded-full font-bold hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/25 text-base"
             >
               Solicitar diagnóstico gratuito
-            </a>
+            </Link>
           </Reveal>
         </div>
       </section>
