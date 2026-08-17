@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Reveal from "@/components/Reveal";
 
 const SEGMENTOS_OPCOES = [
   "Indústria / Manufatura",
@@ -162,11 +161,11 @@ export default function DiagnosticoForm() {
       if (res.ok && data.success) {
         setSucesso(true);
       } else {
-        setErro(data.error || "Erro ao enviar solicitação. Tente novamente.");
+        setErro(data.error || "Não foi possível concluir o envio agora. Verifique os campos destacados e tente novamente.");
       }
     } catch (err) {
       console.error(err);
-      setErro("Erro de conexão. Verifique sua rede e tente novamente.");
+      setErro("Não foi possível concluir o envio agora. Verifique sua conexão e tente novamente.");
     } finally {
       setEnviando(false);
     }
@@ -180,7 +179,7 @@ export default function DiagnosticoForm() {
         </div>
         <h3 className="text-2xl font-bold text-ghanks-gray mb-4">Solicitação recebida com sucesso!</h3>
         <p className="text-gray-600 leading-relaxed text-base mb-6">
-          Obrigado pelas informações. Nossa equipe fará uma análise inicial do contexto informado e entrará em contato pelos canais selecionados para apresentar os próximos passos, caso haja aderência ao diagnóstico.
+          Solicitação recebida. Obrigado pelas informações. Nossa equipe fará uma análise inicial do contexto informado e entrará em contato pelos canais selecionados para apresentar os próximos passos, caso haja aderência ao diagnóstico.
         </p>
         <p className="text-xs text-gray-400 bg-gray-50 p-4 rounded-xl border border-gray-200 mb-8 leading-relaxed">
           O diagnóstico gratuito é uma análise inicial e não substitui uma auditoria técnica completa. Para preservar a qualidade das análises, a G Hanks poderá entrar em contato antes de iniciar a avaliação.
@@ -197,11 +196,11 @@ export default function DiagnosticoForm() {
 
   return (
     <div className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-sm max-w-3xl mx-auto">
-      {/* Indicador de progresso */}
+      {/* Indicador de progresso corrigido (sem concatenação) */}
       <div className="mb-8 pb-6 border-b border-gray-100">
-        <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-ghanks-blue mb-2">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs font-bold uppercase tracking-wider text-ghanks-blue mb-2 gap-1">
           <span>Etapa {etapa} de {totalEtapas}</span>
-          <span>{Math.round((etapa / totalEtapas) * 100)}% concluído</span>
+          <span className="text-gray-500">{Math.round((etapa / totalEtapas) * 100)}% concluído</span>
         </div>
         <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
           <div
@@ -217,7 +216,7 @@ export default function DiagnosticoForm() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} method="POST" action="/api/diagnostico" className="space-y-6">
         {/* Honeypot invisível */}
         <div className="hidden" aria-hidden="true">
           <input
@@ -241,9 +240,11 @@ export default function DiagnosticoForm() {
 
             <div className="grid sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Nome Completo *</label>
+                <label htmlFor="nome" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Nome Completo *</label>
                 <input
                   type="text"
+                  id="nome"
+                  name="nome"
                   required
                   value={formData.nome}
                   onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
@@ -252,9 +253,11 @@ export default function DiagnosticoForm() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Empresa ou Marca *</label>
+                <label htmlFor="empresa" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Empresa ou Marca *</label>
                 <input
                   type="text"
+                  id="empresa"
+                  name="empresa"
                   required
                   value={formData.empresa}
                   onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
@@ -263,9 +266,11 @@ export default function DiagnosticoForm() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">E-mail Profissional *</label>
+                <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">E-mail Profissional *</label>
                 <input
                   type="email"
+                  id="email"
+                  name="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -274,9 +279,11 @@ export default function DiagnosticoForm() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">WhatsApp com DDD *</label>
+                <label htmlFor="whatsapp" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">WhatsApp com DDD *</label>
                 <input
                   type="text"
+                  id="whatsapp"
+                  name="whatsapp"
                   required
                   value={formData.whatsapp}
                   onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
@@ -285,8 +292,10 @@ export default function DiagnosticoForm() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Cargo ou Função *</label>
+                <label htmlFor="cargo" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Cargo ou Função *</label>
                 <select
+                  id="cargo"
+                  name="cargo"
                   value={formData.cargo}
                   onChange={(e) => setFormData({ ...formData, cargo: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -301,8 +310,10 @@ export default function DiagnosticoForm() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Melhor Horário para Contato</label>
+                <label htmlFor="horario" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Melhor Horário para Contato</label>
                 <select
+                  id="horario"
+                  name="horario"
                   value={formData.horario}
                   onChange={(e) => setFormData({ ...formData, horario: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -327,8 +338,10 @@ export default function DiagnosticoForm() {
 
             <div className="grid sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Segmento Principal *</label>
+                <label htmlFor="segmento" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Segmento Principal *</label>
                 <select
+                  id="segmento"
+                  name="segmento"
                   value={formData.segmento}
                   onChange={(e) => setFormData({ ...formData, segmento: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -339,9 +352,11 @@ export default function DiagnosticoForm() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Cidade e Estado da Sede *</label>
+                <label htmlFor="cidadeEstado" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Cidade e Estado da Sede *</label>
                 <input
                   type="text"
+                  id="cidadeEstado"
+                  name="cidadeEstado"
                   required
                   value={formData.cidadeEstado}
                   onChange={(e) => setFormData({ ...formData, cidadeEstado: e.target.value })}
@@ -350,9 +365,11 @@ export default function DiagnosticoForm() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Site ou Domínio Principal *</label>
+                <label htmlFor="site" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Site ou Domínio Principal *</label>
                 <input
                   type="text"
+                  id="site"
+                  name="site"
                   required
                   value={formData.site}
                   onChange={(e) => setFormData({ ...formData, site: e.target.value })}
@@ -361,9 +378,11 @@ export default function DiagnosticoForm() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Perfil do Instagram (ou rede principal)</label>
+                <label htmlFor="instagram" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Perfil do Instagram (ou rede principal)</label>
                 <input
                   type="text"
+                  id="instagram"
+                  name="instagram"
                   value={formData.instagram}
                   onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -371,8 +390,10 @@ export default function DiagnosticoForm() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Modelo de Atuação</label>
+                <label htmlFor="modeloAtuacao" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Modelo de Atuação</label>
                 <select
+                  id="modeloAtuacao"
+                  name="modeloAtuacao"
                   value={formData.modeloAtuacao}
                   onChange={(e) => setFormData({ ...formData, modeloAtuacao: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -386,8 +407,10 @@ export default function DiagnosticoForm() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Tempo de Operação</label>
+                <label htmlFor="tempoOperacao" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Tempo de Operação</label>
                 <select
+                  id="tempoOperacao"
+                  name="tempoOperacao"
                   value={formData.tempoOperacao}
                   onChange={(e) => setFormData({ ...formData, tempoOperacao: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -398,8 +421,10 @@ export default function DiagnosticoForm() {
                 </select>
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Descrição Breve da Empresa *</label>
+                <label htmlFor="descricao" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Descrição Breve da Empresa *</label>
                 <textarea
+                  id="descricao"
+                  name="descricao"
                   rows={3}
                   required
                   value={formData.descricao}
@@ -444,10 +469,15 @@ export default function DiagnosticoForm() {
               })}
             </div>
 
+            {/* Hidden input to store objetivos in form submission */}
+            <input type="hidden" name="objetivos" value={JSON.stringify(formData.objetivos)} />
+
             <div className="space-y-5 pt-4">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Qual é o principal resultado que você gostaria de alcançar? *</label>
+                <label htmlFor="resultadoDesejado" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Qual é o principal resultado que você gostaria de alcançar? *</label>
                 <textarea
+                  id="resultadoDesejado"
+                  name="resultadoDesejado"
                   rows={3}
                   required
                   value={formData.resultadoDesejado}
@@ -459,8 +489,10 @@ export default function DiagnosticoForm() {
 
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Em quanto tempo pretende começar?</label>
+                  <label htmlFor="prazoInicio" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Em quanto tempo pretende começar?</label>
                   <select
+                    id="prazoInicio"
+                    name="prazoInicio"
                     value={formData.prazoInicio}
                     onChange={(e) => setFormData({ ...formData, prazoInicio: e.target.value })}
                     className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -473,8 +505,10 @@ export default function DiagnosticoForm() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Como avalia hoje a presença digital da empresa?</label>
+                  <label htmlFor="avaliacaoAtual" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Como avalia hoje a presença digital da empresa?</label>
                   <select
+                    id="avaliacaoAtual"
+                    name="avaliacaoAtual"
                     value={formData.avaliacaoAtual}
                     onChange={(e) => setFormData({ ...formData, avaliacaoAtual: e.target.value })}
                     className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -501,8 +535,10 @@ export default function DiagnosticoForm() {
 
             <div className="grid sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Já investe em SEO?</label>
+                <label htmlFor="investeSeo" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Já investe em SEO?</label>
                 <select
+                  id="investeSeo"
+                  name="investeSeo"
                   value={formData.investeSeo}
                   onChange={(e) => setFormData({ ...formData, investeSeo: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -513,8 +549,10 @@ export default function DiagnosticoForm() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Já investe em Google Ads / Tráfego Pago?</label>
+                <label htmlFor="investeAds" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Já investe em Google Ads / Tráfego Pago?</label>
                 <select
+                  id="investeAds"
+                  name="investeAds"
                   value={formData.investeAds}
                   onChange={(e) => setFormData({ ...formData, investeAds: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -524,8 +562,10 @@ export default function DiagnosticoForm() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Possui agência ou profissional de marketing?</label>
+                <label htmlFor="equipeMarketing" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Possui agência ou profissional de marketing?</label>
                 <select
+                  id="equipeMarketing"
+                  name="equipeMarketing"
                   value={formData.equipeMarketing}
                   onChange={(e) => setFormData({ ...formData, equipeMarketing: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -536,8 +576,10 @@ export default function DiagnosticoForm() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Já verificou como sua empresa aparece em IAs?</label>
+                <label htmlFor="conheceIa" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Já verificou como sua empresa aparece em IAs?</label>
                 <select
+                  id="conheceIa"
+                  name="conheceIa"
                   value={formData.conheceIa}
                   onChange={(e) => setFormData({ ...formData, conheceIa: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -550,8 +592,10 @@ export default function DiagnosticoForm() {
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Quais produtos ou serviços são prioridade? *</label>
+                <label htmlFor="produtosPrioridade" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Quais produtos ou serviços são prioridade? *</label>
                 <textarea
+                  id="produtosPrioridade"
+                  name="produtosPrioridade"
                   rows={2}
                   required
                   value={formData.produtosPrioridade}
@@ -562,8 +606,10 @@ export default function DiagnosticoForm() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Quais concorrentes aparecem com mais força nas buscas?</label>
+                <label htmlFor="concorrentes" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Quais concorrentes aparecem com mais força nas buscas?</label>
                 <textarea
+                  id="concorrentes"
+                  name="concorrentes"
                   rows={2}
                   value={formData.concorrentes}
                   onChange={(e) => setFormData({ ...formData, concorrentes: e.target.value })}
@@ -572,8 +618,10 @@ export default function DiagnosticoForm() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Para quais termos ou perguntas gostaria de ser encontrado?</label>
+                <label htmlFor="termosBusca" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Para quais termos ou perguntas gostaria de ser encontrado?</label>
                 <textarea
+                  id="termosBusca"
+                  name="termosBusca"
                   rows={2}
                   value={formData.termosBusca}
                   onChange={(e) => setFormData({ ...formData, termosBusca: e.target.value })}
@@ -596,8 +644,10 @@ export default function DiagnosticoForm() {
 
             <div className="grid sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Faixa de Investimento Mensal Pretendida</label>
+                <label htmlFor="faixaInvestimento" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Faixa de Investimento Mensal Pretendida</label>
                 <select
+                  id="faixaInvestimento"
+                  name="faixaInvestimento"
                   value={formData.faixaInvestimento}
                   onChange={(e) => setFormData({ ...formData, faixaInvestimento: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
@@ -609,9 +659,11 @@ export default function DiagnosticoForm() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Como conheceu a G Hanks?</label>
+                <label htmlFor="comoConheceu" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Como conheceu a G Hanks?</label>
                 <select
-                  value={formData.conheceIa}
+                  id="comoConheceu"
+                  name="comoConheceu"
+                  value={formData.comoConheceu}
                   onChange={(e) => setFormData({ ...formData, comoConheceu: e.target.value })}
                   className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-ghanks-blue text-ghanks-gray"
                 >
@@ -622,8 +674,10 @@ export default function DiagnosticoForm() {
                 </select>
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Existe alguma urgência ou contexto importante?</label>
+                <label htmlFor="urgencia" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Existe alguma urgência ou contexto importante?</label>
                 <textarea
+                  id="urgencia"
+                  name="urgencia"
                   rows={2}
                   value={formData.urgencia}
                   onChange={(e) => setFormData({ ...formData, urgencia: e.target.value })}
@@ -638,6 +692,8 @@ export default function DiagnosticoForm() {
               <label className="flex items-start gap-3 cursor-pointer">
                 <input
                   type="checkbox"
+                  id="concordouPrivacidade"
+                  name="concordouPrivacidade"
                   required
                   checked={formData.concordouPrivacidade}
                   onChange={(e) => setFormData({ ...formData, concordouPrivacidade: e.target.checked })}
