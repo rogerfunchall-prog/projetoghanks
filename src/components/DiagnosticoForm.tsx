@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const SEGMENTOS_OPCOES = [
   "Indústria / Manufatura",
@@ -33,6 +33,7 @@ export default function DiagnosticoForm() {
   const [enviando, setEnviando] = useState(false);
   const [sucesso, setSucesso] = useState(false);
   const [erro, setErro] = useState("");
+  const formRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
     // Honeypot
@@ -132,14 +133,18 @@ export default function DiagnosticoForm() {
   const avancar = () => {
     if (validarEtapaAtual()) {
       setEtapa((prev) => Math.min(prev + 1, totalEtapas));
-      window.scrollTo({ top: 300, behavior: "smooth" });
+      if (formRef.current) {
+        formRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
   };
 
   const voltar = () => {
     setErro("");
     setEtapa((prev) => Math.max(prev - 1, 1));
-    window.scrollTo({ top: 300, behavior: "smooth" });
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -173,7 +178,7 @@ export default function DiagnosticoForm() {
 
   if (sucesso) {
     return (
-      <div className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-sm text-center max-w-2xl mx-auto">
+      <div ref={formRef} className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-sm text-center max-w-2xl mx-auto scroll-mt-32">
         <div className="w-16 h-16 bg-green-100 text-ghanks-green rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
           ✓
         </div>
@@ -194,29 +199,31 @@ export default function DiagnosticoForm() {
     );
   }
 
+  const progressoPercent = Math.round((etapa / totalEtapas) * 100);
+
   return (
-    <div className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-sm max-w-3xl mx-auto">
-      {/* Indicador de progresso corrigido (sem concatenação) */}
+    <div ref={formRef} className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-sm max-w-3xl mx-auto scroll-mt-32">
+      {/* Indicador de progresso limpo e sem concatenação */}
       <div className="mb-8 pb-6 border-b border-gray-100">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs font-bold uppercase tracking-wider text-ghanks-blue mb-2 gap-1">
-          <span>Etapa {etapa} de {totalEtapas}</span>
-          <span className="text-gray-500">{Math.round((etapa / totalEtapas) * 100)}% concluído</span>
+          <span aria-live="polite">Etapa {etapa} de {totalEtapas}</span>
+          <span className="text-gray-500">{progressoPercent}% concluído</span>
         </div>
-        <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+        <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden" role="progressbar" aria-valuenow={progressoPercent} aria-valuemin={0} aria-valuemax={100}>
           <div
             className="bg-ghanks-blue h-full transition-all duration-300 rounded-full"
-            style={{ width: `${(etapa / totalEtapas) * 100}%` }}
+            style={{ width: `${progressoPercent}%` }}
           />
         </div>
       </div>
 
       {erro && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-2xl text-red-700 text-sm font-medium">
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-2xl text-red-700 text-sm font-medium" role="alert">
           {erro}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} method="POST" action="/api/diagnostico" className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
         {/* Honeypot invisível */}
         <div className="hidden" aria-hidden="true">
           <input
@@ -233,7 +240,7 @@ export default function DiagnosticoForm() {
         {etapa === 1 && (
           <div className="space-y-6 animate-fade-in">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-ghanks-blue">Etapa 1 de 5</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-ghanks-blue">Etapa 1 de 5 — 20%</span>
               <h3 className="text-xl md:text-2xl font-bold text-ghanks-gray mt-1">Vamos começar pela sua empresa</h3>
               <p className="text-xs md:text-sm text-gray-500 mt-1">Dados essenciais para que nossa equipe identifique seu negócio.</p>
             </div>
@@ -331,7 +338,7 @@ export default function DiagnosticoForm() {
         {etapa === 2 && (
           <div className="space-y-6 animate-fade-in">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-ghanks-blue">Etapa 2 de 5</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-ghanks-blue">Etapa 2 de 5 — 40%</span>
               <h3 className="text-xl md:text-2xl font-bold text-ghanks-gray mt-1">Conheça o contexto do seu negócio</h3>
               <p className="text-xs md:text-sm text-gray-500 mt-1">Informações sobre praça, atuação e operação.</p>
             </div>
@@ -441,7 +448,7 @@ export default function DiagnosticoForm() {
         {etapa === 3 && (
           <div className="space-y-6 animate-fade-in">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-ghanks-blue">Etapa 3 de 5</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-ghanks-blue">Etapa 3 de 5 — 60%</span>
               <h3 className="text-xl md:text-2xl font-bold text-ghanks-gray mt-1">O que você deseja melhorar?</h3>
               <p className="text-xs md:text-sm text-gray-500 mt-1">Selecione até 3 objetivos principais de crescimento.</p>
             </div>
@@ -528,7 +535,7 @@ export default function DiagnosticoForm() {
         {etapa === 4 && (
           <div className="space-y-6 animate-fade-in">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-ghanks-blue">Etapa 4 de 5</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-ghanks-blue">Etapa 4 de 5 — 80%</span>
               <h3 className="text-xl md:text-2xl font-bold text-ghanks-gray mt-1">Entenda onde estão as oportunidades</h3>
               <p className="text-xs md:text-sm text-gray-500 mt-1">Cenário atual de marketing, concorrentes e termos de busca.</p>
             </div>
@@ -637,7 +644,7 @@ export default function DiagnosticoForm() {
         {etapa === 5 && (
           <div className="space-y-6 animate-fade-in">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-ghanks-blue">Etapa 5 de 5</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-ghanks-blue">Etapa 5 de 5 — 100%</span>
               <h3 className="text-xl md:text-2xl font-bold text-ghanks-gray mt-1">Vamos definir o próximo passo</h3>
               <p className="text-xs md:text-sm text-gray-500 mt-1">Últimos detalhes e autorização de contato para estruturarmos o diagnóstico.</p>
             </div>
@@ -707,7 +714,7 @@ export default function DiagnosticoForm() {
           </div>
         )}
 
-        {/* Navegação entre etapas */}
+        {/* Navegação entre etapas (botões com type="button" exceto o final) */}
         <div className="flex items-center justify-between pt-6 border-t border-gray-100">
           {etapa > 1 ? (
             <button
