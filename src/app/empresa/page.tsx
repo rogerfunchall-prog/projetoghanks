@@ -13,13 +13,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.verce
 const WHATSAPP_NUMBER = "5511950809873";
 
 export const metadata: Metadata = {
-  title: "Empresa — Quem é a G Hanks, Fundadores e Missão",
+  title: "Empresa G Hanks | Consultoria de Crescimento Digital",
   description:
-    "Conheça a G Hanks, marca da HAPP APPS Tecnologia especializada em growth hacking e SEO orgânico. Saiba quem são os fundadores, a missão e a visão da empresa.",
+    "Conheça a G Hanks, consultoria de crescimento digital especializada em SEO orgânico, posicionamento, presença local e marketing B2B.",
   openGraph: {
-    title: "Empresa G Hanks — Growth Hacking e SEO Orgânico",
+    title: "G Hanks — Estratégia, Presença e Crescimento Digital",
     description:
-      "Conheça a equipe e os fundadores que trabalham para colocar sua empresa na primeira página do Google.",
+      "Conheça o método e a visão da G Hanks para construir presença digital com clareza, relevância e consistência.",
     type: "website",
     url: `${siteUrl}/empresa`,
   },
@@ -28,22 +28,97 @@ export const metadata: Metadata = {
   },
 };
 
-/* Faixa em movimento na base do hero */
-const KEYWORDS = [
-  "GROWTH HACKING",
+const KEYWORDS_MARQUEE = [
   "SEO ORGÂNICO",
+  "MARKETING DIGITAL B2B",
+  "POSICIONAMENTO LOCAL",
   "MÉTODO H.A.N.K.S.",
-  "EXCLUSIVIDADE POR CIDADE",
-  "PRIMEIRA PÁGINA DO GOOGLE",
-  "AUTORIDADE DE DOMÍNIO",
-  "SEO LOCAL",
+  "INTELIGÊNCIA DE MERCADO",
+  "CRESCIMENTO SUSTENTÁVEL",
 ];
 
-const NUMEROS = [
-  { value: 1200, suffix: "+", label: "Palavras-chave\nposicionadas", cor: "text-ghanks-blue" },
-  { value: 350, suffix: "+", label: "Cidades\natendidas", cor: "text-ghanks-green" },
-  { value: 25, suffix: "+", label: "Anos de tecnologia\ndo fundador", cor: "text-ghanks-yellow" },
-  { value: 2, suffix: "", label: "Escritórios:\nSão Paulo e Limeira", cor: "text-ghanks-red" },
+const METODO_ETAPAS = [
+  {
+    num: "01",
+    titulo: "Leitura do cenário",
+    desc: "Entendemos o negócio, o mercado, a região e os objetivos comerciais antes de propor qualquer ação.",
+  },
+  {
+    num: "02",
+    titulo: "Definição de posicionamento",
+    desc: "Identificamos oportunidades de relevância, intenção de busca, autoridade e diferenciação.",
+  },
+  {
+    num: "03",
+    titulo: "Execução orientada",
+    desc: "Transformamos a estratégia em conteúdo, otimização, campanhas, presença local e ativos digitais.",
+  },
+  {
+    num: "04",
+    titulo: "Evolução contínua",
+    desc: "Acompanhamos sinais, aprendizados e oportunidades para ajustar o caminho com consistência.",
+  },
+];
+
+const CAPACIDADES = [
+  {
+    area: "SEO Orgânico",
+    desc: "Estratégia de posicionamento, conteúdo e relevância para buscas orgânicas.",
+    href: "/seo-organico",
+  },
+  {
+    area: "Presença Local",
+    desc: "Estruturação de sinais digitais para empresas que atuam em cidades e regiões específicas.",
+    href: "/servicos",
+  },
+  {
+    area: "Tráfego e Performance",
+    desc: "Campanhas e otimização orientadas a objetivos, com dados e contexto comercial.",
+    href: "/trafego-pago",
+  },
+  {
+    area: "Marketing Digital B2B",
+    desc: "Estratégias para empresas que precisam gerar autoridade, demanda e oportunidades.",
+    href: "/servicos",
+  },
+  {
+    area: "Gestão de Redes Sociais",
+    desc: "Conteúdo e presença social alinhados ao posicionamento da marca.",
+    href: "/gestao-redes-sociais",
+  },
+  {
+    area: "Treinamentos",
+    desc: "Desenvolvimento de visão, processos e capacidade interna quando aplicável.",
+    href: "/treinamentos-presenciais",
+  },
+];
+
+const DIFERENCIAIS = [
+  "Visão estratégica antes da execução",
+  "Integração entre SEO, conteúdo, mídia e posicionamento",
+  "Compreensão de contexto local e regional",
+  "Linguagem de negócio, não apenas de ferramenta",
+  "Acompanhamento e evolução conforme o cenário",
+  "Foco em presença digital sustentável",
+];
+
+const PRINCIPIOS = [
+  {
+    titulo: "Clareza",
+    desc: "Decisões mais bem orientadas pelo contexto real de cada negócio.",
+  },
+  {
+    titulo: "Relevância",
+    desc: "Presença alinhada à intenção de busca e às necessidades do público.",
+  },
+  {
+    titulo: "Consistência",
+    desc: "Evolução construída ao longo do tempo, gerando ativos perenes.",
+  },
+  {
+    titulo: "Autoridade",
+    desc: "Fortalecimento da percepção digital e da preferência pela marca.",
+  },
 ];
 
 const FUNDADORES = [
@@ -76,24 +151,6 @@ const ESCRITORIOS = [
   },
 ];
 
-const LINKS_INTERNOS = [
-  {
-    href: "/metodo",
-    titulo: "Conheça o Método H.A.N.K.S.",
-    descricao: "Como aplicamos growth hacking ao SEO orgânico",
-  },
-  {
-    href: "/portfolio",
-    titulo: "Veja nossos cases de sucesso",
-    descricao: "Resultados reais em diferentes nichos",
-  },
-  {
-    href: "/seo-organico",
-    titulo: "Leia o guia completo de SEO orgânico",
-    descricao: "Tudo sobre posicionamento no Google",
-  },
-];
-
 const aboutJsonLd = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
@@ -102,7 +159,7 @@ const aboutJsonLd = {
     name: "G Hanks",
     url: siteUrl,
     logo: `${siteUrl}/logo-ghanks.png`,
-    description: "Agência de growth hacking e SEO orgânico. Colocamos sua empresa na primeira página do Google sem anúncios pagos.",
+    description: "Consultoria de crescimento digital especializada em SEO orgânico, posicionamento e marketing B2B.",
     foundingDate: "2024",
     parentOrganization: {
       "@type": "Organization",
@@ -113,223 +170,302 @@ const aboutJsonLd = {
         "@type": "Person",
         name: "Roger Funchal",
         jobTitle: "CEO e Founder",
-        description: "Especialista em IA com 25+ anos de tecnologia, contratado pelo Google para o lançamento do Street View no Brasil. CEO da AgroBusca.",
       },
       {
         "@type": "Person",
         name: "Matheus Rangel",
         jobTitle: "Head de Desenvolvimento e Founder",
-        description: "Especialista em Inteligência Artificial e liderança de times de desenvolvimento.",
-      },
-    ],
-    location: [
-      {
-        "@type": "PostalAddress",
-        name: "G Hanks — São Paulo (Matriz)",
-        streetAddress: "Av. Brig. Faria Lima, 1811 - Conj. 1120 - Jardins",
-        addressLocality: "São Paulo",
-        addressRegion: "SP",
-        postalCode: "01452-001",
-        addressCountry: "BR",
-      },
-      {
-        "@type": "PostalAddress",
-        name: "G Hanks — Limeira",
-        streetAddress: "R. Sen. Vergueiro, 995 - Sl 51|B - Centro",
-        addressLocality: "Limeira",
-        addressRegion: "SP",
-        postalCode: "13480-001",
-        addressCountry: "BR",
       },
     ],
   },
 };
 
-function ArrowIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H9m8 0v8" />
-    </svg>
-  );
-}
-
 export default function EmpresaPage() {
   return (
     <PageShell>
       {/* ==================================================================
-          Hero com o mesmo padrão estrutural da página Treinamentos Presenciais
+          Hero Institucional — inspirado no editorial Mexoq about.html
           ================================================================== */}
-      <section className="relative bg-ghanks-ink overflow-hidden -mt-24 pt-32 md:pt-40 pb-20 md:pb-28">
+      <section className="relative bg-ghanks-ink overflow-hidden -mt-24 pt-32 md:pt-42 pb-20 md:pb-28">
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <Image
             src="/ghanks-empresa-banner-sem-pessoas.png"
-            alt="Ambiente real do escritório da G Hanks, sem pessoas, com logo da marca, estações de trabalho e iluminação colorida."
+            alt="Escritório corporativo da G Hanks com estações de trabalho e iluminação sofisticada."
             fill
             priority
             quality={85}
             className="object-cover object-center"
           />
-          {/* Gradiente escuro para garantir legibilidade à esquerda */}
           <div className="absolute inset-0 bg-gradient-to-r from-ghanks-ink via-ghanks-ink/90 to-ghanks-ink/40 md:to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Empresa" }]} tone="dark" />
 
-          <div className="grid lg:grid-cols-12 gap-8 items-center">
-            <Reveal className="lg:col-span-8">
-              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-white/90 mb-6">
-                <span className="w-2 h-2 rounded-full bg-ghanks-green" aria-hidden="true" />
-                QUEM SOMOS
-              </span>
-              <h1 className="page-title text-white">
-                A G Hanks nasceu para tirar empresas do <span className="text-ghanks-blue">anonimato</span> no <span className="text-ghanks-yellow">Google</span>
-              </h1>
-              <p className="mt-6 lead text-white/80 max-w-2xl">
-                A G Hanks é uma marca da HAPP APPS Tecnologia, nascida da percepção de que a maioria das pequenas e médias empresas brasileiras vive na invisibilidade digital. Elas dependem de anúncios pagos porque não sabem — ou não têm acesso a quem saiba — como aparecer organicamente no Google.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/diagnostico-gratuito"
-                  className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-7 py-4 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25"
-                >
-                  Solicitar Diagnóstico Gratuito
-                  <ArrowIcon className="w-4 h-4" />
-                </Link>
-                <a
-                  href="/metodo"
-                  className="inline-flex items-center gap-2 bg-white/10 text-white px-7 py-4 rounded-full font-semibold hover:bg-white/20 transition-all border border-white/20 backdrop-blur-sm"
-                >
-                  Conhecer o Método H.A.N.K.S.
-                </a>
-              </div>
-            </Reveal>
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-white/90 mb-6">
+              <span className="w-2 h-2 rounded-full bg-ghanks-blue" aria-hidden="true" />
+              SOBRE A G HANKS
+            </span>
 
-            <Reveal delay={150} className="lg:col-span-4 hidden lg:block">
-              <div className="bg-ghanks-ink/80 backdrop-blur-md rounded-3xl p-8 border border-white/15 text-white shadow-xl">
-                <h3 className="text-lg font-bold mb-3">Tecnologia aplicada ao crescimento</h3>
-                <p className="text-sm text-white/80 leading-relaxed">
-                  Estratégia, IA e SEO orgânico combinados para transformar visibilidade em oportunidades reais de negócio.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
+            <h1 className="display-title text-white">
+              Estratégia digital para empresas que querem ser <span className="text-gradient-brand">encontradas, escolhidas e lembradas</span>.
+            </h1>
 
-        {/* Faixa de palavras-chave em movimento na base do hero */}
-        <div className="relative z-10 mt-16 md:mt-24 border-t border-white/10 py-5">
-          <Marquee items={KEYWORDS} tone="dark" />
-        </div>
-      </section>
+            <p className="mt-6 lead text-white/85 max-w-2xl">
+              A G Hanks combina SEO orgânico, inteligência de mercado, conteúdo, mídia e visão comercial para construir presença digital com clareza, método e consistência.
+            </p>
 
-      {/* ==================================================================
-          Nossa história — foto do time à esquerda e blocos de conteúdo
-          em mosaico à direita
-          ================================================================== */}
-      <section className="bg-ghanks-light py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            variant="split"
-            eyebrow="Nossa história"
-            title="Um modelo onde cada cliente é o único no seu nicho e na sua região"
-            className="mb-12 md:mb-16"
-          />
-
-          <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
-            {/* Foto do time + legenda */}
-            <Reveal className="lg:col-span-5">
-              <div className="h-full flex flex-col gap-4">
-                <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1">
-                  <Image
-                    src="/equipe-ghanks.jpg"
-                    alt="Equipe G Hanks trabalhando no escritório com a identidade visual da marca na parede"
-                    width={1200}
-                    height={900}
-                    className="w-full h-full object-cover"
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                  />
-                </div>
-                <div className="bg-white rounded-2xl px-6 py-5 border border-gray-100">
-                  <p className="text-sm text-gray-500 leading-relaxed">
-                    Nosso time em São Paulo, trabalhando todos os dias para colocar seu negócio no topo do Google
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-
-            {/* Mosaico de conteúdo */}
-            <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6 lg:gap-8">
-              <Reveal delay={100} className="sm:col-span-2">
-                <div className="h-full bg-white rounded-3xl p-7 md:p-9 border border-gray-100 shadow-sm">
-                  <span className="font-display text-5xl leading-none text-ghanks-blue/30" aria-hidden="true">
-                    &ldquo;
-                  </span>
-                  <p className="mt-2 text-lg md:text-xl text-ghanks-gray leading-relaxed">
-                    O Método H.A.N.K.S. foi criado para resolver esse problema com uma abordagem diferente: growth hacking aplicado ao SEO orgânico, com exclusividade real por cidade e palavra-chave. Em vez de competir no modelo de agência tradicional, criamos um modelo onde cada cliente é o único no seu nicho e região.
-                  </p>
-                </div>
-              </Reveal>
-
-              <Reveal delay={200}>
-                <div className="h-full bg-ghanks-blue rounded-3xl p-7 md:p-8 text-white">
-                  <h3 className="block-title mb-3">Visão</h3>
-                  <p className="text-white/85 leading-relaxed">
-                    Ser reconhecida como a principal referência em growth hacking e SEO orgânico do Brasil, levando resultado real e acessível para negócios de todos os portes, em todas as cidades do país.
-                  </p>
-                </div>
-              </Reveal>
-
-              <Reveal delay={300}>
-                <div className="h-full bg-ghanks-ink rounded-3xl p-7 md:p-8 text-white flex flex-col justify-between gap-6">
-                  <p className="text-white/75 leading-relaxed">
-                    Hoje atendemos empresas de diversos nichos em todo o Brasil, com escritórios em São Paulo e Limeira, e uma equipe que combina décadas de experiência em tecnologia, IA e marketing digital.
-                  </p>
-                  <a
-                    href="/metodo"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-ghanks-yellow transition-colors"
-                  >
-                    Método H.A.N.K.S.
-                    <ArrowIcon className="w-4 h-4" />
-                  </a>
-                </div>
-              </Reveal>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="/metodo"
+                className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-7 py-4 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25 text-base"
+              >
+                Conhecer o Método H.A.N.K.S.
+              </Link>
+              <Link
+                href="/diagnostico-gratuito"
+                className="inline-flex items-center gap-2 bg-white/10 text-white px-7 py-4 rounded-full font-semibold hover:bg-white/20 transition-all border border-white/20 backdrop-blur-sm text-base"
+              >
+                Solicitar Diagnóstico Gratuito
+              </Link>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* ==================================================================
-          Números da operação — contadores grandes
-          ================================================================== */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-12 md:mb-16">
-            <span className="text-sm md:text-base font-semibold uppercase tracking-[0.14em] text-ghanks-gray">
-              Operação real — números da G Hanks
-            </span>
-          </Reveal>
-
-          <ul className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
-            {NUMEROS.map((item, i) => (
-              <Reveal as="li" key={item.label} delay={i * 100} className="text-center">
-                <p className={`font-display font-bold leading-none text-[clamp(2.75rem,1.5rem+5vw,5rem)] ${item.cor}`}>
-                  <Counter value={item.value} suffix={item.suffix} />
-                </p>
-                <p className="mt-4 text-base md:text-lg text-ghanks-gray leading-snug whitespace-pre-line">
-                  {item.label}
-                </p>
-              </Reveal>
-            ))}
-          </ul>
+        {/* Faixa editorial de posicionamento */}
+        <div className="relative z-10 mt-16 md:mt-24 border-t border-white/10 py-5">
+          <Marquee items={KEYWORDS_MARQUEE} tone="dark" />
         </div>
       </section>
 
       {/* ==================================================================
-          Fundadores — painéis largos com texto à esquerda e foto à direita
+          Seção “Quem somos” (Composição assimétrica)
           ================================================================== */}
-      <section className="bg-ghanks-light py-16 md:py-24">
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <Reveal className="lg:col-span-6 space-y-6">
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-ghanks-blue">
+                QUEM SOMOS
+              </span>
+              <h2 className="section-title text-ghanks-gray">
+                Construímos clareza para transformar presença digital em crescimento.
+              </h2>
+              <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+                A G Hanks é uma consultoria de crescimento digital que atua na interseção entre estratégia, tecnologia, conteúdo e performance. Nosso trabalho começa entendendo o negócio, o mercado e a intenção de busca do público para construir caminhos de posicionamento mais consistentes.
+              </p>
+              <p className="text-gray-600 leading-relaxed text-base">
+                Não trabalhamos com fórmulas genéricas. Desenvolvemos diagnósticos, planos e execuções orientados ao contexto de cada empresa, com foco em relevância, autoridade e evolução mensurável.
+              </p>
+              <div className="pt-4">
+                <Link
+                  href="/contato"
+                  className="inline-flex items-center gap-2 bg-ghanks-ink text-white px-7 py-3.5 rounded-full font-semibold hover:bg-gray-800 transition-all text-sm shadow-md"
+                >
+                  Falar com a G Hanks &rarr;
+                </Link>
+              </div>
+            </Reveal>
+
+            <Reveal delay={150} className="lg:col-span-6">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200 aspect-[16/10]">
+                <Image
+                  src="/equipe-ghanks.jpg"
+                  alt="Equipe G Hanks trabalhando no escritório com foco em estratégia e SEO orgânico."
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center"
+                  loading="lazy"
+                />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================================
+          Seção “Como trabalhamos” (Nosso Método em 4 etapas)
+          ================================================================== */}
+      <section className="py-20 md:py-28 bg-ghanks-light border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-ghanks-blue">
+              NOSSO MÉTODO
+            </span>
+            <h2 className="section-title mt-3 text-ghanks-gray">
+              Diagnóstico antes da execução. Clareza antes da escala.
+            </h2>
+          </Reveal>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {METODO_ETAPAS.map((etp, i) => (
+              <Reveal key={etp.num} delay={i * 80}>
+                <div className="bg-white rounded-3xl p-7 border border-gray-200 h-full flex flex-col justify-between shadow-sm">
+                  <div>
+                    <span className="font-display text-3xl font-bold text-ghanks-blue block mb-4">
+                      {etp.num}
+                    </span>
+                    <h3 className="block-title text-ghanks-gray text-lg mb-2">{etp.titulo}</h3>
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{etp.desc}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================================
+          Seção de Capacidades e Soluções
+          ================================================================== */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-ghanks-blue">
+              Áreas de Atuação
+            </span>
+            <h2 className="section-title mt-3 text-ghanks-gray">
+              O que a G Hanks coloca em movimento
+            </h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {CAPACIDADES.map((cap, i) => (
+              <Reveal key={cap.area} delay={i * 60}>
+                <div className="bg-ghanks-light rounded-3xl p-7 border border-gray-200 shadow-sm h-full flex flex-col justify-between">
+                  <div>
+                    <span className="text-xs font-bold text-ghanks-blue uppercase tracking-widest block mb-2">
+                      0{i + 1}
+                    </span>
+                    <h3 className="block-title text-ghanks-gray text-lg mb-2">{cap.area}</h3>
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6">{cap.desc}</p>
+                  </div>
+                  <div>
+                    <Link
+                      href={cap.href}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-ghanks-blue hover:underline"
+                    >
+                      Explorar frente &rarr;
+                    </Link>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================================
+          Seção de Diferenciais
+          ================================================================== */}
+      <section className="py-20 md:py-28 bg-ghanks-light border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <Reveal className="lg:col-span-5 space-y-6">
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-ghanks-blue">
+                Diferenciais
+              </span>
+              <h2 className="section-title text-ghanks-gray">
+                Uma visão mais ampla do crescimento digital.
+              </h2>
+              <p className="text-gray-600 leading-relaxed text-base">
+                Nossa atuação é construída sobre premissas sólidas de governança, estratégia e entrega B2B de alto padrão.
+              </p>
+            </Reveal>
+
+            <Reveal delay={150} className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+              {DIFERENCIAIS.map((dif, i) => (
+                <div key={i} className="bg-white rounded-2xl p-5 border border-gray-200 shadow-xs flex items-center gap-3">
+                  <span className="w-2.5 h-2.5 rounded-full bg-ghanks-green shrink-0" />
+                  <span className="text-sm font-medium text-ghanks-gray">{dif}</span>
+                </div>
+              ))}
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================================
+          Prova de Método (Visual Section)
+          ================================================================== */}
+      <section className="py-20 md:py-28 bg-ghanks-ink text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <Reveal className="lg:col-span-6 space-y-6">
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-ghanks-yellow">
+                Inteligência Comercial
+              </span>
+              <h2 className="section-title text-white">
+                O crescimento começa quando a empresa entende como está sendo encontrada.
+              </h2>
+              <p className="text-white/80 leading-relaxed text-base md:text-lg">
+                Por isso, conectamos análise, posicionamento e execução em uma jornada que permite tomar decisões com mais clareza e menos improviso.
+              </p>
+              <div className="pt-4">
+                <Link
+                  href="/diagnostico-gratuito"
+                  className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-7 py-4 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25 text-base"
+                >
+                  Solicitar Diagnóstico Gratuito
+                </Link>
+              </div>
+            </Reveal>
+
+            <Reveal delay={150} className="lg:col-span-6">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 aspect-[16/10]">
+                <Image
+                  src="/banner-empresa.png"
+                  alt="Escritório executivo e ambiente de reuniões estratégicas da G Hanks."
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center"
+                  loading="lazy"
+                />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================================
+          Princípios Institucionais (Indicadores)
+          ================================================================== */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-ghanks-blue">
+              Pilares de Atuação
+            </span>
+            <h2 className="section-title mt-3 text-ghanks-gray">
+              Nossos princípios fundamentais
+            </h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {PRINCIPIOS.map((prin, i) => (
+              <Reveal key={prin.titulo} delay={i * 80}>
+                <div className="bg-ghanks-light rounded-3xl p-7 border border-gray-200 h-full flex flex-col justify-between shadow-sm">
+                  <div>
+                    <span className="font-display text-3xl font-bold text-ghanks-blue block mb-4">
+                      0{i + 1}
+                    </span>
+                    <h3 className="block-title text-ghanks-gray text-lg mb-2">{prin.titulo}</h3>
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{prin.desc}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================================
+          Fundadores & Escritórios
+          ================================================================== */}
+      <section className="bg-ghanks-light py-20 md:py-28 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 mb-20">
             <div className="lg:col-span-4">
               <div className="lg:sticky lg:top-32">
                 <Reveal>
@@ -381,98 +517,70 @@ export default function EmpresaPage() {
               ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ==================================================================
-          Faixa de destaque — missão da empresa
-          ================================================================== */}
-      <section className="relative bg-ghanks-ink overflow-hidden py-20 md:py-28">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute -bottom-40 left-1/3 w-[34rem] h-[34rem] rounded-full bg-ghanks-green/15 blur-[150px]" />
-        </div>
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Reveal>
-            <h2 className="inline-flex items-center gap-2 bg-white/5 border border-white/15 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-white/70">
-              Missão
-            </h2>
-          </Reveal>
-          <Reveal delay={100}>
-            <p className="mt-7 font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-snug tracking-tight">
-              Tirar empresas brasileiras da invisibilidade digital, colocando-as na primeira página do Google de forma orgânica e sustentável — sem depender de anúncios pagos, com exclusividade por cidade e palavra-chave.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+          {/* Escritórios */}
+          <div className="pt-12 border-t border-gray-200">
+            <SectionHeading
+              variant="split"
+              eyebrow="Presença Física"
+              title="Onde a G Hanks está"
+              className="mb-10 md:mb-14"
+            />
 
-      {/* ==================================================================
-          Escritórios — lista de linhas largas
-          ================================================================== */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            variant="split"
-            eyebrow="Escritórios"
-            title="Onde a G Hanks está"
-            className="mb-10 md:mb-14"
-          />
-
-          <ul className="border-t border-gray-200">
-            {ESCRITORIOS.map((esc, i) => (
-              <Reveal as="li" key={esc.cidade} delay={i * 100}>
-                <div className="group border-b border-gray-200 py-7 md:py-9 flex items-center justify-between gap-6 transition-colors hover:bg-ghanks-light">
-                  <div className="flex items-start gap-5">
-                    <span className="inline-flex items-center justify-center w-12 h-12 shrink-0 bg-blue-50 rounded-2xl">
-                      <svg className="w-6 h-6 text-ghanks-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <ul className="grid sm:grid-cols-2 gap-6">
+              {ESCRITORIOS.map((esc, i) => (
+                <Reveal as="li" key={esc.cidade} delay={i * 100}>
+                  <div className="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm h-full flex items-start gap-5">
+                    <span className="w-12 h-12 shrink-0 bg-blue-50 text-ghanks-blue rounded-2xl flex items-center justify-center">
+                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     </span>
                     <div>
                       <h3 className="block-title text-ghanks-gray">{esc.cidade}</h3>
-                      <p className="mt-1 text-sm md:text-base text-gray-500">{esc.endereco}</p>
-                      <p className="text-sm md:text-base text-gray-400">{esc.cep}</p>
+                      <p className="mt-1 text-sm text-gray-600">{esc.endereco}</p>
+                      <p className="text-sm text-gray-400">{esc.cep}</p>
                     </div>
                   </div>
-                </div>
-              </Reveal>
-            ))}
-          </ul>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
       {/* ==================================================================
-          Continue explorando — links internos em linhas
+          Faixa Final de Posicionamento & CTA Final
           ================================================================== */}
-      <section className="bg-ghanks-light py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            variant="split"
-            eyebrow="Continue explorando"
-            title="Próximos passos dentro do site"
-            className="mb-10 md:mb-14"
-          />
+      <section className="bg-ghanks-ink py-20 md:py-28 text-white text-center relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-ghanks-blue/15 blur-[160px]" />
+        </div>
 
-          <ul className="grid gap-4 md:gap-5">
-            {LINKS_INTERNOS.map((link, i) => (
-              <Reveal as="li" key={link.href} delay={i * 100}>
-                <a
-                  href={link.href}
-                  className="group flex items-center justify-between gap-6 bg-white rounded-3xl border border-gray-100 px-6 md:px-8 py-6 md:py-7 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
-                >
-                  <div>
-                    <h3 className="block-title text-ghanks-gray group-hover:text-ghanks-blue transition-colors">
-                      {link.titulo}
-                    </h3>
-                    <p className="mt-1 text-sm md:text-base text-gray-500">{link.descricao}</p>
-                  </div>
-                  <span className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-2xl bg-ghanks-light text-ghanks-gray group-hover:bg-ghanks-blue group-hover:text-white transition-colors">
-                    <ArrowIcon className="w-5 h-5" />
-                  </span>
-                </a>
-              </Reveal>
-            ))}
-          </ul>
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
+          <Reveal>
+            <h2 className="section-title mb-6 text-white">
+              A próxima fase da sua presença digital começa com uma leitura mais inteligente do cenário.
+            </h2>
+            <p className="text-white/75 max-w-2xl mx-auto mb-8 leading-relaxed text-base md:text-lg">
+              Se a sua empresa precisa ser encontrada com mais clareza, fale com a G Hanks e descubra quais oportunidades podem existir no seu mercado.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/diagnostico-gratuito"
+                className="inline-flex items-center gap-2 bg-ghanks-blue text-white px-9 py-4 rounded-full font-bold hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/25 text-base"
+              >
+                Solicitar Diagnóstico Gratuito
+              </Link>
+              <Link
+                href="/servicos"
+                className="inline-flex items-center gap-2 bg-white/10 text-white px-9 py-4 rounded-full font-bold hover:bg-white/20 transition-all border border-white/25 backdrop-blur-sm text-base"
+              >
+                Conhecer nossas soluções
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
