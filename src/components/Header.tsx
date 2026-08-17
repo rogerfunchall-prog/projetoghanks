@@ -5,8 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 
-const WHATSAPP_NUMBER = "5511950809873";
-
 /* Páginas com hero escuro — o header começa transparente sobre elas */
 const DARK_HERO_ROUTES = ["/", "/empresa"];
 
@@ -135,10 +133,8 @@ export default function Header() {
 
           {/* CTA desktop */}
           <div className="hidden lg:flex items-center gap-4">
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito de SEO.`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/diagnostico-gratuito"
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:-translate-y-0.5 ${
                 transparent
                   ? "bg-white text-ghanks-gray hover:bg-white/90"
@@ -146,7 +142,7 @@ export default function Header() {
               }`}
             >
               Solicitar Diagnóstico Gratuito
-            </a>
+            </Link>
           </div>
 
           {/* Botão hamburger mobile */}
@@ -241,14 +237,13 @@ export default function Header() {
               Seja um Franqueado
             </Link>
 
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um diagnóstico gratuito de SEO.`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/diagnostico-gratuito"
+              onClick={() => setMenuOpen(false)}
               className="block w-full text-center bg-ghanks-blue text-white px-5 py-3 rounded-full text-sm font-semibold mt-3"
             >
               Solicitar Diagnóstico Gratuito
-            </a>
+            </Link>
           </div>
         </nav>
       )}
