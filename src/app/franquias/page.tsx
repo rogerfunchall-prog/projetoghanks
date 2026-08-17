@@ -126,15 +126,15 @@ export default function FranquiasPage() {
       <section className="relative bg-ghanks-ink overflow-hidden -mt-24 pt-32 md:pt-42 pb-20 md:pb-28">
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <Image
-            src="/banner-franquias.png"
-            alt="Mapa estilizado do Brasil com pontos de localização coloridos conectados por uma rede de expansão nacional."
+            src="/ghanks-franquias-banner-negociacao-corrigido.png"
+            alt="Dois executivos fechando negócio em escritório corporativo sofisticado, representando parceria e expansão empresarial da G Hanks."
             fill
             priority
             quality={85}
-            className="object-cover object-[70%_center] md:object-[right_center]"
+            className="object-cover object-[65%_center] md:object-[right_center]"
           />
-          {/* Gradiente escuro lateral para garantir legibilidade à esquerda */}
-          <div className="absolute inset-0 bg-gradient-to-r from-ghanks-ink via-ghanks-ink/90 to-ghanks-ink/40 md:to-transparent" />
+          {/* Gradiente escuro para garantir legibilidade à esquerda */}
+          <div className="absolute inset-0 bg-gradient-to-r from-ghanks-ink via-ghanks-ink/95 to-ghanks-ink/50 md:to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
