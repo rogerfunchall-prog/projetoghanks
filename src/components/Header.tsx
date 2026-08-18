@@ -5,17 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 
-/* Páginas com hero escuro — o header começa transparente sobre elas */
-const DARK_HERO_ROUTES = ["/", "/empresa"];
+const WHATSAPP_NUMBER = "5511950809873";
 
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [solucoesOpen, setSolucoesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  const overDarkHero = DARK_HERO_ROUTES.includes(pathname);
-  const transparent = overDarkHero && !scrolled && !menuOpen;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -24,17 +20,11 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const linkClass = transparent
-    ? "text-white/80 hover:text-white"
-    : "text-gray-600 hover:text-ghanks-blue";
+  const linkClass = "text-white/90 hover:text-white font-sans text-sm font-medium transition-colors";
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        transparent
-          ? "bg-transparent border-b border-transparent"
-          : "bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-[0_1px_20px_rgba(0,0,0,0.04)]"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black border-b border-white/10 shadow-[0_1px_20px_rgba(0,0,0,0.4)]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -43,15 +33,15 @@ export default function Header() {
           }`}
         >
           {/* Logo */}
-          <Logo variant={transparent ? "light" : "dark"} />
+          <Logo variant="light" />
 
           {/* Navegação desktop */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-6" aria-label="Menu principal">
-            <Link href="/" className={`text-sm font-medium transition-colors ${linkClass}`}>
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Menu principal">
+            <Link href="/" className={linkClass}>
               Home
             </Link>
 
-            <Link href="/empresa" className={`text-sm font-medium transition-colors ${linkClass}`}>
+            <Link href="/empresa" className={linkClass}>
               Empresa
             </Link>
 
@@ -59,7 +49,7 @@ export default function Header() {
             <div className="relative group">
               <Link
                 href="/servicos"
-                className={`inline-flex items-center gap-1 text-sm font-medium transition-colors ${linkClass}`}
+                className={`inline-flex items-center gap-1 ${linkClass}`}
               >
                 Soluções
                 <svg className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -67,42 +57,42 @@ export default function Header() {
                 </svg>
               </Link>
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="bg-white rounded-2xl shadow-xl border border-gray-100 py-3 min-w-[240px]">
+                <div className="bg-ghanks-ink rounded-2xl shadow-2xl border border-white/10 py-3 min-w-[240px]">
                   <Link
                     href="/servicos"
-                    className="block px-4 py-2 text-xs font-semibold uppercase tracking-wider text-ghanks-blue hover:bg-ghanks-light transition-colors"
+                    className="block px-4 py-2 text-xs font-semibold uppercase tracking-wider text-ghanks-blue hover:bg-white/5 transition-colors font-sans"
                   >
                     Visão Geral (Hub)
                   </Link>
-                  <div className="my-1 border-t border-gray-100" />
+                  <div className="my-1 border-t border-white/10" />
                   <Link
                     href="/seo-organico"
-                    className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
+                    className="block px-4 py-2.5 text-sm text-white/80 hover:bg-white/5 hover:text-white transition-colors font-sans"
                   >
                     1. SEO Orgânico
                   </Link>
                   <Link
                     href="/trafego-pago"
-                    className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
+                    className="block px-4 py-2.5 text-sm text-white/80 hover:bg-white/5 hover:text-white transition-colors font-sans"
                   >
                     2. Tráfego Pago
                   </Link>
                   <Link
                     href="/gestao-redes-sociais"
-                    className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
+                    className="block px-4 py-2.5 text-sm text-white/80 hover:bg-white/5 hover:text-white transition-colors font-sans"
                   >
                     3. Gestão de Redes Sociais
                   </Link>
                   <Link
                     href="/treinamentos-presenciais"
-                    className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
+                    className="block px-4 py-2.5 text-sm text-white/80 hover:bg-white/5 hover:text-white transition-colors font-sans"
                   >
                     4. Treinamentos Presenciais
                   </Link>
-                  <div className="my-1 border-t border-gray-100" />
+                  <div className="my-1 border-t border-white/10" />
                   <Link
                     href="/metodo"
-                    className="block px-4 py-2.5 text-sm font-semibold text-ghanks-gray hover:bg-ghanks-light hover:text-ghanks-blue transition-colors"
+                    className="block px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/5 hover:text-ghanks-blue transition-colors font-sans"
                   >
                     Método H.A.N.K.S.
                   </Link>
@@ -110,22 +100,18 @@ export default function Header() {
               </div>
             </div>
 
-            <Link href="/portfolio" className={`text-sm font-medium transition-colors ${linkClass}`}>
+            <Link href="/portfolio" className={linkClass}>
               Portfólio
             </Link>
-            <Link href="/treinamentos-presenciais" className={`text-sm font-medium transition-colors ${linkClass}`}>
+            <Link href="/treinamentos-presenciais" className={linkClass}>
               Treinamentos
             </Link>
-            <Link href="/contato" className={`text-sm font-medium transition-colors ${linkClass}`}>
+            <Link href="/contato" className={linkClass}>
               Contato
             </Link>
             <Link
               href="/franquias"
-              className={`text-sm font-bold px-4 py-2 rounded-full border transition-colors ${
-                transparent
-                  ? "text-white border-white/40 hover:bg-white hover:text-ghanks-gray"
-                  : "text-ghanks-gray border-gray-200 hover:border-ghanks-yellow hover:bg-ghanks-yellow hover:text-ghanks-gray"
-              }`}
+              className="text-sm font-bold font-sans px-5 py-2.5 rounded-full border border-white/30 text-white hover:bg-white hover:text-black transition-colors"
             >
               Seja um Franqueado
             </Link>
@@ -135,11 +121,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-4">
             <Link
               href="/diagnostico-gratuito"
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:-translate-y-0.5 ${
-                transparent
-                  ? "bg-white text-ghanks-gray hover:bg-white/90"
-                  : "bg-ghanks-blue text-white hover:bg-blue-600 shadow-lg shadow-blue-500/20"
-              }`}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold font-sans bg-ghanks-blue text-white hover:bg-blue-600 shadow-lg shadow-blue-500/20 transition-all hover:-translate-y-0.5"
             >
               Solicitar Diagnóstico Gratuito
             </Link>
@@ -148,9 +130,7 @@ export default function Header() {
           {/* Botão hamburger mobile */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`lg:hidden p-2 transition-colors ${
-              transparent ? "text-white" : "text-gray-600"
-            }`}
+            className="lg:hidden p-2 text-white transition-colors"
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={menuOpen}
           >
@@ -167,12 +147,12 @@ export default function Header() {
 
       {/* Menu mobile */}
       {menuOpen && (
-        <nav className="lg:hidden border-t border-gray-100 bg-white max-h-[85vh] overflow-y-auto" aria-label="Menu mobile">
-          <div className="px-4 py-4 space-y-1">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+        <nav className="lg:hidden border-t border-white/10 bg-black text-white max-h-[85vh] overflow-y-auto" aria-label="Menu mobile">
+          <div className="px-4 py-6 space-y-3 font-sans">
+            <Link href="/" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-white/90 hover:text-white">
               Home
             </Link>
-            <Link href="/empresa" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+            <Link href="/empresa" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-white/90 hover:text-white">
               Empresa
             </Link>
 
@@ -180,7 +160,7 @@ export default function Header() {
             <div>
               <button
                 onClick={() => setSolucoesOpen(!solucoesOpen)}
-                className="flex items-center justify-between w-full py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue"
+                className="flex items-center justify-between w-full py-2 text-base font-medium text-white/90 hover:text-white"
                 aria-expanded={solucoesOpen}
               >
                 <Link href="/servicos" onClick={(e) => { e.stopPropagation(); setMenuOpen(false); }}>
@@ -197,42 +177,42 @@ export default function Header() {
                 </svg>
               </button>
               {solucoesOpen && (
-                <div className="pl-4 space-y-1 pb-2 border-l-2 border-ghanks-blue ml-2 my-1">
-                  <Link href="/servicos" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm font-semibold text-ghanks-blue">
+                <div className="pl-4 space-y-2 pb-2 border-l-2 border-ghanks-blue ml-2 my-2">
+                  <Link href="/servicos" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm font-semibold text-ghanks-blue font-sans">
                     Visão Geral (Hub)
                   </Link>
-                  <Link href="/seo-organico" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-gray-600 hover:text-ghanks-blue">
+                  <Link href="/seo-organico" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-white/80 hover:text-white font-sans">
                     1. SEO Orgânico
                   </Link>
-                  <Link href="/trafego-pago" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-gray-600 hover:text-ghanks-blue">
+                  <Link href="/trafego-pago" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-white/80 hover:text-white font-sans">
                     2. Tráfego Pago
                   </Link>
-                  <Link href="/gestao-redes-sociais" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-gray-600 hover:text-ghanks-blue">
+                  <Link href="/gestao-redes-sociais" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-white/80 hover:text-white font-sans">
                     3. Gestão de Redes Sociais
                   </Link>
-                  <Link href="/treinamentos-presenciais" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-gray-600 hover:text-ghanks-blue">
+                  <Link href="/treinamentos-presenciais" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-white/80 hover:text-white font-sans">
                     4. Treinamentos Presenciais
                   </Link>
-                  <Link href="/metodo" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm font-semibold text-gray-800 hover:text-ghanks-blue">
+                  <Link href="/metodo" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm font-semibold text-white hover:text-ghanks-blue font-sans">
                     Método H.A.N.K.S.
                   </Link>
                 </div>
               )}
             </div>
 
-            <Link href="/portfolio" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+            <Link href="/portfolio" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-white/90 hover:text-white">
               Portfólio
             </Link>
-            <Link href="/treinamentos-presenciais" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+            <Link href="/treinamentos-presenciais" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-white/90 hover:text-white">
               Treinamentos
             </Link>
-            <Link href="/contato" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-gray-700 hover:text-ghanks-blue">
+            <Link href="/contato" onClick={() => setMenuOpen(false)} className="block py-2 text-base font-medium text-white/90 hover:text-white">
               Contato
             </Link>
             <Link
               href="/franquias"
               onClick={() => setMenuOpen(false)}
-              className="block py-2 text-base font-bold text-ghanks-gray"
+              className="block py-2 text-base font-bold text-white border-b border-white/10 pb-4"
             >
               Seja um Franqueado
             </Link>
@@ -240,7 +220,7 @@ export default function Header() {
             <Link
               href="/diagnostico-gratuito"
               onClick={() => setMenuOpen(false)}
-              className="block w-full text-center bg-ghanks-blue text-white px-5 py-3 rounded-full text-sm font-semibold mt-3"
+              className="block w-full text-center bg-ghanks-blue text-white px-5 py-3.5 rounded-full text-sm font-semibold font-sans shadow-md mt-4"
             >
               Solicitar Diagnóstico Gratuito
             </Link>

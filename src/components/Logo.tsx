@@ -1,5 +1,4 @@
-/* Logo G Hanks — usa a imagem oficial da logo.
-   variant "light" carrega a versão de wordmark branco, para fundos escuros. */
+/* Logo G Hanks — usa a imagem oficial da logo branca. */
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,19 +7,19 @@ interface LogoProps {
   variant?: "dark" | "light";
 }
 
-export default function Logo({ className = "", variant = "dark" }: LogoProps) {
+export default function Logo({ className = "" }: LogoProps) {
   return (
     <Link
       href="/"
       className={`flex items-center ${className}`}
-      aria-label="G Hanks — Página inicial"
+      aria-label="G Hanks — Growth Hacking e SEO Orgânico"
     >
       <Image
-        src={variant === "light" ? "/logo-footer.png" : "/logo-ghanks.png"}
-        alt="G Hanks"
+        src="/logo-ghanks-branco.png"
+        alt="G Hanks — Growth Hacking e SEO Orgânico"
         width={349}
         height={100}
-        className="h-12 md:h-14 w-auto"
+        className="h-10 md:h-12 w-auto"
         priority
       />
     </Link>
