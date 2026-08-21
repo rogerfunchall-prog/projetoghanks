@@ -6,21 +6,35 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Reveal from "@/components/Reveal";
 import Marquee from "@/components/Marquee";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
-const WHATSAPP_NUMBER = "5511950809873";
+import { siteConfig } from "@/lib/config";
+
+const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
 
 export const metadata: Metadata = {
-  title: "Soluções de Crescimento Digital — SEO, Tráfego, Redes Sociais e Treinamentos | G Hanks",
+  title: "Soluções de Crescimento Digital | SEO, Tráfego e Redes Sociais — G Hanks",
   description:
-    "Conheça as soluções completas da G Hanks para colocar sua empresa em destaque: SEO orgânico, tráfego pago orientado a dados, gestão de redes sociais e treinamentos presenciais.",
+    "Conheça as soluções da G Hanks: SEO orgânico, tráfego pago orientado a dados, gestão de redes sociais e treinamentos presenciais.",
+  keywords: [
+    "soluções de marketing digital",
+    "SEO e tráfego pago",
+    "gestão de redes sociais",
+    "treinamentos presenciais",
+    "plataforma de crescimento",
+  ],
   openGraph: {
-    title: "Soluções G Hanks — Crescimento e Posicionamento Digital",
-    description: "Estratégias orientadas a performance para impulsionar seu negócio no digital.",
+    title: "Soluções de Crescimento Digital | G Hanks",
+    description: "SEO orgânico, tráfego pago, redes sociais e treinamentos para sua empresa.",
     type: "website",
-    url: `${siteUrl}/servicos`,
+    url: `${siteConfig.url}/servicos`,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Soluções G Hanks" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Soluções de Crescimento Digital | G Hanks",
+    description: "SEO orgânico, tráfego pago, redes sociais e treinamentos.",
   },
   alternates: {
-    canonical: `${siteUrl}/servicos`,
+    canonical: `${siteConfig.url}/servicos`,
   },
 };
 

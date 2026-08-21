@@ -5,21 +5,35 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Reveal from "@/components/Reveal";
 import Marquee from "@/components/Marquee";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
-const WHATSAPP_NUMBER = "5511950809873";
+import { siteConfig } from "@/lib/config";
+
+const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
 
 export const metadata: Metadata = {
-  title: "Tráfego Pago — Gestão de Campanhas em Google Ads e Meta Ads | G Hanks",
+  title: "Tráfego Pago | Gestão de Google Ads e Meta Ads — G Hanks",
   description:
-    "Transforme investimento em mídia em oportunidades reais. Planejamento, criação, gestão e otimização de campanhas com foco em dados, negócio e geração de demanda.",
+    "Gestão profissional de campanhas em Google Ads e Meta Ads com foco em dados, CPL e geração de demanda para seu negócio.",
+  keywords: [
+    "tráfego pago",
+    "gestão de Google Ads",
+    "Meta Ads",
+    "campanhas de conversão",
+    "geração de demanda",
+  ],
   openGraph: {
-    title: "Tráfego Pago G Hanks — Google Ads e Meta Ads",
-    description: "Gestão profissional de tráfego pago orientada a performance e resultados de negócio.",
+    title: "Tráfego Pago | Gestão de Google Ads e Meta Ads — G Hanks",
+    description: "Campanhas orientadas a dados, CPL e geração de oportunidades comerciais.",
     type: "website",
-    url: `${siteUrl}/trafego-pago`,
+    url: `${siteConfig.url}/trafego-pago`,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Tráfego Pago — G Hanks" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tráfego Pago | Gestão de Google Ads e Meta Ads — G Hanks",
+    description: "Gestão profissional de campanhas com foco em dados e resultado.",
   },
   alternates: {
-    canonical: `${siteUrl}/trafego-pago`,
+    canonical: `${siteConfig.url}/trafego-pago`,
   },
 };
 

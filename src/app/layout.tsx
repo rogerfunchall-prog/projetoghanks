@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { siteConfig } from "@/lib/config";
 
 /* Fonte Inter — corpo de texto */
 const inter = Inter({
@@ -18,99 +19,140 @@ const displayFont = Plus_Jakarta_Sans({
   weight: ["500", "600", "700", "800"],
 });
 
-/* URL base do site */
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
-
 /* Metadata global do site — SEO on-page */
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "G Hanks — Growth Hacking e SEO Orgânico | Primeira Página do Google",
+    default: "G Hanks | SEO Orgânico e Growth Hacking no Google",
     template: "%s | G Hanks",
   },
   description:
-    "Agência de growth hacking e SEO orgânico. Colocamos sua empresa na primeira página do Google sem anúncios pagos. Atendimento para todo o Brasil, com exclusividade por cidade e palavra-chave.",
+    "Estratégias de SEO orgânico, growth hacking e SEO local para aumentar a presença da sua empresa no Google. Solicite um diagnóstico gratuito.",
   keywords: [
-    "seo orgânico",
+    "Ghanks",
+    "G Hanks",
+    "G Hanks SEO",
+    "Ghanks SEO orgânico",
+    "agência G Hanks",
+    "SEO orgânico",
+    "agência de SEO orgânico",
+    "empresa de SEO orgânico",
+    "contratar SEO orgânico",
+    "serviço de SEO orgânico",
+    "consultoria de SEO orgânico",
+    "especialista em SEO orgânico",
+    "posicionamento orgânico no Google",
+    "posicionamento no Google",
+    "como aparecer no Google sem pagar anúncio",
+    "resultado orgânico no Google",
+    "SEO local",
+    "agência de SEO local",
+    "SEO para negócio local",
+    "como aparecer no Google Maps",
+    "otimização Google Meu Negócio",
+    "SEO em São Paulo",
+    "agência SEO São Paulo",
+    "SEO em Limeira",
     "growth hacking",
-    "primeira página do google",
-    "resultado orgânico no google",
-    "growth hacking brasil",
-    "agência de seo orgânico",
-    "posicionamento no google sem anúncios",
-    "seo sem google ads",
-    "consultoria de seo orgânico",
-    "growth hacking para pequenas empresas",
-    "como aparecer na primeira página do google",
-    "seo nativo para empresas",
-    "marketing de busca orgânica",
-    "crescimento orgânico digital",
-    "exclusividade de palavra-chave seo",
-    "seo local para negócios",
-    "agência de growth hacking para todo o brasil",
+    "growth hacking para empresas",
+    "growth hacking e SEO",
+    "autoridade de domínio",
+    "como aumentar autoridade do site",
+    "estratégia de palavras-chave",
+    "conteúdo estratégico para SEO",
+    "SEO para empresas",
+    "empresa na primeira página do Google",
+    "SEO para lojas",
+    "SEO para clínicas",
+    "SEO para prestadores de serviço",
+    "SEO para e-commerce",
+    "agência de SEO para pequenas empresas",
+    "SEO orgânico ou Google Ads",
   ],
   robots: {
     index: true,
     follow: true,
     "max-image-preview": "large" as const,
     "max-snippet": -1,
+    "max-video-preview": -1,
   },
   openGraph: {
-    title: "G Hanks — Resultado Orgânico na Primeira Página do Google",
+    title: "G Hanks | SEO Orgânico e Growth Hacking no Google",
     description:
-      "Growth hacking e SEO nativo para colocar sua empresa no topo do Google organicamente, sem gestor de tráfego pago.",
+      "Estratégias de SEO orgânico, growth hacking e SEO local para posicionar sua empresa no Google de forma sustentável. Diagnóstico gratuito.",
     type: "website",
-    url: siteUrl,
+    url: siteConfig.url,
     siteName: "G Hanks",
     locale: "pt_BR",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "G Hanks — SEO Orgânico e Growth Hacking",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "G Hanks — Resultado Orgânico na Primeira Página do Google",
+    title: "G Hanks | SEO Orgânico e Growth Hacking no Google",
     description:
-      "Growth hacking e SEO nativo para colocar sua empresa no topo do Google organicamente, sem gestor de tráfego pago.",
+      "Estratégias de SEO orgânico, growth hacking e SEO local para posicionar sua empresa no Google de forma sustentável.",
+    images: ["/twitter-image.png"],
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: siteConfig.url,
   },
-  metadataBase: new URL(siteUrl),
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 /* JSON-LD Organization com as duas unidades (NAP) */
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "G Hanks",
-  alternateName: "G Hanks — Growth Hacking e SEO Orgânico",
-  url: siteUrl,
-  logo: `${siteUrl}/logo-ghanks.png`,
+  "@type": "ProfessionalService",
+  name: siteConfig.name,
+  alternateName: ["G Hanks — Growth Hacking e SEO Orgânico", "Ghanks", "G Hanks SEO"],
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/logo-ghanks.png`,
+  image: `${siteConfig.url}/opengraph-image.png`,
   description:
-    "Agência de growth hacking e SEO orgânico. Colocamos sua empresa na primeira página do Google sem anúncios pagos.",
-  telephone: "+5511950809873",
-  sameAs: ["https://www.instagram.com/ghanks.br"],
+    "Agência de SEO orgânico e growth hacking. Estratégias de posicionamento sustentável no Google com exclusividade por cidade e palavra-chave.",
+  telephone: siteConfig.contact.phone,
+  email: siteConfig.contact.email,
+  priceRange: "$$",
+  areaServed: {
+    "@type": "Country",
+    name: "Brasil",
+  },
+  serviceType: [
+    "SEO Orgânico",
+    "SEO Local",
+    "Growth Hacking",
+    "Posicionamento no Google",
+    "Consultoria de SEO",
+  ],
+  sameAs: [siteConfig.social.instagram],
   parentOrganization: {
     "@type": "Organization",
-    name: "HAPP APPS Tecnologia",
+    name: siteConfig.parentCompany,
   },
-  location: [
-    {
-      "@type": "PostalAddress",
-      name: "G Hanks — São Paulo (Matriz)",
-      streetAddress: "Av. Brig. Faria Lima, 1811 - Conj. 1120 - Jardins",
-      addressLocality: "São Paulo",
-      addressRegion: "SP",
-      postalCode: "01452-001",
-      addressCountry: "BR",
-    },
-    {
-      "@type": "PostalAddress",
-      name: "G Hanks — Limeira",
-      streetAddress: "R. Sen. Vergueiro, 995 - Sl 51|B - Centro",
-      addressLocality: "Limeira",
-      addressRegion: "SP",
-      postalCode: "13480-001",
-      addressCountry: "BR",
-    },
-  ],
+  founder: {
+    "@type": "Person",
+    name: siteConfig.founder.name,
+    jobTitle: siteConfig.founder.role,
+  },
+  address: siteConfig.addresses.map((addr) => ({
+    "@type": "PostalAddress",
+    name: addr.name,
+    streetAddress: addr.street,
+    addressLocality: addr.city,
+    addressRegion: addr.region,
+    postalCode: addr.postalCode,
+    addressCountry: addr.country,
+  })),
 };
 
 export default function RootLayout({

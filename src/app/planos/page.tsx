@@ -1,23 +1,36 @@
 import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
 import Breadcrumb from "@/components/Breadcrumb";
+import { siteConfig } from "@/lib/config";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
-const WHATSAPP_NUMBER = "5511950809873";
+const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
 
 export const metadata: Metadata = {
-  title: "Planos de SEO Orgânico e Exclusividade por Cidade",
+  title: "Planos de SEO Orgânico | G Hanks",
   description:
-    "Conheça os planos de SEO orgânico da G Hanks: Open, Master e Authority. Posicionamento na primeira página do Google com exclusividade por cidade. Sem Google Ads.",
+    "Conheça os planos de SEO orgânico, setup, manutenção, exclusividade por cidade e diferenças entre SEO e Google Ads.",
+  keywords: [
+    "planos de SEO orgânico",
+    "quanto custa SEO orgânico",
+    "SEO orgânico ou Google Ads",
+    "exclusividade por cidade SEO",
+    "contratar SEO orgânico",
+  ],
   openGraph: {
-    title: "Planos de SEO Orgânico — G Hanks",
+    title: "Planos de SEO Orgânico | G Hanks",
     description:
-      "Quanto custa aparecer no Google organicamente? Conheça nossos planos Open, Master e Authority com exclusividade por cidade.",
+      "Planos Open, Master e Authority com exclusividade por cidade e palavra-chave. Compare SEO orgânico e Google Ads.",
     type: "website",
-    url: `${siteUrl}/planos`,
+    url: `${siteConfig.url}/planos`,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Planos de SEO — G Hanks" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Planos de SEO Orgânico | G Hanks",
+    description: "Planos com exclusividade por cidade e palavra-chave. Compare SEO e Google Ads.",
   },
   alternates: {
-    canonical: `${siteUrl}/planos`,
+    canonical: `${siteConfig.url}/planos`,
   },
 };
 
@@ -109,8 +122,8 @@ const jsonLd = {
   "@type": "OfferCatalog",
   name: "Planos de SEO Orgânico — G Hanks",
   description:
-    "Planos de posicionamento orgânico na primeira página do Google com exclusividade por cidade e palavra-chave.",
-  url: `${siteUrl}/planos`,
+    "Planos de posicionamento orgânico no Google com exclusividade por cidade e palavra-chave.",
+  url: `${siteConfig.url}/planos`,
   itemListElement: plans.map((p, i) => ({
     "@type": "Offer",
     position: i + 1,
@@ -118,10 +131,11 @@ const jsonLd = {
     description: p.tagline,
     price: p.price.replace(".", "").replace(",", "."),
     priceCurrency: "BRL",
-    url: `${siteUrl}/planos`,
+    url: `${siteConfig.url}/planos`,
     seller: {
       "@type": "Organization",
-      name: "G Hanks",
+      name: siteConfig.name,
+      url: siteConfig.url,
     },
   })),
 };

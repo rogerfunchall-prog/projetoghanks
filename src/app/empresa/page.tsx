@@ -9,22 +9,37 @@ import Reveal from "@/components/Reveal";
 import Marquee from "@/components/Marquee";
 import Counter from "@/components/Counter";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
-const WHATSAPP_NUMBER = "5511950809873";
+import { siteConfig } from "@/lib/config";
+
+const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
 
 export const metadata: Metadata = {
-  title: "Empresa G Hanks | Consultoria de Crescimento Digital",
+  title: "Sobre a G Hanks | Agência de SEO Orgânico em São Paulo e Limeira",
   description:
-    "Conheça a G Hanks, consultoria de crescimento digital especializada em SEO orgânico, posicionamento, presença local e marketing B2B.",
+    "Conheça a G Hanks, agência de SEO orgânico e growth hacking com escritórios em São Paulo e Limeira. Estratégia, conteúdo e autoridade para posicionar sua empresa no Google.",
+  keywords: [
+    "agência G Hanks",
+    "G Hanks Limeira",
+    "G Hanks São Paulo",
+    "agência de SEO São Paulo",
+    "agência SEO Limeira",
+    "consultoria de posicionamento no Google",
+  ],
   openGraph: {
-    title: "G Hanks — Estratégia, Presença e Crescimento Digital",
+    title: "Sobre a G Hanks | Agência de SEO Orgânico",
     description:
-      "Conheça o método e a visão da G Hanks para construir presença digital com clareza, relevância e consistência.",
+      "Agência de SEO orgânico e growth hacking com escritórios em São Paulo e Limeira.",
     type: "website",
-    url: `${siteUrl}/empresa`,
+    url: `${siteConfig.url}/empresa`,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Sobre a G Hanks" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sobre a G Hanks | Agência de SEO Orgânico",
+    description: "Agência de SEO orgânico e growth hacking com escritórios em SP e Limeira.",
   },
   alternates: {
-    canonical: `${siteUrl}/empresa`,
+    canonical: `${siteConfig.url}/empresa`,
   },
 };
 
@@ -154,22 +169,24 @@ const ESCRITORIOS = [
 const aboutJsonLd = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
+  name: "Sobre a G Hanks",
+  url: `${siteConfig.url}/empresa`,
   mainEntity: {
-    "@type": "Organization",
-    name: "G Hanks",
-    url: siteUrl,
-    logo: `${siteUrl}/logo-ghanks.png`,
-    description: "Consultoria de crescimento digital especializada em SEO orgânico, posicionamento e marketing B2B.",
+    "@type": "ProfessionalService",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}/logo-ghanks.png`,
+    description: "Agência de SEO orgânico e growth hacking com escritórios em São Paulo e Limeira.",
     foundingDate: "2024",
     parentOrganization: {
       "@type": "Organization",
-      name: "HAPP APPS Tecnologia",
+      name: siteConfig.parentCompany,
     },
     employee: [
       {
         "@type": "Person",
-        name: "Roger Funchal",
-        jobTitle: "CEO e Founder",
+        name: siteConfig.founder.name,
+        jobTitle: siteConfig.founder.role,
       },
       {
         "@type": "Person",

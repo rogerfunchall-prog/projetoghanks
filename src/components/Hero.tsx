@@ -45,19 +45,19 @@ export default function Hero() {
         <div className="mt-8 md:mt-12 max-w-3xl">
           <h1 className="max-w-2xl">
             <span className="block font-display text-xl sm:text-2xl md:text-3xl font-semibold text-white/95 tracking-tight">
-              Coloque sua empresa na
+              Posicione sua empresa no
             </span>
             <span className="display-title block text-gradient-brand mt-1">
-              Primeira página do Google
+              topo do Google
             </span>
             <span className="block font-display text-xl sm:text-2xl md:text-3xl font-semibold text-white/95 tracking-tight mt-2">
-              sem pagar por anúncio
+              com SEO orgânico
             </span>
           </h1>
 
           <p className="mt-6 lead text-white/85 max-w-xl">
-            SEO orgânico com exclusividade por cidade e palavra-chave.
-            Trabalhamos para posicionar o seu negócio no topo do Google de
+            Estratégia de SEO orgânico com exclusividade por cidade e palavra-chave.
+            Trabalhamos para posicionar o seu negócio no Google de
             forma sustentável — sem Google Ads, sem gestor de tráfego pago.
           </p>
 

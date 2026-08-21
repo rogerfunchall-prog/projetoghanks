@@ -5,21 +5,35 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Reveal from "@/components/Reveal";
 import Marquee from "@/components/Marquee";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
-const WHATSAPP_NUMBER = "5511950809873";
+import { siteConfig } from "@/lib/config";
+
+const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
 
 export const metadata: Metadata = {
-  title: "Gestão de Redes Sociais para Empresas — Estratégia e Conteúdo | G Hanks",
+  title: "Gestão de Redes Sociais para Empresas | Estratégia e Conteúdo — G Hanks",
   description:
-    "Estratégia, conteúdo e gestão de redes sociais para empresas que querem deixar de postar sem direção. Posicionamento, autoridade e relacionamento com clientes.",
+    "Estratégia, conteúdo e gestão de redes sociais para empresas que querem deixar de postar sem direção. Posicionamento e autoridade.",
+  keywords: [
+    "gestão de redes sociais",
+    "redes sociais para empresas",
+    "Instagram corporativo",
+    "LinkedIn estratégico",
+    "conteúdo estratégico para SEO",
+  ],
   openGraph: {
-    title: "Gestão de Redes Sociais — G Hanks",
-    description: "Comunique com clareza e posicione sua marca nas redes sociais com estratégia orientada a negócios.",
+    title: "Gestão de Redes Sociais para Empresas | G Hanks",
+    description: "Estratégia e conteúdo orientados a negócio para sua presença digital.",
     type: "website",
-    url: `${siteUrl}/gestao-redes-sociais`,
+    url: `${siteConfig.url}/gestao-redes-sociais`,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Gestão de Redes Sociais — G Hanks" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gestão de Redes Sociais para Empresas | G Hanks",
+    description: "Estratégia e conteúdo orientados a negócio.",
   },
   alternates: {
-    canonical: `${siteUrl}/gestao-redes-sociais`,
+    canonical: `${siteConfig.url}/gestao-redes-sociais`,
   },
 };
 

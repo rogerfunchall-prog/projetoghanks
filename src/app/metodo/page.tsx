@@ -5,23 +5,38 @@ import PageShell from "@/components/PageShell";
 import Breadcrumb from "@/components/Breadcrumb";
 import Reveal from "@/components/Reveal";
 import Marquee from "@/components/Marquee";
+import { siteConfig } from "@/lib/config";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
-const WHATSAPP_NUMBER = "5511950809873";
+const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
 
 export const metadata: Metadata = {
-  title: "Método H.A.N.K.S. — Sistema Proprietário de Crescimento Orgânico",
+  title: "Método H.A.N.K.S. | Estratégia de SEO da G Hanks",
   description:
-    "Conheça o Método H.A.N.K.S. da G Hanks: 5 pilares conectados para posicionar empresas na primeira página do Google, atrair demanda qualificada e construir um ativo digital duradouro.",
+    "Conheça os cinco pilares do Método H.A.N.K.S. para unir growth hacking, autoridade, keywords e sustentabilidade no SEO.",
+  keywords: [
+    "Método H.A.N.K.S.",
+    "Método HANKS",
+    "Método H.A.N.K.S. SEO",
+    "growth hacking para empresas",
+    "autoridade de domínio",
+    "exclusividade por cidade SEO",
+    "estratégia de palavras-chave",
+  ],
   openGraph: {
-    title: "Método H.A.N.K.S. — Sistema Proprietário de Crescimento | G Hanks",
+    title: "Método H.A.N.K.S. | Estratégia de SEO da G Hanks",
     description:
-      "Hacking de Crescimento, Autoridade Orgânica, Nichos Exclusivos, Keywords Estratégicas e Sustentabilidade de Resultado.",
+      "Cinco pilares para unir growth hacking, autoridade, keywords e sustentabilidade no SEO orgânico.",
     type: "website",
-    url: `${siteUrl}/metodo`,
+    url: `${siteConfig.url}/metodo`,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Método H.A.N.K.S. — G Hanks" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Método H.A.N.K.S. | Estratégia de SEO da G Hanks",
+    description: "Cinco pilares para unir growth hacking, autoridade, keywords e sustentabilidade no SEO.",
   },
   alternates: {
-    canonical: `${siteUrl}/metodo`,
+    canonical: `${siteConfig.url}/metodo`,
   },
 };
 

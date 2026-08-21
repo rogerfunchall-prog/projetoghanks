@@ -7,21 +7,32 @@ import Reveal from "@/components/Reveal";
 import Marquee from "@/components/Marquee";
 import FranquiasForm from "@/components/FranquiasForm";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
+import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Seja um Franqueado G Hanks | Expansão em Marketing Digital",
+  title: "Franquias G Hanks | Expansão em SEO e Marketing Digital",
   description:
-    "Conheça a oportunidade de fazer parte da expansão G Hanks e manifeste seu interesse em operar uma unidade de marketing digital, SEO e crescimento na sua região.",
+    "Conheça a oportunidade de expansão G Hanks e manifeste seu interesse em operar uma unidade de SEO e growth hacking na sua região.",
+  keywords: [
+    "franquias G Hanks",
+    "franquia de SEO",
+    "franquia marketing digital",
+    "expansão G Hanks",
+  ],
   openGraph: {
-    title: "Expansão G Hanks — Novos Franqueados",
-    description:
-      "Participe do processo de seleção de novos franqueados G Hanks.",
+    title: "Franquias G Hanks | Expansão em SEO e Marketing Digital",
+    description: "Participe do processo de seleção de novos franqueados G Hanks.",
     type: "website",
-    url: `${siteUrl}/franquias`,
+    url: `${siteConfig.url}/franquias`,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Franquias G Hanks" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Franquias G Hanks | Expansão em SEO e Marketing Digital",
+    description: "Oportunidade de expansão G Hanks para sua região.",
   },
   alternates: {
-    canonical: `${siteUrl}/franquias`,
+    canonical: `${siteConfig.url}/franquias`,
   },
 };
 

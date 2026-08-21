@@ -2,22 +2,33 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import PageShell from "@/components/PageShell";
 import Breadcrumb from "@/components/Breadcrumb";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
+import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "FAQ — Perguntas Frequentes sobre SEO Orgânico e Growth Hacking",
+  title: "FAQ de SEO Orgânico | Dúvidas sobre Posicionamento",
   description:
-    "Tire todas as suas dúvidas sobre SEO orgânico, growth hacking, exclusividade por cidade, planos e como aparecer na primeira página do Google sem anúncios pagos.",
+    "Tire dúvidas sobre SEO orgânico, Google Ads, prazo, investimento, exclusividade, manutenção e acompanhamento de resultados.",
+  keywords: [
+    "FAQ SEO orgânico",
+    "dúvidas SEO",
+    "quanto custa SEO",
+    "tempo para aparecer no Google",
+    "SEO ou Google Ads",
+  ],
   openGraph: {
-    title: "FAQ — G Hanks",
-    description:
-      "Perguntas frequentes sobre SEO orgânico e growth hacking.",
+    title: "FAQ de SEO Orgânico | Dúvidas sobre Posicionamento",
+    description: "Perguntas frequentes sobre SEO orgânico, prazos, investimento e exclusividade.",
     type: "website",
-    url: `${siteUrl}/faq`,
+    url: `${siteConfig.url}/faq`,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "FAQ SEO — G Hanks" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ de SEO Orgânico | Dúvidas sobre Posicionamento",
+    description: "Tire dúvidas sobre SEO orgânico, Google Ads, prazo e investimento.",
   },
   alternates: {
-    canonical: `${siteUrl}/faq`,
+    canonical: `${siteConfig.url}/faq`,
   },
 };
 

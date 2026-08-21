@@ -1,33 +1,28 @@
-/* StatsCounter — faixa de números de operação, com contagem animada ao
-   entrar na viewport. Todos os dados já existiam no site. */
+/* StatsCounter — faixa de indicadores de operação, com textos qualitativos
+   para evitar claims numéricos não verificáveis. */
 
-import Counter from "./Counter";
 import Reveal from "./Reveal";
 
 const STATS = [
   {
-    value: 1200,
-    suffix: "+",
-    label: "Palavras-chave posicionadas",
+    label: "Palavras-chave posicionadas em diversas cidades do Brasil",
     cor: "text-ghanks-blue",
+    icone: "📈",
   },
   {
-    value: 350,
-    suffix: "+",
-    label: "Cidades atendidas",
+    label: "Empresas atendidas em múltiplos segmentos",
     cor: "text-ghanks-green",
+    icone: "🏢",
   },
   {
-    value: 25,
-    suffix: "+",
-    label: "Anos de tecnologia do fundador",
+    label: "Anos de experiência em tecnologia e SEO",
     cor: "text-ghanks-yellow",
+    icone: "⚡",
   },
   {
-    value: 2,
-    suffix: "",
-    label: "Escritórios: São Paulo e Limeira",
+    label: "Escritórios em São Paulo e Limeira",
     cor: "text-ghanks-red",
+    icone: "📍",
   },
 ];
 
@@ -42,10 +37,8 @@ export default function StatsCounter() {
         <ul className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
           {STATS.map((stat, i) => (
             <Reveal as="li" key={stat.label} delay={i * 100} className="text-center lg:text-left">
-              <p className={`font-display text-4xl md:text-5xl font-bold ${stat.cor}`}>
-                <Counter value={stat.value} suffix={stat.suffix} />
-              </p>
-              <p className="mt-2 text-sm text-white/60 leading-snug">{stat.label}</p>
+              <div className={`text-4xl md:text-5xl mb-3`}>{stat.icone}</div>
+              <p className="text-sm text-white/70 leading-snug">{stat.label}</p>
             </Reveal>
           ))}
         </ul>

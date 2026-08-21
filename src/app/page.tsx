@@ -1,5 +1,6 @@
 /* Página inicial — Hub da G Hanks com resumos e links para páginas dedicadas */
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -12,6 +13,41 @@ import Depoimentos from "@/components/Depoimentos";
 import CTAFinal from "@/components/CTAFinal";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { siteConfig } from "@/lib/config";
+
+export const metadata: Metadata = {
+  title: "G Hanks | SEO Orgânico e Growth Hacking no Google",
+  description:
+    "Estratégias de SEO orgânico, growth hacking e SEO local para aumentar a presença da sua empresa no Google. Solicite um diagnóstico gratuito.",
+  keywords: [
+    "Ghanks",
+    "G Hanks",
+    "G Hanks SEO",
+    "SEO orgânico",
+    "growth hacking",
+    "posicionamento no Google",
+    "agência de SEO orgânico",
+    "SEO local",
+    "G Hanks Limeira",
+    "G Hanks São Paulo",
+  ],
+  openGraph: {
+    title: "G Hanks | SEO Orgânico e Growth Hacking no Google",
+    description:
+      "Estratégias de SEO orgânico, growth hacking e SEO local para posicionar sua empresa no Google de forma sustentável.",
+    type: "website",
+    url: siteConfig.url,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "G Hanks — SEO Orgânico e Growth Hacking" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "G Hanks | SEO Orgânico e Growth Hacking no Google",
+    description: "Estratégias de SEO orgânico e growth hacking para posicionar sua empresa no Google.",
+  },
+  alternates: {
+    canonical: siteConfig.url,
+  },
+};
 
 /* Link de "saiba mais" no padrão visual das seções */
 function SaibaMais({ href, children }: { href: string; children: string }) {

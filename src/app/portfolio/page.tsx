@@ -7,22 +7,35 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Reveal from "@/components/Reveal";
 import Marquee from "@/components/Marquee";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
-const WHATSAPP_NUMBER = "5511950809873";
+import { siteConfig } from "@/lib/config";
+
+const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
 
 export const metadata: Metadata = {
-  title: "Portfólio — Cases de SEO Orgânico e Resultado Real",
+  title: "Cases de SEO Orgânico | Resultados da G Hanks",
   description:
-    "Conheça os cases de sucesso da G Hanks: projetos reais de SEO orgânico em diferentes nichos e regiões do Brasil. Resultado orgânico na primeira página do Google.",
+    "Conheça cases de posicionamento orgânico em diferentes nichos, cidades e objetivos de negócio.",
+  keywords: [
+    "cases de SEO orgânico",
+    "resultados SEO G Hanks",
+    "portfólio SEO",
+    "posicionamento orgânico no Google",
+    "G Hanks avaliações",
+  ],
   openGraph: {
-    title: "Portfólio G Hanks — Cases de SEO Orgânico",
-    description:
-      "Projetos reais de posicionamento orgânico no Google, sem anúncios pagos.",
+    title: "Cases de SEO Orgânico | Resultados da G Hanks",
+    description: "Projetos reais de posicionamento orgânico em diferentes nichos e regiões do Brasil.",
     type: "website",
-    url: `${siteUrl}/portfolio`,
+    url: `${siteConfig.url}/portfolio`,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Cases de SEO — G Hanks" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cases de SEO Orgânico | Resultados da G Hanks",
+    description: "Projetos reais de posicionamento orgânico em diferentes nichos e regiões do Brasil.",
   },
   alternates: {
-    canonical: `${siteUrl}/portfolio`,
+    canonical: `${siteConfig.url}/portfolio`,
   },
 };
 
@@ -96,12 +109,16 @@ const CASES = [
 const portfolioJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Portfólio G Hanks — Cases de SEO Orgânico",
+  name: "Cases de SEO Orgânico — G Hanks",
+  description: "Cases reais de posicionamento orgânico em diferentes nichos e cidades do Brasil.",
+  url: `${siteConfig.url}/portfolio`,
+  numberOfItems: CASES.length,
   itemListElement: CASES.map((c, i) => ({
     "@type": "ListItem",
     position: i + 1,
     name: c.nome,
     url: c.link,
+    description: c.destaque,
   })),
 };
 

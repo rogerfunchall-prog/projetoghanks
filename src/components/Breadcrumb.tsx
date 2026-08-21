@@ -1,5 +1,6 @@
 /* Breadcrumb visual + JSON-LD BreadcrumbList para SEO */
 import Script from "next/script";
+import { siteConfig } from "@/lib/config";
 
 interface BreadcrumbItem {
   label: string;
@@ -13,7 +14,7 @@ interface BreadcrumbProps {
 }
 
 export default function Breadcrumb({ items, tone = "light" }: BreadcrumbProps) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
+  const siteUrl = siteConfig.url;
 
   const jsonLd = {
     "@context": "https://schema.org",

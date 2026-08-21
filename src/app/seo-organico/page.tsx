@@ -7,33 +7,39 @@ import Breadcrumb from "@/components/Breadcrumb";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import Marquee from "@/components/Marquee";
+import { siteConfig } from "@/lib/config";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
-const WHATSAPP_NUMBER = "5511950809873";
+const WHATSAPP_NUMBER = siteConfig.contact.whatsapp;
 
 export const metadata: Metadata = {
-  title: "Guia Completo de SEO Orgânico — Como Aparecer na Primeira Página do Google",
+  title: "SEO Orgânico | Posicionamento Sustentável no Google",
   description:
-    "Aprenda tudo sobre SEO orgânico: o que é, como funciona, quanto custa e como colocar sua empresa na primeira página do Google sem pagar por anúncios. Guia completo da G Hanks.",
+    "Entenda como o SEO orgânico transforma buscas em demanda com estratégia, conteúdo, autoridade e otimização técnica. Guia completo da G Hanks.",
   keywords: [
-    "seo orgânico",
-    "guia de seo orgânico",
-    "como aparecer na primeira página do google",
-    "seo sem google ads",
-    "growth hacking",
-    "resultado orgânico no google",
-    "quanto custa seo orgânico",
-    "diferença entre seo orgânico e google ads",
+    "SEO orgânico",
+    "como aparecer no Google sem pagar anúncio",
+    "posicionamento orgânico no Google",
+    "resultado orgânico no Google",
+    "diferença entre SEO orgânico e Google Ads",
+    "SEO local",
+    "autoridade de domínio",
+    "growth hacking e SEO",
   ],
   openGraph: {
-    title: "Guia Completo de SEO Orgânico — G Hanks",
+    title: "SEO Orgânico | Posicionamento Sustentável no Google",
     description:
-      "Tudo o que você precisa saber sobre SEO orgânico para posicionar sua empresa no topo do Google, sem anúncios pagos.",
+      "Entenda como o SEO orgânico transforma buscas em demanda com estratégia, conteúdo, autoridade e otimização técnica.",
     type: "article",
-    url: `${siteUrl}/seo-organico`,
+    url: `${siteConfig.url}/seo-organico`,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "SEO Orgânico — G Hanks" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SEO Orgânico | Posicionamento Sustentável no Google",
+    description: "Como o SEO orgânico transforma buscas em demanda real para sua empresa.",
   },
   alternates: {
-    canonical: `${siteUrl}/seo-organico`,
+    canonical: `${siteConfig.url}/seo-organico`,
   },
 };
 
@@ -60,24 +66,31 @@ const INDICE_ITENS = [
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Guia Completo de SEO Orgânico: como colocar sua empresa na primeira página do Google",
+  headline: "SEO Orgânico: como transformar buscas no Google em demanda para sua empresa",
+  description:
+    "Guia completo sobre SEO orgânico: o que é, como funciona, diferença para Google Ads, growth hacking, exclusividade por cidade e nichos atendidos.",
   author: {
     "@type": "Person",
-    name: "Roger Funchal",
-    jobTitle: "CEO e Founder da G Hanks",
-    url: `${siteUrl}/empresa`,
+    name: siteConfig.founder.name,
+    jobTitle: siteConfig.founder.role,
+    url: `${siteConfig.url}/empresa`,
   },
   publisher: {
     "@type": "Organization",
-    name: "G Hanks",
+    name: siteConfig.name,
     logo: {
       "@type": "ImageObject",
-      url: `${siteUrl}/logo-ghanks.png`,
+      url: `${siteConfig.url}/logo-ghanks.png`,
     },
   },
-  url: `${siteUrl}/seo-organico`,
+  url: `${siteConfig.url}/seo-organico`,
   datePublished: "2024-01-01",
   dateModified: new Date().toISOString().split("T")[0],
+  image: `${siteConfig.url}/opengraph-image.png`,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${siteConfig.url}/seo-organico`,
+  },
 };
 
 export default function GuiaSeoOrganico() {

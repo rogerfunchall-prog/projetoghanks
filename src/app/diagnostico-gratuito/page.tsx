@@ -8,21 +8,33 @@ import Reveal from "@/components/Reveal";
 import Marquee from "@/components/Marquee";
 import DiagnosticoForm from "@/components/DiagnosticoForm";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://projetoghanks.vercel.app";
+import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Diagnóstico Gratuito de SEO e Presença Digital | G Hanks",
+  title: "Diagnóstico Gratuito de SEO | G Hanks",
   description:
-    "Solicite uma análise inicial do posicionamento orgânico da sua empresa no Google, da presença local e da visibilidade da marca nas respostas de inteligência artificial.",
+    "Descubra oportunidades de crescimento orgânico para sua empresa, nicho e cidade com uma análise estratégica inicial.",
+  keywords: [
+    "diagnóstico gratuito SEO",
+    "análise de SEO",
+    "consultoria de SEO orgânico",
+    "como gerar clientes pelo Google organicamente",
+  ],
   openGraph: {
-    title: "Solicite seu Diagnóstico Digital Gratuito | G Hanks",
+    title: "Diagnóstico Gratuito de SEO | G Hanks",
     description:
-      "Uma análise inicial do posicionamento orgânico, presença local e oportunidades de crescimento da sua empresa.",
+      "Análise estratégica inicial do posicionamento orgânico, presença local e oportunidades de crescimento.",
     type: "website",
-    url: `${siteUrl}/diagnostico-gratuito`,
+    url: `${siteConfig.url}/diagnostico-gratuito`,
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Diagnóstico Gratuito — G Hanks" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Diagnóstico Gratuito de SEO | G Hanks",
+    description: "Descubra oportunidades de crescimento orgânico para sua empresa.",
   },
   alternates: {
-    canonical: `${siteUrl}/diagnostico-gratuito`,
+    canonical: `${siteConfig.url}/diagnostico-gratuito`,
   },
 };
 
